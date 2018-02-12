@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>ISCS</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="./zTree_v3-master/css/demo.css" />-->
+	<link rel="stylesheet" href="./zTree_v3-master/css/zTreeStyle/zTreeStyle.css" />
+	
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="./zTree_v3-master/js/jquery.ztree.core.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+	<div class="row" style="height:5%">
+		<ul class="nav nav-pills" id="nav">
+			<li id="SBJM_li"><a id="SBJM">设备建模</a></li>
+			<li id="GSDY_li"><a id="GSDY">公式定义</a></li>
+			<li id="TJDY_li"><a id="TJDY">统计定义</a></li>
+			<li id="BJDY_li"><a id="BJDY">报警定义</a></li>
+			<li id="QXDY_li"><a id="QXDY">权限定义</a></li>
+			<li id="TYPZ_li"><a id="TYPZ">通用配置</a></li>
+			<li id="SJTL_li"><a id="SJTL">事件推理</a></li>
+		</ul>
+	</div>
+	<div class="row" id="middle-page" style="height:90%">
+		<div class="col-lg-12" id="SBJM_PAGE" hidden="hidden" style="height:600px;border-style:solid;border-color:blue;border-width:2px">
+			<div class="col-lg-12" style="height:5%">设备建模页面</div>
+			<div class="row" style="height:95%">
+				<div class="col-lg-3" style="border-style:solid;border-color:blue;border-width:2px;height:100%">
+					<div class="row" style="height:70%">树窗体
+						<div>
+							<ul id="treeDemo" class="ztree"></ul>
+						</div>
+					</div>
+					<div class="row" style="border-style:solid;border-color:blue;border-width:2px;height:30%">操作信息显示台</div>
+				</div>
+				<div class="col-lg-3" style="border-style:solid;border-color:blue;border-width:2px;height:100%">
+					<ul class="list-group" id="list">
+						<li class="list-group-item"><span class="badge">DIG</span>速断保护</li>
+						<li class="list-group-item"><span class="badge">DIG</span>过流保护</li>
+						<li class="list-group-item"><span class="badge">DIG</span>充电保护</li>
+						<li class="list-group-item">
+							<span class="badge">DIG</span>
+							数字电流保护
+						</li>
+						<li class="list-group-item"><span class="badge">ANA</span>事故总信号</li>
+						<li class="list-group-item">
+							<span class="badge">ANA</span>
+							A相电流
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-6" style="border-style:solid;border-color:blue;border-width:2px;height:100%">
+					<ul id="rightTree" class="ztree"></ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12" id="GSDY_PAGE" hidden="hidden">公式定义页面</div>
+		<div class="col-md-12" id="TJDY_PAGE" hidden="hidden" style="height:600px">统计定义页面</div>
+		<div class="col-md-12" id="BJDY_PAGE" hidden="hidden" style="height:600px">报警定义页面</div>
+		<div class="col-md-12" id="QXDY_PAGE" hidden="hidden" style="height:600px">权限定义页面</div>
+		<div class="col-md-12" id="TYPZ_PAGE" hidden="hidden" style="height:600px">通用配置页面</div>
+		<div class="col-md-12" id="SJTL_PAGE" hidden="hidden" style="height:600px">事件推理页面</div>
+		<div class="col-lg-12" id="empty_PAGE" style="height:600px;border-style:solid;border-color:blue;border-width:2px">空白页</div>
+   </div>
+   <div class="row" style="height:5%">底部状态栏</div>
+</div>
+<script>
+	
+	//1.主页面切换部分
+	function changeNav(data){
+		var len = $("#nav li").length;
+		//alert("changeNav len:"+len);
+		$("#nav li").each(function(){
+			var v = $(this).attr("id");
+			if(v == data + "_li"){
+				$(this).addClass("active");
+			}else{
+				$(this).removeClass("active");
+			}
+		});
+	}
+	
+	function changePage(data){
+		var len = $("#middle-page > div").length;
+		//alert("changePage len:"+len);
+		$("#middle-page > div").each(function(){
+			var v = $(this).attr("id");
+			if(v == data + "_PAGE"){
+				$(this).removeAttr("hidden").attr("style","height:600px");
+			}else{
+				$(this).attr("hidden","hidden");
+			}
+		});
+	}
+	
+	/*
+	function navChanged(e){
+		var d = e.data;
+		//alert(d);
+		$("#empty_PAGE").attr("hidden","hidden");	
+		if(d == "SBJM"){
+			//激活导航栏
+			$("#" + d + "_li").addClass("active");
+			$("#GSDY_li").removeClass("active");
+			
+			//激活页面
+			//$("#" + d + "_PAGE").removeAttr("hidden").attr("style","height:600px");
+			changePage(d);
+		}
+		if(d == "GSDY"){
+			$("#SBJM_li").removeClass("active");
+			$("#GSDY_li").addClass("active");
+			
+			//$("#GSDY_PAGE").removeAttr("hidden").attr("style","height:600px");
+			$("#"+d+"_PAGE").removeAttr("hidden").attr("style","height:600px");
+			//$("#GSDY_PAGE").attr("style","height:600px");
+		}
+	}*/
+	
+	//$("#GSDY").bind("click","GSDY",navChanged);
+	//$("#SBJM").bind("click","SBJM",navChanged);
+	
+	function navChanged_2(e){
+		var d = e.data;
+		$("#empty_PAGE").attr("hidden","hidden");
+		changeNav(d);
+		changePage(d);
+	}
+	
+	//$("#GSDY").bind("click","GSDY",navChanged_2);
+	//$("#SBJM").bind("click","SBJM",navChanged_2);
+	$("#nav a").each(function(){
+		var v = $(this).attr("id");
+		$(this).bind("click",v,navChanged_2);
+	});
+	
+	//2.设备建模页面
+	var IDMark_Switch = "_switch",
+		IDMark_Icon = "_ico",
+		IDMark_Span = "_span",
+		IDMark_Input = "_input",
+		IDMark_Check = "_check",
+		IDMark_Edit = "_edit",
+		IDMark_Remove = "_remove",
+		IDMark_Ul = "_ul",
+		IDMark_A = "_a";
+	
+	function addDiyDom(treeId, treeNode) {
+		if (treeNode.parentNode && treeNode.parentNode.id!=2) return;
+		var p = treeNode.parentNode;
+		var t = $("#treeDemo");
+		var aObj = $("#" + treeNode.tId + IDMark_A);
+		if (treeNode.id == 0) {
+			var editStr = "<select class='selDemo' id='diyBtn_" +treeNode.id+ "'><option value=1>PSCADA</option><option value=2>BAS</option><option value=3>FAS</option></select>";
+			aObj.after(editStr);
+			var btn = $("#diyBtn_"+treeNode.id);
+			//为一级下拉选项绑定事件
+			if (btn) btn.bind("change", function(){
+				//alert("diy Select value="+btn.find("option:selected").attr("value")+" for " + treeNode.name);
+				add_muBan("muBan");
+				//test();
+			});
+		} 
+	}
+	
+	var nodeList_1 = [{id:"muBan",name:"35KV出线"},{id:"muBan",name:"35KV母联"},{id:"muBan",name:"35KV整流变"}];
+	var nodeList_2 = [{name:"林场 35KV出线"},{name:"星火路 35KV出线"},{name:"柳州东路 35KV出线"}];
+	
+	function add_muBan(data){
+		alert("add_muBan--" + data);
+		//$("#treeDemo_1_a").addNodes($(this),nodeList_1,false);//失败，无影响
+		var zObj = $.fn.zTree.getZTreeObj("treeDemo");
+		//获取节点
+		//var obj = zObj.getNodeByTId("treeDemo_1");
+		var obj = zObj.getNodesByParam("name","所有模板");
+		zObj.addNodes(obj[0],nodeList_1,false);
+		
+		addSelects();
+	}
+	
+	function addSelects(){
+		var zObj = $.fn.zTree.getZTreeObj("treeDemo");
+		var nodes = zObj.getNodesByParam("id","muBan");
+		for(var i = 0;i<nodes.length;i++){
+			var v = nodes[i].tId;
+			var select = "<select id='placeSelect_" + i + "'><option value=1>林场</option><option value=2>星火路</option><option value=3>柳州东路</option></select>";
+			var v2 = "#" + v + IDMark_A;
+			$("#" + v + IDMark_A).after(select);
+			
+		}
+		$("#placeSelect_0").bind("change",function(){
+			addPlaces();
+		});
+	}
+	
+	function addPlaces(){
+		var zObj = $.fn.zTree.getZTreeObj("treeDemo");
+		var obj = zObj.getNodesByParam("name","35KV出线");
+		zObj.addNodes(obj[0],nodeList_2,false);
+	}
+	
+	function test(){
+		var zObj = $.fn.zTree.getZTreeObj("treeDemo");
+		var node = zObj.getNodes();
+		alert("0:" + node.length);
+		var tid = node[0].tId;
+		var nodes = zObj.getSelectedNodes();
+		alert("1:" + nodes.length);
+	}
+	
+	$(document).ready(function(){
+	   var zTreeObj;
+	   // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+	   var setting = {view: {
+				addDiyDom: addDiyDom
+			},callback:{
+				onClick:clickNode
+			}};
+	   // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+	   var zNodes = {id:0,name:"所有模板"};
+      zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+	  
+	  var zNodes_2 = {};
+	  $.fn.zTree.init($("#rightTree"),setting,"");
+	  //test();
+   });
+	
+	//点击树节点显示点模板信息
+	function clickNode(event, treeId, treeNode){
+		var e = event;
+		var t = treeId;
+		var node = treeNode;
+		
+		var l = node.level;
+		$("#list").empty();
+		if(l == 1){
+			$("#list").append("\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>速断保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>过流保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>充电保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>数字电流保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>ANA</span>事故总信号</li>");
+		}else if(l == 2){
+			$("#list").append("\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>速断保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>过流保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>DIG</span>充电保护</li>\
+				<li class='list-group-item' style='background-color:#DAA520'><span class='badge'>DIG</span>数字电流保护</li>\
+				<li class='list-group-item' style='background-color:yellow'><span class='badge'>ANA</span>事故总信号</li>\
+				<li class='list-group-item' style='background-color:#DAA520'><span class='badge'>ANA</span>A相电流</li>");	
+		}
+		//给#list的条项绑定事件
+		$("#list li").each(function(){
+			$(this).bind("click",listItemClicked);
+		});
+	}
+	
+	function listItemClicked(e){
+		alert("listItemClicked!");
+		var zObj = $.fn.zTree.getZTreeObj("rightTree");
+		var nodes = [{name:" "},{name:"属性"},{name:"值"}];
+		zObj.addNodes(null,nodes,false);
+	}
+</script>
+</body>

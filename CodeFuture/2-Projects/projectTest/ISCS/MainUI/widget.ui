@@ -89,7 +89,7 @@
       </property>
       <item>
        <widget class="QWidget" name="middle_w1" native="true">
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="4,1">
          <item>
           <widget class="QTreeWidget" name="leftTree">
            <property name="palette">
@@ -98,9 +98,9 @@
               <colorrole role="AlternateBase">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>170</red>
-                 <green>170</green>
-                 <blue>255</blue>
+                 <red>109</red>
+                 <green>109</green>
+                 <blue>10</blue>
                 </color>
                </brush>
               </colorrole>
@@ -109,9 +109,9 @@
               <colorrole role="AlternateBase">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>170</red>
-                 <green>170</green>
-                 <blue>255</blue>
+                 <red>109</red>
+                 <green>109</green>
+                 <blue>10</blue>
                 </color>
                </brush>
               </colorrole>
@@ -120,9 +120,9 @@
               <colorrole role="AlternateBase">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>170</red>
-                 <green>170</green>
-                 <blue>255</blue>
+                 <red>109</red>
+                 <green>109</green>
+                 <blue>10</blue>
                 </color>
                </brush>
               </colorrole>
@@ -206,7 +206,99 @@
        </widget>
       </item>
       <item>
-       <widget class="QWidget" name="blankW" native="true"/>
+       <widget class="QWidget" name="blankW" native="true">
+        <widget class="QTreeWidget" name="treeWidget">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>101</width>
+           <height>281</height>
+          </rect>
+         </property>
+         <column>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>新建列</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>新建列</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>新建列</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>新建列</string>
+          </property>
+         </column>
+         <item>
+          <property name="text">
+           <string>新建项目</string>
+          </property>
+          <property name="checkState">
+           <enum>Checked</enum>
+          </property>
+          <item>
+           <property name="text">
+            <string>新建子项目</string>
+           </property>
+           <property name="checkState">
+            <enum>Checked</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checkState">
+            <enum>Checked</enum>
+           </property>
+           <item>
+            <property name="text">
+             <string>新建子项目</string>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+            <property name="checkState">
+             <enum>Checked</enum>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>新建项目</string>
+            </property>
+            <property name="checkState">
+             <enum>Unchecked</enum>
+            </property>
+           </item>
+          </item>
+         </item>
+         <item>
+          <property name="text">
+           <string>新建项目</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>新建项目</string>
+          </property>
+         </item>
+        </widget>
+       </widget>
       </item>
       <item>
        <widget class="QWidget" name="middle_w3" native="true">
@@ -219,9 +311,9 @@
               <colorrole role="AlternateBase">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>170</red>
-                 <green>170</green>
-                 <blue>255</blue>
+                 <red>112</red>
+                 <green>110</green>
+                 <blue>44</blue>
                 </color>
                </brush>
               </colorrole>
@@ -230,9 +322,9 @@
               <colorrole role="AlternateBase">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>170</red>
-                 <green>170</green>
-                 <blue>255</blue>
+                 <red>112</red>
+                 <green>110</green>
+                 <blue>44</blue>
                 </color>
                </brush>
               </colorrole>
@@ -241,9 +333,9 @@
               <colorrole role="AlternateBase">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>170</red>
-                 <green>170</green>
-                 <blue>255</blue>
+                 <red>112</red>
+                 <green>110</green>
+                 <blue>44</blue>
                 </color>
                </brush>
               </colorrole>

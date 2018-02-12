@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>ISCS</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+	<div class="row" style="height:5%">
+		<ul class="nav nav-pills" id="nav">
+			<li id="SBJM_li"><a id="SBJM">设备建模</a></li>
+			<li id="GSDY_li"><a id="GSDY">公式定义</a></li>
+			<li id="TJDY_li"><a id="TJDY">统计定义</a></li>
+			<li id="BJDY_li"><a id="BJDY">报警定义</a></li>
+			<li id="QXDY_li"><a id="QXDY">权限定义</a></li>
+			<li id="TYPZ_li"><a id="TYPZ">通用配置</a></li>
+			<li id="SJTL_li"><a id="SJTL">事件推理</a></li>
+		</ul>
+	</div>
+	<div class="row" id="middle-page" style="height:90%">
+		<div class="col-lg-12" id="SBJM_PAGE" hidden="hidden" style="height:600px;border-style:solid;border-color:blue;border-width:2px">
+			<div class="col-lg-12" style="height:5%"></p>设备建模页面</p></div>
+			<div class="row" style="height:95%">
+				<div class="col-lg-3" style="border-style:solid;border-color:blue;border-width:2px;height:100%"></div>
+				<div class="col-lg-3" style="border-style:solid;border-color:blue;border-width:2px;height:90%"></div>
+				<div class="col-lg-6" style="border-style:solid;border-color:blue;border-width:2px;height:80%"></div>
+			</div>
+		</div>
+		<div class="col-md-12" id="GSDY_PAGE" hidden="hidden">公式定义页面</div>
+		<div class="col-md-12" id="TJDY_PAGE" hidden="hidden" style="height:600px">统计定义页面</div>
+		<div class="col-md-12" id="BJDY_PAGE" hidden="hidden" style="height:600px">报警定义页面</div>
+		<div class="col-md-12" id="QXDY_PAGE" hidden="hidden" style="height:600px">权限定义页面</div>
+		<div class="col-md-12" id="TYPZ_PAGE" hidden="hidden" style="height:600px">通用配置页面</div>
+		<div class="col-md-12" id="SJTL_PAGE" hidden="hidden" style="height:600px">事件推理页面</div>
+		<div class="col-lg-12" id="empty_PAGE" style="height:600px;border-style:solid;border-color:blue;border-width:2px">空白页</div>
+   </div>
+   <div class="row" style="height:5%">底部状态栏</div>
+</div>
+<script>
+	var active_page = "";
+	
+	function changeNav(data){
+		var len = $("#nav li").length;
+		//alert("changeNav len:"+len);
+		$("#nav li").each(function(){
+			var v = $(this).attr("id");
+			if(v == data + "_li"){
+				$(this).addClass("active");
+			}else{
+				$(this).removeClass("active");
+			}
+		});
+	}
+	
+	function changePage(data){
+		var len = $("#middle-page > div").length;
+		//alert("changePage len:"+len);
+		$("#middle-page > div").each(function(){
+			var v = $(this).attr("id");
+			if(v == data + "_PAGE"){
+				$(this).removeAttr("hidden").attr("style","height:600px");
+			}else{
+				$(this).attr("hidden","hidden");
+			}
+		});
+	}
+	
+	/*
+	function navChanged(e){
+		var d = e.data;
+		//alert(d);
+		$("#empty_PAGE").attr("hidden","hidden");	
+		if(d == "SBJM"){
+			//激活导航栏
+			$("#" + d + "_li").addClass("active");
+			$("#GSDY_li").removeClass("active");
+			
+			//激活页面
+			//$("#" + d + "_PAGE").removeAttr("hidden").attr("style","height:600px");
+			changePage(d);
+		}
+		if(d == "GSDY"){
+			$("#SBJM_li").removeClass("active");
+			$("#GSDY_li").addClass("active");
+			
+			//$("#GSDY_PAGE").removeAttr("hidden").attr("style","height:600px");
+			$("#"+d+"_PAGE").removeAttr("hidden").attr("style","height:600px");
+			//$("#GSDY_PAGE").attr("style","height:600px");
+		}
+	}*/
+	
+	//$("#GSDY").bind("click","GSDY",navChanged);
+	//$("#SBJM").bind("click","SBJM",navChanged);
+	
+	function navChanged_2(e){
+		var d = e.data;
+		$("#empty_PAGE").attr("hidden","hidden");
+		changeNav(d);
+		changePage(d);
+	}
+	
+	//$("#GSDY").bind("click","GSDY",navChanged_2);
+	//$("#SBJM").bind("click","SBJM",navChanged_2);
+	$("#nav a").each(function(){
+		var v = $(this).attr("id");
+		$(this).bind("click",v,navChanged_2);
+	});
+</script>
+</body>

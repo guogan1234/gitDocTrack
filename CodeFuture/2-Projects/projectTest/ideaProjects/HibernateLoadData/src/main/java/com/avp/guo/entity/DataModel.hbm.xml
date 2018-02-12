@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.avp.guo.entity.DataModel" schema="large" table="largedatatable">
+        <id name="id">
+            <generator class="assigned"></generator>
+        </id>
+
+        <property name="col_1" column="col_1"></property>
+        <property name="col_2"></property>
+        <property name="col_3"></property>
+        <property name="col_4"></property>
+        <property name="col_5"></property>
+        <property name="col_6"></property>
+        <property name="col_7"></property>
+        <property name="col_8"></property>
+        <property name="col_9"></property>
+        <property name="col_10"></property>
+        <property name="col_11"></property>
+        <property name="col_12"></property>
+        <property name="col_13"></property>
+        <property name="col_14"></property>
+        <property name="col_15"></property>
+        <property name="col_16"></property>
+        <property name="col_17"></property>
+        <property name="col_18"></property>
+        <property name="col_19"></property>
+        <property name="col_20"></property>
+        <property name="col_21"></property>
+        <property name="col_22"></property>
+        <property name="col_23"></property>
+        <property name="col_24"></property>
+        <property name="col_25"></property>
+        <property name="col_26"></property>
+        <property name="col_27"></property>
+        <property name="col_28"></property>
+        <property name="col_29"></property>
+        <property name="col_30"></property>
+        <property name="col_31"></property>
+        <property name="col_32"></property>
+        <property name="col_33"></property>
+        <property name="col_34"></property>
+        <property name="col_35"></property>
+        <property name="col_36"></property>
+        <property name="col_37"></property>
+        <property name="col_38"></property>
+        <property name="col_39"></property>
+        <property name="col_40"></property>
+        <property name="col_41"></property>
+        <property name="col_42"></property>
+        <property name="col_43"></property>
+        <property name="col_44"></property>
+        <property name="col_45"></property>
+        <property name="col_46"></property>
+        <property name="col_47"></property>
+        <property name="col_48"></property>
+        <property name="col_49"></property>
+        <property name="col_50"></property>
+
+    </class>
+
+</hibernate-mapping>

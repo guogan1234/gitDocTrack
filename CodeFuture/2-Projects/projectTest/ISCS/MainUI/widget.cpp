@@ -40,7 +40,7 @@ void Widget::specialtyComboChange(int index)
 
     switch (index) {
     case 0:
-        for(int i = 0;i<3;i++){
+        for(int i = 0;i<10;i++){
             QStringList list_1;
             if(i == 0){
                 list_1<<"35KV出线";
@@ -66,7 +66,7 @@ void Widget::specialtyComboChange(int index)
         }
         break;
     case 1:
-        for(int i = 0;i<2;i++){
+        for(int i = 0;i<10;i++){
             QStringList list_1;
             if(i == 0){
                 list_1<<"BAS出线";
@@ -109,7 +109,7 @@ void Widget::deviceComboChange(int index)
 
     switch (index) {
     case 0:
-        for(int i = 0;i<3;i++){
+        for(int i = 0;i<10;i++){
             QStringList list_1;
             if(i == 0){
                 list_1<<"林场：103出线";
@@ -127,7 +127,7 @@ void Widget::deviceComboChange(int index)
         }
         break;
     case 1:
-        for(int i = 0;i<3;i++){
+        for(int i = 0;i<10;i++){
             QStringList list_1;
             if(i == 0){
                 list_1<<"星火路：103出线";
@@ -155,9 +155,12 @@ void Widget::Init()
 {
     ui->addSpecialPt->setVisible(false);
 
+    //首次隐藏中间窗体
     ui->middle_w1->setVisible(false);
     ui->middle_w2->setVisible(false);
     ui->middle_w3->setVisible(false);
+
+    InitRight();
 }
 
 void Widget::InitFlags()
@@ -167,9 +170,12 @@ void Widget::InitFlags()
 
 void Widget::InitLeft()
 {
-    QStringList list_1;
-    list_1<<"建模专业";
-    QTreeWidgetItem* top_1 = new QTreeWidgetItem(list_1);
+//    //局部变量初始化方式一
+//    QStringList list_1;
+//    list_1<<"建模专业";
+//    QTreeWidgetItem* top_1 = new QTreeWidgetItem(list_1);
+    //局部变量初始化方式二
+    QTreeWidgetItem* top_1 = new QTreeWidgetItem(QStringList()<<"建模专业");
     top_1->setData(0,Qt::WhatsThisRole,"0");
 //    top_1->setSizeHint(0,QSize(300,25));
 //    top_1->setSizeHint(1,QSize(100,25));
@@ -209,9 +215,21 @@ void Widget::InitMiddle()
     QListWidgetItem* item_3 = new QListWidgetItem("保护装置闭锁");
     item_3->setBackgroundColor(Qt::yellow);
 
+    QListWidgetItem* item_4 = new QListWidgetItem("速断保护");
+    item_4->setBackgroundColor(Qt::yellow);
+
+    QListWidgetItem* item_5 = new QListWidgetItem("充电保护");
+    item_5->setBackgroundColor(Qt::yellow);
+
+    QListWidgetItem* item_6 = new QListWidgetItem("事故总信号");
+    item_6->setBackgroundColor(Qt::yellow);
+
     ui->middleList->addItem(item_1);
     ui->middleList->addItem(item_2);
     ui->middleList->addItem(item_3);
+    ui->middleList->addItem(item_4);
+    ui->middleList->addItem(item_5);
+    ui->middleList->addItem(item_6);
 }
 
 void Widget::InitRight()
@@ -221,14 +239,30 @@ void Widget::InitRight()
 
 void Widget::InitMiddle2()
 {
+    QListWidgetItem* item_1 = new QListWidgetItem("断路器位置");
+    item_1->setBackgroundColor(Qt::darkYellow);
+
     QListWidgetItem* item_2 = new QListWidgetItem("A相电流");
     item_2->setBackgroundColor(Qt::darkYellow);
 
     QListWidgetItem* item_3 = new QListWidgetItem("频率");
     item_3->setBackgroundColor(Qt::darkYellow);
 
+    QListWidgetItem* item_4 = new QListWidgetItem("有功功率");
+    item_4->setBackgroundColor(Qt::darkYellow);
+
+    QListWidgetItem* item_5 = new QListWidgetItem("无功功率");
+    item_5->setBackgroundColor(Qt::darkYellow);
+
+    QListWidgetItem* item_6 = new QListWidgetItem("功率因素");
+    item_6->setBackgroundColor(Qt::darkYellow);
+
+    ui->middleList->addItem(item_1);
     ui->middleList->addItem(item_2);
     ui->middleList->addItem(item_3);
+    ui->middleList->addItem(item_4);
+    ui->middleList->addItem(item_5);
+    ui->middleList->addItem(item_6);
 }
 
 void Widget::on_leftTree_itemClicked(QTreeWidgetItem *item, int column)
@@ -243,4 +277,9 @@ void Widget::on_leftTree_itemClicked(QTreeWidgetItem *item, int column)
         InitMiddle();
         InitMiddle2();
     }
+}
+
+void Widget::on_test_clicked()
+{
+
 }

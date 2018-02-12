@@ -24,6 +24,8 @@ class Widget : public QWidget
 
         void on_leftTree_itemClicked(QTreeWidgetItem *item, int column);
 
+        void on_test_clicked();
+
     private:
         Ui::Widget *ui;
 

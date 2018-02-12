@@ -53,6 +53,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QListWidget *middleList;
     QWidget *blankW;
+    QTreeWidget *treeWidget;
     QWidget *middle_w3;
     QVBoxLayout *verticalLayout_3;
     QTreeWidget *rightTree;
@@ -126,7 +127,7 @@ public:
         leftTree = new QTreeWidget(middle_w1);
         leftTree->setObjectName(QStringLiteral("leftTree"));
         QPalette palette;
-        QBrush brush(QColor(170, 170, 255, 255));
+        QBrush brush(QColor(109, 109, 10, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::AlternateBase, brush);
         palette.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush);
@@ -142,6 +143,8 @@ public:
 
         verticalLayout_4->addWidget(textEdit);
 
+        verticalLayout_4->setStretch(0, 4);
+        verticalLayout_4->setStretch(1, 1);
 
         horizontalLayout_3->addWidget(middle_w1);
 
@@ -189,6 +192,22 @@ public:
 
         blankW = new QWidget(middleW);
         blankW->setObjectName(QStringLiteral("blankW"));
+        treeWidget = new QTreeWidget(blankW);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem(treeWidget);
+        __qtreewidgetitem->setCheckState(0, Qt::Checked);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem(__qtreewidgetitem);
+        __qtreewidgetitem1->setCheckState(1, Qt::Checked);
+        __qtreewidgetitem1->setCheckState(0, Qt::Checked);
+        QTreeWidgetItem *__qtreewidgetitem2 = new QTreeWidgetItem(__qtreewidgetitem1);
+        __qtreewidgetitem2->setCheckState(0, Qt::Checked);
+        QTreeWidgetItem *__qtreewidgetitem3 = new QTreeWidgetItem(__qtreewidgetitem1);
+        __qtreewidgetitem3->setCheckState(0, Qt::Checked);
+        QTreeWidgetItem *__qtreewidgetitem4 = new QTreeWidgetItem(__qtreewidgetitem1);
+        __qtreewidgetitem4->setCheckState(0, Qt::Unchecked);
+        new QTreeWidgetItem(treeWidget);
+        new QTreeWidgetItem(treeWidget);
+        treeWidget->setObjectName(QStringLiteral("treeWidget"));
+        treeWidget->setGeometry(QRect(20, 110, 101, 281));
 
         horizontalLayout_3->addWidget(blankW);
 
@@ -199,24 +218,26 @@ public:
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         rightTree = new QTreeWidget(middle_w3);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QString::fromUtf8("\345\261\236\346\200\247"));
-        rightTree->setHeaderItem(__qtreewidgetitem);
-        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem(rightTree);
-        new QTreeWidgetItem(__qtreewidgetitem1);
-        new QTreeWidgetItem(__qtreewidgetitem1);
-        QTreeWidgetItem *__qtreewidgetitem2 = new QTreeWidgetItem(__qtreewidgetitem1);
-        new QTreeWidgetItem(__qtreewidgetitem2);
-        new QTreeWidgetItem(__qtreewidgetitem2);
-        new QTreeWidgetItem(__qtreewidgetitem2);
-        QTreeWidgetItem *__qtreewidgetitem3 = new QTreeWidgetItem(rightTree);
-        new QTreeWidgetItem(__qtreewidgetitem3);
-        new QTreeWidgetItem(__qtreewidgetitem3);
+        QTreeWidgetItem *__qtreewidgetitem5 = new QTreeWidgetItem();
+        __qtreewidgetitem5->setText(0, QString::fromUtf8("\345\261\236\346\200\247"));
+        rightTree->setHeaderItem(__qtreewidgetitem5);
+        QTreeWidgetItem *__qtreewidgetitem6 = new QTreeWidgetItem(rightTree);
+        new QTreeWidgetItem(__qtreewidgetitem6);
+        new QTreeWidgetItem(__qtreewidgetitem6);
+        QTreeWidgetItem *__qtreewidgetitem7 = new QTreeWidgetItem(__qtreewidgetitem6);
+        new QTreeWidgetItem(__qtreewidgetitem7);
+        new QTreeWidgetItem(__qtreewidgetitem7);
+        new QTreeWidgetItem(__qtreewidgetitem7);
+        QTreeWidgetItem *__qtreewidgetitem8 = new QTreeWidgetItem(rightTree);
+        new QTreeWidgetItem(__qtreewidgetitem8);
+        new QTreeWidgetItem(__qtreewidgetitem8);
         rightTree->setObjectName(QStringLiteral("rightTree"));
         QPalette palette1;
-        palette1.setBrush(QPalette::Active, QPalette::AlternateBase, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush);
-        palette1.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush);
+        QBrush brush1(QColor(112, 110, 44, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
         rightTree->setPalette(palette1);
         rightTree->setAlternatingRowColors(true);
         rightTree->header()->setDefaultSectionSize(250);
@@ -315,32 +336,57 @@ public:
         addPtTemplate->setText(QApplication::translate("Widget", "\345\242\236\345\212\240\347\202\271\346\250\241\346\235\277", 0));
         addSpecialPt->setText(QApplication::translate("Widget", "\345\242\236\345\212\240\347\211\271\346\256\212\347\202\271", 0));
         del->setText(QApplication::translate("Widget", "\345\210\240\351\231\244", 0));
-        QTreeWidgetItem *___qtreewidgetitem1 = rightTree->headerItem();
-        ___qtreewidgetitem1->setText(1, QApplication::translate("Widget", "\345\200\274", 0));
+        QTreeWidgetItem *___qtreewidgetitem1 = treeWidget->headerItem();
+        ___qtreewidgetitem1->setText(4, QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", 0));
+        ___qtreewidgetitem1->setText(3, QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", 0));
+        ___qtreewidgetitem1->setText(2, QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", 0));
+        ___qtreewidgetitem1->setText(1, QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", 0));
+        ___qtreewidgetitem1->setText(0, QApplication::translate("Widget", "1", 0));
 
-        const bool __sortingEnabled = rightTree->isSortingEnabled();
-        rightTree->setSortingEnabled(false);
-        QTreeWidgetItem *___qtreewidgetitem2 = rightTree->topLevelItem(0);
-        ___qtreewidgetitem2->setText(0, QApplication::translate("Widget", "\347\274\226\350\276\221\345\261\236\346\200\247", 0));
+        const bool __sortingEnabled = treeWidget->isSortingEnabled();
+        treeWidget->setSortingEnabled(false);
+        QTreeWidgetItem *___qtreewidgetitem2 = treeWidget->topLevelItem(0);
+        ___qtreewidgetitem2->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\351\241\271\347\233\256", 0));
         QTreeWidgetItem *___qtreewidgetitem3 = ___qtreewidgetitem2->child(0);
-        ___qtreewidgetitem3->setText(0, QApplication::translate("Widget", "\346\240\207\347\255\276\345\220\215", 0));
-        QTreeWidgetItem *___qtreewidgetitem4 = ___qtreewidgetitem2->child(1);
-        ___qtreewidgetitem4->setText(0, QApplication::translate("Widget", "\346\217\217\350\277\260", 0));
-        QTreeWidgetItem *___qtreewidgetitem5 = ___qtreewidgetitem2->child(2);
-        ___qtreewidgetitem5->setText(0, QApplication::translate("Widget", "\346\230\257\345\220\246\346\216\247\345\210\266", 0));
-        QTreeWidgetItem *___qtreewidgetitem6 = ___qtreewidgetitem5->child(0);
-        ___qtreewidgetitem6->setText(0, QApplication::translate("Widget", "\346\216\247\345\210\266\345\212\250\344\275\234\347\273\204\345\220\215\347\247\260", 0));
-        QTreeWidgetItem *___qtreewidgetitem7 = ___qtreewidgetitem5->child(1);
-        ___qtreewidgetitem7->setText(0, QApplication::translate("Widget", "\346\216\247\345\210\266\345\212\250\344\275\2341", 0));
-        QTreeWidgetItem *___qtreewidgetitem8 = ___qtreewidgetitem5->child(2);
-        ___qtreewidgetitem8->setText(0, QApplication::translate("Widget", "\346\216\247\345\210\266\345\212\250\344\275\2342", 0));
-        QTreeWidgetItem *___qtreewidgetitem9 = rightTree->topLevelItem(1);
-        ___qtreewidgetitem9->setText(0, QApplication::translate("Widget", "\346\265\217\350\247\210\345\261\236\346\200\247", 0));
-        QTreeWidgetItem *___qtreewidgetitem10 = ___qtreewidgetitem9->child(0);
-        ___qtreewidgetitem10->setText(0, QApplication::translate("Widget", "\346\211\200\345\261\236\344\270\223\344\270\232", 0));
-        QTreeWidgetItem *___qtreewidgetitem11 = ___qtreewidgetitem9->child(1);
-        ___qtreewidgetitem11->setText(0, QApplication::translate("Widget", "\346\211\200\345\261\236\346\250\241\346\235\277", 0));
-        rightTree->setSortingEnabled(__sortingEnabled);
+        ___qtreewidgetitem3->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\345\255\220\351\241\271\347\233\256", 0));
+        QTreeWidgetItem *___qtreewidgetitem4 = ___qtreewidgetitem3->child(0);
+        ___qtreewidgetitem4->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\345\255\220\351\241\271\347\233\256", 0));
+        QTreeWidgetItem *___qtreewidgetitem5 = ___qtreewidgetitem3->child(1);
+        ___qtreewidgetitem5->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\351\241\271\347\233\256", 0));
+        QTreeWidgetItem *___qtreewidgetitem6 = ___qtreewidgetitem3->child(2);
+        ___qtreewidgetitem6->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\351\241\271\347\233\256", 0));
+        QTreeWidgetItem *___qtreewidgetitem7 = treeWidget->topLevelItem(1);
+        ___qtreewidgetitem7->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\351\241\271\347\233\256", 0));
+        QTreeWidgetItem *___qtreewidgetitem8 = treeWidget->topLevelItem(2);
+        ___qtreewidgetitem8->setText(0, QApplication::translate("Widget", "\346\226\260\345\273\272\351\241\271\347\233\256", 0));
+        treeWidget->setSortingEnabled(__sortingEnabled);
+
+        QTreeWidgetItem *___qtreewidgetitem9 = rightTree->headerItem();
+        ___qtreewidgetitem9->setText(1, QApplication::translate("Widget", "\345\200\274", 0));
+
+        const bool __sortingEnabled1 = rightTree->isSortingEnabled();
+        rightTree->setSortingEnabled(false);
+        QTreeWidgetItem *___qtreewidgetitem10 = rightTree->topLevelItem(0);
+        ___qtreewidgetitem10->setText(0, QApplication::translate("Widget", "\347\274\226\350\276\221\345\261\236\346\200\247", 0));
+        QTreeWidgetItem *___qtreewidgetitem11 = ___qtreewidgetitem10->child(0);
+        ___qtreewidgetitem11->setText(0, QApplication::translate("Widget", "\346\240\207\347\255\276\345\220\215", 0));
+        QTreeWidgetItem *___qtreewidgetitem12 = ___qtreewidgetitem10->child(1);
+        ___qtreewidgetitem12->setText(0, QApplication::translate("Widget", "\346\217\217\350\277\260", 0));
+        QTreeWidgetItem *___qtreewidgetitem13 = ___qtreewidgetitem10->child(2);
+        ___qtreewidgetitem13->setText(0, QApplication::translate("Widget", "\346\230\257\345\220\246\346\216\247\345\210\266", 0));
+        QTreeWidgetItem *___qtreewidgetitem14 = ___qtreewidgetitem13->child(0);
+        ___qtreewidgetitem14->setText(0, QApplication::translate("Widget", "\346\216\247\345\210\266\345\212\250\344\275\234\347\273\204\345\220\215\347\247\260", 0));
+        QTreeWidgetItem *___qtreewidgetitem15 = ___qtreewidgetitem13->child(1);
+        ___qtreewidgetitem15->setText(0, QApplication::translate("Widget", "\346\216\247\345\210\266\345\212\250\344\275\2341", 0));
+        QTreeWidgetItem *___qtreewidgetitem16 = ___qtreewidgetitem13->child(2);
+        ___qtreewidgetitem16->setText(0, QApplication::translate("Widget", "\346\216\247\345\210\266\345\212\250\344\275\2342", 0));
+        QTreeWidgetItem *___qtreewidgetitem17 = rightTree->topLevelItem(1);
+        ___qtreewidgetitem17->setText(0, QApplication::translate("Widget", "\346\265\217\350\247\210\345\261\236\346\200\247", 0));
+        QTreeWidgetItem *___qtreewidgetitem18 = ___qtreewidgetitem17->child(0);
+        ___qtreewidgetitem18->setText(0, QApplication::translate("Widget", "\346\211\200\345\261\236\344\270\223\344\270\232", 0));
+        QTreeWidgetItem *___qtreewidgetitem19 = ___qtreewidgetitem17->child(1);
+        ___qtreewidgetitem19->setText(0, QApplication::translate("Widget", "\346\211\200\345\261\236\346\250\241\346\235\277", 0));
+        rightTree->setSortingEnabled(__sortingEnabled1);
 
         save->setText(QApplication::translate("Widget", "\344\277\235\345\255\230", 0));
         label->setText(QApplication::translate("Widget", "\345\275\223\345\211\215\346\250\241\345\235\227\357\274\232", 0));
