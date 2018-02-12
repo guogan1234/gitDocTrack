@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.avp.guo</groupId>
-  <artifactId>HibernateLoadData</artifactId>
+  <artifactId>HibernateLoadDataByAnnotation</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>HibernateLoadData</name>
+  <name>HibernateLoadDataByAnnotation</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -22,6 +22,13 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- hibernate core-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.2.10.Final</version>
+    </dependency>
+
     <!-- jdbc for postgresql-->
     <dependency>
       <groupId>org.postgresql</groupId>
@@ -29,31 +36,5 @@
       <version>9.4.1212.jre7</version>
     </dependency>
 
-    <!-- hibernate core-->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.2.10.Final</version>
-    </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <!-- 项目发布部署使用-->
-      <!-- 执行命令即可： mvn assembly:assembly-->
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>com.avp.guo.App</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
