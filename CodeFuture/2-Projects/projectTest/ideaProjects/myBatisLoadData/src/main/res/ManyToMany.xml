@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ManyToMany">
+    <resultMap id="aaa" type="UserWithGroups">
+        <result property="id" column="u_id"></result>
+        <result property="username" column="u_username"></result>
+        <collection property="groupList" ofType="GroupForMany">
+            <result property="id" column="g_id"></result>
+            <result property="groupname" column="g_groupname"></result>
+        </collection>
+    </resultMap>
+    <!-- 根据用户id获取所有本用户用户组信息-->
+    <select id="getUserWithGroups" parameterType="int" resultMap="aaa">
+        select ug.*,g.id as g_id,g.groupname as g_groupname,u.id as u_id,u.username as u_username from test."UserGroup" ug left join test."group" g on ug.group_id=g.id left join test."user" u on ug.user_id=u.id where u.id=#{iddd}
+    </select>
+
+    <!-- 根据用户组id获取所以本组用户信息-->
+    <select id="getGroupWithUsers" parameterType="int" resultMap="bbb">
+        select ug.*,g.id as g_id,g.groupname as g_groupname,u.id as u_id,u.username as u_username from test."UserGroup" ug left join test."group" g on ug.group_id=g.id left join test."user" u on ug.user_id=u.id where g.id=#{iddd}
+    </select>
+    <!-- 可以看出SQL语句部分与resultMap位置无关-->
+    <resultMap id="bbb" type="GroupWithUsers">
+        <result property="id" column="g_id"></result>
+        <result property="groupname" column="g_groupname"></result>
+        <collection property="userList" ofType="UserForMany">
+            <result property="id" column="u_id"></result>
+            <result property="username" column="u_username"></result>
+        </collection>
+    </resultMap>
+</mapper>

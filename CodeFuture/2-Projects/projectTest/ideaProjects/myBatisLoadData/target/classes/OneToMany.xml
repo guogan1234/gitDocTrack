@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="OneToMany">
+    <resultMap id="userPosts" type="GG">
+        <result property="id" column="id"></result>
+        <result property="username" column="username"></result>
+        <collection property="posts" ofType="UserPost">
+            <result property="postId" column="post_id"></result>
+            <result property="userId" column="userid"></result>
+            <result property="title" column="title"></result>
+            <result property="content" column="content"></result>
+        </collection>
+    </resultMap>
+    <select id="GetUserPosts" parameterType="int" resultMap="userPosts">
+        SELECT u.*,p.* FROM test."user" u,test.post p WHERE u.id=p.userid AND u.id=#{iddd}
+    </select>
+</mapper>

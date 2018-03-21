@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 此namespace(命名空间)必须与Interface(接口)类名称相同-->
+<mapper namespace="com.avp.guo.repository.TestConnDao">
+    <select id="getOne" parameterType="int" resultType="User">
+        select * from test.conn where id = #{id}
+    </select>
+    <select id="getList" resultType="User">
+        SELECT * FROM test.conn
+    </select>
+
+    <insert id="insertOne" parameterType="User">
+        INSERT INTO test.conn(id,remark) VALUES(#{id},#{remark})
+    </insert>
+    <update id="updateOne" parameterType="User">
+        UPDATE test.conn SET remark=#{remark} WHERE id=#{id}
+    </update>
+    <delete id="deleteOne" parameterType="int">
+        DELETE FROM test.conn WHERE id=#{iddd}
+    </delete>
+</mapper>

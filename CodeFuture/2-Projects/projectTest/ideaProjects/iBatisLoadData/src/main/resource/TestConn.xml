@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TestConn">
+    <insert id="insert" parameterClass="com.avp.guo.entity.TestConn">
+        insert into test.conn(id,remark) values(#id#,#remark#)
+    </insert>
+    <delete id="delete" parameterClass="int">
+        DELETE FROM test.conn WHERE id=#idd#
+    </delete>
+    <update id="update" parameterClass="com.avp.guo.entity.TestConn">
+        UPDATE test.conn SET remark=#remark# WHERE id=#id#
+    </update>
+
+    <select id="getAll" resultClass="com.avp.guo.entity.TestConn">
+        SELECT * FROM test.conn
+    </select>
+    
+    <resultMap id="myResult" class="com.avp.guo.entity.MappedModel">
+        <result property="value" column="remark"></result>
+    </resultMap>
+    <select id="selectForMyClass" resultMap="myResult" parameterClass="int">
+        SELECT id,remark FROM test.conn WHERE id=#dmxy#
+    </select>
+
+    <!-- 动态SQL查询-->
+    <select id="dynamicSQL" resultClass="com.avp.guo.entity.TestConn">
+        SELECT * FROM test.conn
+        <dynamic prepend="where">
+            <isNotNull property="id">
+                id=#id#
+            </isNotNull>
+        </dynamic>
+    </select>
+</sqlMap>

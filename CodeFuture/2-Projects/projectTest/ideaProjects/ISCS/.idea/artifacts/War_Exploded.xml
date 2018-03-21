@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="War-Exploded">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="root">
+      <element id="module-output" name="ISCS" />
+    </root>
+  </artifact>
+</component>
