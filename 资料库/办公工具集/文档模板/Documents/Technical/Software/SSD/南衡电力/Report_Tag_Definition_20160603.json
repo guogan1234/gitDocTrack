@@ -1,0 +1,258 @@
+{
+    <!-------------Report Daemon ------------------------------------------->
+	<!-- 通用  (保存为电站的报表"kwatt_stats_monthly")-->
+	"AGGR_TG_watt_md_diff_monthly" : 25, //申报偏差           --raw															(yes)
+	"AGGR_TG_watt_md_price_monthly" : 200, //基本电费         --raw															(yes)
+	
+	<!-- 月度分析报表（电站#电源编号，->进线->电表#logicalId。保存为电站的报表"kwatt_stats_monthly"）  ------------------>
+	"AGGR_TG_watt_Px_monthly" : 100, //监测MD func: max																		(yes)
+	"AGGR_TG_watt_PF_monthly" : 0.62, //功率因数 func: avg																	(yes)
+	"TG_watt_PF_prize_monthly" : 200, //功率因素奖惩 func: ??
+	"AGGR_TG_watt_U2_max_monthly" : 229.48, //最大电压 func: 两相max														(yes)
+	"AGGR_TG_watt_U2_min_monthly" : 221.32, //最小电压 func: 两相min														(yes)
+	"AGGR_TG_watt_charge_monthly" : 170, //本月电费 func: last										--raw					(yes)
+	"AGGR_TG_watt_kwh_sum_monthly" : 1800, //本月用电量 func: last-first							--json  运算			(Java 程序实现)
+	"AGGR_TG_watt_kwh_flat_monthly" : 900, //平时电量 func: last									--raw					(yes)
+	"AGGR_TG_watt_kwh_peak_monthly" : 1600, //峰时电量 func: last									--raw					(yes)
+	"TG_watt_Px_alarm_count_monthly" : 4, //报警次数(MD) func: count obj_scada_alarm, TG_watt_Px	--alarm_mapping			(yse)
+	"TG_watt_PF_alarm_count_monthly" : 3, //报警次数(功率) func: count obj_scada_alarm, TG_watt_PF  --alarm_mapping			(yse)
+	"AGGR_TG_watt_kwh_valley_monthly" : 700, //谷时电量 func: last									--raw					(yes)
+	"AGGR_TG_watt_charge_flat_monthly" : 456.321, //平时电费 func: last								--raw					(yes)
+	"AGGR_TG_watt_charge_peak_monthly" : 601.231, //峰时电费 func: last								--raw					(yes)
+	"AGGR_TG_watt_charge_valley_monthly" : 304.344, //谷时电费 func: last							--raw					(yes)
+	"AGGR_TG_watt_h_ambient_max_monthly" : 26, //最大湿度 func: max															(yes)
+	"AGGR_TG_watt_h_ambient_min_monthly" : -10, //最小湿度 func: min														(yes)
+	"AGGR_TG_watt_t_ambient_max_monthly" : 37, //最大温度 func: max															(yes)
+	"AGGR_TG_watt_t_ambient_min_monthly" : 15 //最小温度 func: min															(yes)
+	
+	<!--年度分析报表（电站#电源编号，->进线->电表#logicalId。保存为电站的报表"kwatt_stats_yearly"）  ------------------>
+	"TG_watt_PF_prize_yearly" : 200,
+	"AGGR_TG_watt_U2_max_yearly" : 229.48,
+	"AGGR_TG_watt_U2_min_yearly" : 221.32,
+	"AGGR_TG_watt_charge_yearly" : 170,
+	"AGGR_TG_watt_kwh_sum_yearly" : 1800,
+	"AGGR_TG_watt_kwh_flat_yearly" : 900,
+	"AGGR_TG_watt_kwh_peak_yearly" : 1600,
+	"TG_watt_Px_alarm_count_yearly" : 4,
+	"TG_watt_PF_alarm_count_yearly" : 3,
+	"AGGR_TG_watt_kwh_valley_yearly" : 700,
+	"AGGR_TG_watt_charge_flat_yearly" : 456.321,
+	"AGGR_TG_watt_charge_peak_yearly" : 601.231,
+	"AGGR_TG_watt_charge_valley_yearly" : 304.344,
+	"AGGR_TG_watt_h_ambient_max_yearly" : 26,
+	"AGGR_TG_watt_h_ambient_min_yearly" : -10,
+	"AGGR_TG_watt_t_ambient_max_yearly" : 37,
+	"AGGR_TG_watt_t_ambient_min_yearly" : 15
+	
+	<!--账单报表（以线路为单位，【进线、出线】->电表#logicalId。保存为进、出线的报表"kwatt_stats_monthly"）  ------------------>
+	"AGGR_TG_watt_kwh_sum_monthly" : 1800, //用电量
+	"AGGR_TG_watt_kwh_flat_monthly" : 900, //平时电量
+	"AGGR_TG_watt_kwh_peak_monthly" : 1600, //峰时电量
+	"AGGR_TG_watt_kwh_valley_monthly" : 700, //谷时电量
+	"AGGR_TG_watt_charge_monthly" : 170, //本月电费
+	<!-------------Report Daemon End ------------------------------------------------------->
+	
+	<!-------------Aggregator Daemon---------------------------------------------------->
+	<!--用电一览（客户#logicalId。【进线、出线】#电表号，-> 电表#logicalId）-->
+	"AGGR_TG_watt_Px_monthly" : 100, //本月最大MD aggrd
+	"AGGR_TG_watt_PF_monthly" : 100, //累计功率因数 aggrd
+	"TG_watt_FR": 100, //频率 cache
+	"AGGR_TG_watt_Psum": 100, //实时总功率 aggrd
+	"AGGR_TG_watt_kwh_sum": 100, //累计用电量 aggrd
+	"AGGR_TG_watt_kwh_sum_yearly": 100, //本年度电量 aggrd
+	"AGGR_TG_watt_kwh_sum_monthly": 100, //本月度电量 aggrd
+	"AGGR_TG_watt_kwh_sum_daily": 100, //当日用电量 aggrd
+	"AGGR_TG_watt_charge_sum": 100, //总累计电费
+	"AGGR_TG_watt_charge_yearly": 100, //本年度电费
+	"AGGR_TG_watt_charge_monthly": 100, //上月度电费（obj_raw_scada）
+	"AGGR_TG_watt_price_avg_monthly": 100, //上月平均电价（obj_raw_scada）
+	"TG_watt_t_ambient": 100, //温度 cache
+	"TG_watt_h_ambient": 100, //湿度 cache
+	
+	<!--首页Dashboard（客户#logicalId）-->
+	"AGGR_TG_watt_Psum": 100, //实时总功率 aggrd
+	"AGGR_TG_watt_kwh_sum_monthly": 100, //本月度电量  aggrd
+	"AGGR_TG_watt_kwh_sum_monthly": 100, //上月度电量 aggrd（obj_raw_scada）
+	"AGGR_TG_watt_kwh_sum_yearly": 100, //本年度电量 aggrd
+	"AGGR_TG_watt_kwh_sum": 100, //累计用电量 aggrd
+	"UNKNOWN": 100//折算总年度碳排量
+	"UNKNOWN": 100//折算总年度硫排量
+	"AGGR_TG_watt_charge_sum": 100, //总累计电费
+	
+
+	<!------------- 手机应用使用的TAG统计 ----------------------> 
+	<!-- 用电一览模块 （电站#电源编号->线路->电表#LogicalId）-->
+	"AGGR_TG_watt_Px_monthly" : 100, //监测MD aggrd
+	"AGGR_TG_watt_PF_monthly" : 0.62, //功率因数 aggrd 
+	"AGGR_TG_watt_kwh_sum_monthly" : 15, //月度用电统计 aggrd
+	"AGGR_TG_watt_kwh_sum_daily" : 15, //日用电量 aggrd
+	"TG_watt_t_ambient" : 15, //环境温度 cache
+	"TG_watt_h_ambient" : 15, //环境湿度 cache
+	
+	<!-- 企业负荷 （电站#电源编号->进线->电表#LogicalId）-->
+	"G60_TG_watt_Psum" : 15, //企业负荷(obj_raw_scada) graphd
+
+	<!-- MD模块 （电站#电源编号->进线->电表#LogicalId）-->
+	"AGGR_TG_watt_Px_daily" : 15, //日最大MD aggrd
+	"AGGR_TG_watt_Px_monthly" : 15, //月最大MD aggrd
+	"AGGR_TG_watt_Px_daily" : 15, //MD曲线（obj_raw_scada） aggrd
+	
+	<!-- 功率因数 （电站#电源编号->进线->电表#LogicalId）-->
+	"AGGR_TG_watt_PF_monthly" : 15, //本月累计 aggrd
+	"AGGR_TG_watt_PF_daily" : 15, //功率因数曲线 aggrd（obj_raw_scada）
+	
+
+	<!-- 电费电量 （电站#电源编号->进线->电表#LogicalId）-->
+	"AGGR_TG_watt_kwh_flat_monthly" : 15, //月平时电量 
+	"AGGR_TG_watt_kwh_peak_monthly" : 15, //月峰时电量
+	"AGGR_TG_watt_kwh_valley_monthly" : 15, //月谷时电量
+	"AGGR_TG_watt_kwh_sum_monthly'" : 15, //月总电量 aggrd
+	"AGGR_TG_watt_charge_monthly" : 15, //月总电价
+	"AGGR_TG_watt_charge_peak_monthly" : 15, //月峰时电价
+	"AGGR_TG_watt_charge_flat_monthly" : 15, //月平时电价
+	"AGGR_TG_watt_charge_valley_monthly" : 15, //月谷时电价
+}
+
+
+
+
+/******************************************************** 月度分析报表 START *******************************************************************************/
+//TODO  安装行转列插件
+create extension tablefunc;
+select count(*) from information_schema.routines where routine_name like 'crosstab%'
+
+
+
+
+
+-- JSON_SCADA SQL
+SELECT
+  -- 两相最大值
+  CASE
+  WHEN max(vw_json.TG_watt_Uab) > max(vw_json.TG_watt_Ubc) AND max(vw_json.TG_watt_Uab) > max(vw_json.TG_watt_Uca)
+    THEN max(vw_json.TG_watt_Uab)
+  WHEN max(vw_json.TG_watt_Ubc) > max(vw_json.TG_watt_Uab) AND max(vw_json.TG_watt_Ubc) > max(vw_json.TG_watt_Uca)
+    THEN max(vw_json.TG_watt_Ubc)
+  WHEN max(vw_json.TG_watt_Uca) > max(vw_json.TG_watt_Ubc) AND max(vw_json.TG_watt_Uca) > max(vw_json.TG_watt_Uab)
+    THEN max(vw_json.TG_watt_Uca)
+  END                            AS max_u,
+  -- 两相最小值
+  CASE
+  WHEN min(vw_json.TG_watt_Uab) > min(vw_json.TG_watt_Ubc) AND min(vw_json.TG_watt_Uab) > min(vw_json.TG_watt_Uca)
+    THEN min(vw_json.TG_watt_Uab)
+  WHEN min(vw_json.TG_watt_Ubc) > min(vw_json.TG_watt_Uab) AND min(vw_json.TG_watt_Ubc) > min(vw_json.TG_watt_Uca)
+    THEN min(vw_json.TG_watt_Ubc)
+  WHEN min(vw_json.TG_watt_Uca) > min(vw_json.TG_watt_Ubc) AND min(vw_json.TG_watt_Uca) > min(vw_json.TG_watt_Uab)
+    THEN min(vw_json.TG_watt_Uca)
+  END                            AS max_u,
+  --监测MD
+  max(vw_json.TG_watt_Px)        AS max_ps,
+  --功率因数
+  avg(vw_json.TG_watt_PF)        AS avg_pf,
+  -- 环境温度
+  max(vw_json.TG_watt_t_ambient) AS max_t_ambient,
+  min(vw_json.TG_watt_t_ambient) AS min_t_ambient,
+  -- 环境湿度
+  max(vw_json.TG_watt_t_ambient) AS max_h_ambient,
+  min(vw_json.TG_watt_t_ambient) AS min_h_ambient
+FROM (
+       SELECT
+         jdoc :: JSON ->> 'TG_watt_Ua'                           AS TG_watt_Ua,
+         jdoc :: JSON ->> 'TG_watt_Ub'                           AS TG_watt_Ub,
+         jdoc :: JSON ->> 'TG_watt_Uc'                           AS TG_watt_Uc,
+         CAST(jdoc :: JSON ->> 'TG_watt_PF' AS DOUBLE PRECISION) AS TG_watt_PF,
+         jdoc :: JSON ->> 'TG_watt_Uab'                          AS TG_watt_Uab,
+         jdoc :: JSON ->> 'TG_watt_Ubc'                          AS TG_watt_Ubc,
+         jdoc :: JSON ->> 'TG_watt_Uca'                          AS TG_watt_Uca,
+         jdoc :: JSON ->> 'TG_watt_Px'                           AS TG_watt_Px,
+         jdoc :: JSON ->> 'TG_watt_t_ambient'                    AS TG_watt_t_ambient,
+         jdoc :: JSON ->> 'TG_watt_h_ambient'                    AS TG_watt_h_ambient
+       FROM obj_json_scada
+       WHERE
+         1 = 1
+         AND upload_time > '2016-05-01 00:00:00'
+         AND upload_time < '2016-05-31 23:59:59'
+         AND jdoc_name = 'JTG_kwatt_info'
+     ) AS vw_json;
+	 
+	
+
+
+----------------------------------- RAW_SCADS SQL ---------------------------	
+SELECT
+  scada.tag,scada.scada_value
+FROM obj_raw_scada scada
+  JOIN (
+         SELECT
+           logical_id,
+           tag,
+           max(upload_time)                AS upload_time,
+           to_char(upload_time, 'YYYY-MM') AS upload_monthly
+         FROM obj_raw_scada
+         WHERE 1 = 1
+               AND logical_id = 40220001
+               AND upload_time > '2016-06-01 00:00:00'
+               AND upload_time < '2016-06-30 23:59:59'
+               AND tag IN ('AGGR_TG_watt_charge_valley_monthly',
+                           'AGGR_TG_watt_charge_peak_monthly',
+                           'AGGR_TG_watt_charge_flat_monthly',
+                           'AGGR_TG_watt_kwh_valley_monthly',
+                           'AGGR_TG_watt_kwh_peak_monthly',
+                           'AGGR_TG_watt_kwh_flat_monthly',
+                           'AGGR_TG_watt_charge_monthly',
+                           'AGGR_TG_watt_md_diff_monthly',
+                           'AGGR_TG_watt_md_price_monthly'
+         )
+         GROUP BY logical_id, tag, upload_monthly) monthly
+    ON scada.upload_time = monthly.upload_time AND scada.logical_id = monthly.logical_id AND scada.tag = monthly.tag
+	
+----------------------------------- ALARM_SCADS SQL ---------------------------	
+SELECT
+  alarm_tag,
+  count(*)
+FROM obj_scada_alarm
+WHERE
+  1 = 1
+  AND logical_id = 40220001
+  AND alarm_tag IN ('TG_watt_Px', 'TG_watt_PF')
+GROUP BY alarm_tag;
+
+
+/******************************************************** 月度分析报表 END *******************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

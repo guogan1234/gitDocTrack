@@ -1,0 +1,33 @@
+class A{
+
+	A.run(){
+		while(1){
+			//标志位默认0值，做空闲处理
+			Enum flag = 0;
+			//消息处理器[aaa]，必须快速计算处理
+			flag = aaa.handle(arg...);
+			if(flag == 0){
+				//空闲处理，调用释放CPU的系统API。
+				//避免循环调用此if处理块，长时间占用CPU，堵塞线程，释放占用的CPU
+				msleep(1000);//实际上在系统内核内存部分，改变了描述的线程结构体中的状态值，枚举状态值改为休眠状态。CPU调度程序进程，在已运行线程队列中发现此改变，移出已运行线程队列，故而释放CPU占用。
+			}
+			else if(flag == a){
+				work_a();
+			}
+			else if(flag == b){
+				work_b();
+			}
+			else if(flag == c){
+				emit signal_a();
+			}
+		}
+	}
+	
+	A.work_a(){
+	
+	}
+	
+	A.work_b(){
+	
+	}
+}
