@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://F:/ISCS-code/conf/ISCS_Conf_Server.iml" filepath="F:/ISCS-code/conf/ISCS_Conf_Server.iml" />
+      <module fileurl="file://F:/ISCS-code/conf/configWeb/config.iml" filepath="F:/ISCS-code/conf/configWeb/config.iml" />
+      <module fileurl="file://F:/ISCS-code/conf/configService/configService.iml" filepath="F:/ISCS-code/conf/configService/configService.iml" />
+      <module fileurl="file://F:/ISCS-code/conf/configTcpServer/configTcpServer.iml" filepath="F:/ISCS-code/conf/configTcpServer/configTcpServer.iml" />
+    </modules>
+  </component>
+</project>

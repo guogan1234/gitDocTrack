@@ -1,0 +1,3 @@
+·­Ò³£º
+Ctrl+f    ¼´ PageDown ·­Ò³
+Crtl-b    ¼´ PageUp ·­Ò³

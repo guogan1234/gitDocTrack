@@ -1,0 +1,30 @@
+﻿1.man手册
+上翻一页 -- PageUp
+下翻一页 -- PageDown、空格键
+上翻一行 -- 上移方向键
+下翻一行 -- Enter、下移方向键
+
+2.vim编辑器
+上翻一页 -- Ctrl+f(forward)
+下翻一页 -- Ctrl+b(backward)
+上翻半页 -- Ctrl+u(up)
+下翻半页 -- Ctrl+d(down)
+上翻一行 -- Ctrl+y
+下翻一行 -- Ctrl+e
+
+查找 -- 命令模式下，"/字符串"如"/section3",下一个为字母n(next）
+
+替换 -- 命令模式下，"s/src/dest/"
+:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+
+:s/vivian/sky/g 替换当前行所有 vivian 为 sky
+
+:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+
+:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
+
+n 为数字，若 n 为 .，表示从当前行开始到最后一行
+
+:%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
+
+:%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky
