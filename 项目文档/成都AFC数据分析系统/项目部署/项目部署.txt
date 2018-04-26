@@ -1,0 +1,14 @@
+服务器:
+地址：112.124.51.202
+账户：mems
+密码：mems@AVP1234
+
+数据库(postgreSQL)
+pgsql： 112.124.51.202：5432
+数据库： afc_cd_ai_njrts
+帐号： afccd
+密码： afccd
+
+jar包配置成服务脚本文件：
+配置脚本位置：/etc/systemd/system/afcai-web.service
+jar包位置：/home/mems/NJRTS/jars/afcai-web-1.0-SNAPSHOT.jar

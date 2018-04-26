@@ -1,0 +1,17 @@
+[Unit]
+Description=AFC CHENGDU AI Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=mems
+WorkingDirectory=/home/mems/NJRTS/afcai-web
+ExecStart=/usr/bin/java -Xms512M -Xmx512M -jar afcai-web-1.0-SNAPSHOT.jar
+Restart=on-failure
+RestartSec=10s
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+
+

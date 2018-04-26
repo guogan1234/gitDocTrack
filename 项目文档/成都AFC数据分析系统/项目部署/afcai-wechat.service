@@ -1,0 +1,17 @@
+[Unit]
+Description=AFC CHENGDU AI WeChat Application
+After=network.target
+
+[Service]
+Type=simple
+User=mems
+WorkingDirectory=/home/mems/NJRTS/afcai-wechat
+ExecStart=/usr/bin/java -Xms256M -Xmx256M -jar afcai-wechat-1.0-SNAPSHOT.jar
+Restart=on-failure
+RestartSec=10s
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+
+

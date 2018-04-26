@@ -1,0 +1,5 @@
+ //重启服务命令
+ sudo service afcai-web restart
+ 
+ //根据名称在指定目录查找文件命令
+ find / -name afcai-web.service 2>/dev/null 
