@@ -1,0 +1,6 @@
+1.
+Double value = (d/total)*100;
+//double格式化输出
+DecimalFormat formatter = new DecimalFormat("##.#");
+String strD = formatter.format(value);
+double dValue = Double.valueOf(strD).doubleValue();

@@ -1,0 +1,18 @@
+sql中把一个查询结果当作另一个表来查询可以理解查询结果为一个临时表
+使用select语句查询结果集即可。
+参考代码：
+1：将结果作为一个临时表，可以使用链接或者直接查询
+select * from
+(
+SELECT SUM(NUM_QNTY4) AS sumNum, NUM_LINKID
+FROM RW_STORE_QUNTY
+GROUP BY NUM_LINKID 
+) as A
+-------------------------------
+2：将结果作为子查询的方式
+select * from 表
+where 字段 in select NUM_LINKID （
+SELECT SUM(NUM_QNTY4) AS sumNum, NUM_LINKID
+FROM RW_STORE_QUNTY
+GROUP BY NUM_LINKID 
+）

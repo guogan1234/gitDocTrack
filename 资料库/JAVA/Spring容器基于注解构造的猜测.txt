@@ -1,0 +1,2 @@
+1.基于Spring改造的默认无参构造方法，new一个Class实例。
+2.在改造的默认无参构造方法，赋值@Autowired标注的Class对象。

@@ -1,0 +1,8 @@
+public interface ObjLineRepository extends CrudRepository<ObjLine,Integer> {
+    List<ObjLine> findAll();
+    ObjLine findById(@Param("id") Integer id);
+	//findBylineName的查找条件linename，对应着数据表对象Obj中的lineName属性
+    ObjLine findBylineName(@Param("name") String name);
+}
+
+//Java中，类只能单继承，而接口却可以多继承。
