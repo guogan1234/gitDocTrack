@@ -1,0 +1,47 @@
+<!--<#include "/decorators/page-header.html"/>-->
+<!--<#include "/decorators/page-navigator.html"/>-->
+
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base">
+<head>
+    <title>报警信息</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            监控
+            <small>报警信息</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-laptop"></i>首页</a></li>
+            <!--如果有三级就放开-->
+            <li><a href="#">监控</a></li>
+            <li class="active">报警信息</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        <span>登录账号为:<span sec:authentication="principal"></span></span>
+
+        <br/>
+        <p class="col-sm-2" sec:authorize="hasAuthority('BTS')">
+            用户可以访问'BTS'资源
+        </p>
+
+    </section>
+    <!-- /.content -->
+</div>
+</body>
+<div layout:fragment="scripts">
+    <script>
+        $("title").html("报警信息");
+        activeMenuView('m_alarm');
+    </script>
+</div>
+</html>

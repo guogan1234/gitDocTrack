@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="njpb-api" />
+        <module name="njpb-business" />
+        <module name="njpb-oauth" />
+        <module name="njpb-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="njpb-api" target="1.8" />
+      <module name="njpb-business" target="1.8" />
+      <module name="njpb-oauth" target="1.8" />
+      <module name="njpb-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

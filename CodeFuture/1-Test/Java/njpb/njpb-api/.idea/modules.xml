@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/njpb-api.iml" filepath="$PROJECT_DIR$/njpb-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../njpb-business/njpb-business.iml" filepath="$PROJECT_DIR$/../njpb-business/njpb-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../njpb-oauth/njpb-oauth.iml" filepath="$PROJECT_DIR$/../njpb-oauth/njpb-oauth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../njpb-web/njpb-web.iml" filepath="$PROJECT_DIR$/../njpb-web/njpb-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,32 @@
+server:
+    port: 9003
+
+spring:
+    datasource:
+        url: jdbc:postgresql://192.168.1.254:5432/trunk-226-mems-push
+        username: postgres
+        password: password09!
+    jpa:
+        database: POSTGRESQL
+        show-sql: true
+    oauth2:
+        resource:
+            userInfoUri: http://192.168.1.254:9999/sso/user
+
+app:
+    push:
+        host: http://sdk.open.api.igexin.com/apiex.htm
+        apps:
+            mems:
+                appId: 4VlRNf3KWL869DuVFpnyX6
+                appkey: i5nofK5aUP80b1Ip5QBeB6
+                masterSecret: dvjaa0LfXcAwg32iDAMmLA
+
+logging:
+  file: push.log
+
+wechat:
+      push:
+          CorpID: ww958c5f9d94ed052c
+          AgentId: 1000002
+          Secret: fLg_YT6auVuQHJoDfrAw0f672KEq5ooltHbTcPAnuOw

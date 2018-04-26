@@ -1,0 +1,11 @@
+com\avp\mem\njpb\web\web\wsock\message\CommandResponse.class
+com\avp\mem\njpb\web\web\wsock\WSockController.class
+com\avp\mem\njpb\web\WebApplication.class
+com\avp\mem\njpb\web\web\example\WsController.class
+com\avp\mem\njpb\web\web\wsock\message\AlarmNotification.class
+com\avp\mem\njpb\web\web\example\WsController$NotifyEvent.class
+com\avp\mem\njpb\web\config\SecurityConfig$1.class
+com\avp\mem\njpb\web\config\SecurityConfig.class
+com\avp\mem\njpb\web\config\WebSocketBrokerConfig.class
+com\avp\mem\njpb\web\config\MvcConfig.class
+com\avp\mem\njpb\web\handler\MyAccessDeniedHandler.class

@@ -1,0 +1,36 @@
+<#include "/decorators/page-header.html"/>
+<#include "/decorators/page-navigator.html"/>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            首页
+            <small>版本管理</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+            <!--如果有三级就放开-->
+            <li><a href="#">参数管理</a></li>
+            <li class="active">版本管理</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Your Page Content Here -->
+        <div>树形控件：版本信息+参数名称（运营参数、升级包、接口协议、操作员），点击在内容框显示。</div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<#include "/decorators/page-footer.html"/>
+
+<!-- Page Title -->
+<script>
+    $("title").html("版本管理");
+    activeMenuView('m_version');
+</script>

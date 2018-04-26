@@ -1,0 +1,61 @@
+server:
+    port: 9010
+    contextPath: /backstage-service
+
+spring:
+    datasource:
+        user:
+            url: jdbc:postgresql://192.168.1.254:5432/trunk-226-mems-auth
+            driver-class-name: org.postgresql.Driver
+            username: postgres
+            password: password09!
+        basic:
+            url: jdbc:postgresql://192.168.1.254:5432/trunk-226-mems-basic
+            driver-class-name: org.postgresql.Driver
+            username: postgres
+            password: password09!
+        work:
+            url: jdbc:postgresql://192.168.1.254:5432/trunk-226-mems-work-order
+            driver-class-name: org.postgresql.Driver
+            username: postgres
+            password: password09!
+        push:
+             url: jdbc:postgresql://192.168.1.254:5432/trunk-226-mems-push
+             driver-class-name: org.postgresql.Driver
+             username: postgres
+             password: password09!
+        report:
+             url: jdbc:postgresql://192.168.1.254:5432/trunk-226-mems-report
+             driver-class-name: org.postgresql.Driver
+             username: postgres
+             password: password09!
+    jpa:
+        show-sql: true
+    oauth2:
+        resource:
+            userInfoUri: http://192.168.1.254:9999/sso/user
+business:
+    scheduled:
+        weekcron: 0 0 1 ? * MON
+        monthcron: 0 0 1 1 * ?
+        daycron: 0 0 0 1/1 * ?
+        daylinecron: 0 0/3 * * * ?
+        pushdaycron: 0 0 8 * * ?
+        pushweekcron: 0 0 8 ? * MON
+        pushmonthcorn: 0 0 8 1 * ?
+
+
+logging:
+    file: log-backstage.log
+    level.com.avp.mems.backstage: debug
+    level.org.hibernate.SQL: DEBUG
+    level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+wechat:
+       push:
+            url: sxmika.com:8099
+
+app:
+    resource:
+        push:
+            url: http://192.168.1.254:9003

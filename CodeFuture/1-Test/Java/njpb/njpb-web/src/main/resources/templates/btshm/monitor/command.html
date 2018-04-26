@@ -1,0 +1,99 @@
+<#include "/decorators/page-header.html"/>
+<#include "/decorators/page-navigator.html"/>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                监控
+                <small>命令控制</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-laptop"></i>首页</a></li>
+                <!--如果有三级就放开-->
+                <li><a href="#">监控</a></li>
+                <li class="active">命令控制</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+
+            实现：历史命令（带过滤、查询等）、当前命令（全部显示不分页）两个TAB
+
+            <!--example div of ws-->
+            <div>
+                <div>
+                    <button id="connect" onclick="connect();">连接</button>
+                    <button id="disconnect" disabled="disabled" onclick="disconnect();">断开连接</button>
+                </div>
+
+                <div id="conversationDiv">
+                    <label>输入你的名字</label><input type="text" id="name"/>
+                    <button id="sendName" onclick="sendName();">发送</button>
+                    <p id="response">response</p>
+                    <p id="alarm">alarm</p>
+                    <p id="event">event</p>
+                </div>
+            </div>
+            <!--example div of ws-->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+<#include "/decorators/page-footer.html"/>
+
+<!-- Page Title -->
+<script>$("title").html("命令控制");activeMenuView('m_command');</script>
+<script src="/plugins/stomp/stomp.min.js"></script>
+<script src="/plugins/sockjs/sockjs.min.js"></script>
+
+<!--example of ws -->
+<script type="text/javascript">
+    var stompClient = null;
+    function setConnected(connected) {
+        document.getElementById("connect").disabled = connected;
+        document.getElementById("disconnect").disabled = !connected;
+        document.getElementById("conversationDiv").style.visibility = connected ? 'visible' : 'hidden';
+        $("#response").html();
+    }
+    function connect() {
+        var socket = new SockJS('/portfolio');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            setConnected(true);
+            console.log('Connected:' + frame);
+            stompClient.subscribe('/topic/getAlarmCount', function (message) {
+                $("#alarm").html(message.body);
+            })
+            stompClient.subscribe('/queue/getResponse/0', function (message) {
+                $("#response").html(message.body);
+            })
+            stompClient.subscribe('/topic/getEvent/lisa', function (message) {
+                $("#event").html(message.body);
+            })
+        });
+    }
+    function disconnect() {
+        if (stompClient != null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log('Disconnected');
+    }
+    function sendName() {
+        var name = $('#name').val();
+        console.log('name:' + name);
+        stompClient.send("/welcome", null, name);//say welcome
+        stompClient.send("/hello", null, name);
+        stompClient.send("/welcomeBy/lisa", null, name);
+    }
+//    function showResponse(message) {
+//        $("#response").html(message.body);
+//    }
+</script>

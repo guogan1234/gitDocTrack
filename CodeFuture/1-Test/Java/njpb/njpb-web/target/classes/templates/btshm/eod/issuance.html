@@ -1,0 +1,36 @@
+<#include "/decorators/page-header.html"/>
+<#include "/decorators/page-navigator.html"/>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            首页
+            <small>版本管理</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+            <!--如果有三级就放开-->
+            <li><a href="#">参数管理</a></li>
+            <li class="active">参数下发</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Your Page Content Here -->
+        树形控件：版本信息+车站名称，点击在内容框显示设备列表；列表点击显示详情（不可编辑）。
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<#include "/decorators/page-footer.html"/>
+
+<!-- Page Title -->
+<script>
+    $("title").html("参数下发");
+    activeMenuView('m_issuance');
+</script>

@@ -1,0 +1,14 @@
+数据库连接：
+192.168.1.119
+5433
+mem-pb-dev//数据库
+mempb//用户
+mempb//密码
+
+源代码中配置：
+njpb-business
+spring.datasource.url: jdbc:postgresql://192.168.1.119:5433/mem-pb-dev
+spring.datasource.username: mempb
+spring.datasource.password: mempb
+spring.jpa.database: POSTGRESQL
+spring.jpa.show-sql: true

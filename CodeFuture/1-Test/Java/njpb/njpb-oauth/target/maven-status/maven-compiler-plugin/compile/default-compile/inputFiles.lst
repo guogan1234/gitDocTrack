@@ -1,0 +1,15 @@
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\config\SecurityConfig.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\web\CorsFilter.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\repository\UserRepository.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\OAuthApplication.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\config\MvcConfig.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\repository\SysUserRepository.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\service\AuthUserDetailsService.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\repository\eventHandler\SysUserEventHandler.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\repository\RoleRepository.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\config\OAuth2AuthorizationConfig.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\web\UserInfoController.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\entity\OauthClientDetails.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\entity\SysResource.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\entity\SysUser.java
+D:\workspace\Source_NJPB\branch\code\njpb-oauth\src\main\java\com\avp\mem\njpb\oauth\entity\SysRole.java

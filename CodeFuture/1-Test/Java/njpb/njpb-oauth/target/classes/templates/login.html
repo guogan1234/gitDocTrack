@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us" id="extr-page" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- #CSS Links -->
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/font-awesome.min.css">
+
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/smartadmin-skins.min.css">
+
+    <!-- Common Styles -->
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+
+    <!-- SmartAdmin RTL Support -->
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/smartadmin-rtl.min.css">
+
+    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="css/demo.min.css">
+
+    <!-- #FAVICONS -->
+    <link rel="shortcut icon" href="image/favicon/favicon.ico"
+          type="image/x-icon">
+    <link rel="icon" href="image/favicon/favicon.ico"
+          type="image/x-icon">
+</head>
+
+<body class="animated fadeInDown">
+
+<header id="header">
+    <div id="logo-group">
+			<span id="logo"> <img
+                    src="image/logo_header.png" alt="AVP">
+			</span>
+    </div>
+
+    <div class="pull-right">
+        <!-- user info button -->
+        <div class="btn-header transparent pull-right"
+             style="margin-top: 10px;">
+				<span> <a href="javascript:void(0);" title="QR code"
+                          class="dropdown-toggle a-primary" data-toggle="dropdown"><i
+                        class="fa fa-mobile-phone"> <span class="hidden-xs">手机应用</span>
+					</i></a>
+					<ul class="dropdown-menu" style="left: inherit; right: 30px;">
+						<!-- User image -->
+						<li class="user-header textCenter"><img
+                                src="image/android.png" class="" alt="android"
+                                style="width: 120px"><span></span> <!--<img
+							src="lib/image/ios.png" class="" alt="iPhone"
+							style="width: 120px">--></li>
+						<li class="user-header textCenter"><div style="width: 200px">
+								<span style="margin-right: 10px;">android</span><!--<span>iPhone</span>-->
+							</div></li>
+					</ul>
+				</span>
+        </div>
+    </div>
+</header>
+
+<div id="main" role="main">
+
+    <!-- MAIN CONTENT -->
+    <div id="content" class="container login-container">
+
+        <div class="row">
+            <div id="loginDiv"
+                 class="col-xs-12 col-sm-12 col-md-5 col-lg-4 pull-right">
+                <div class="well no-padding">
+                    <form th:action="@{/login-kwatt}" method="post" id="login-form"
+                          class="smart-form client-form">
+                        <header style="background-color:rgba(13, 26, 36, 0.91); color: white;">
+                            登录管理系统
+                        </header>
+                        <fieldset>
+                            <section>
+                                <label class="label">用户名</label> <label class="input">
+                                <i class="icon-append fa fa-user"></i> <input type="text"
+                                                                              name="username" id="inputEmail" required>
+                                <b
+                                        class="tooltip tooltip-top-right"><i
+                                        class="fa fa-user txt-color-teal"></i> 输入用户名</b>
+                            </label>
+                            </section>
+
+                            <section>
+                                <label class="label">密码</label> <label class="input"> <i
+                                    class="icon-append fa fa-lock"></i> <input type="password"
+                                                                               name="password" id="inputPassword"> <b
+                                    class="tooltip tooltip-top-right"><i
+                                    class="fa fa-lock txt-color-teal"></i> 输入密码</b>
+                            </label>
+                            </section>
+
+                            <section>
+                                <label class="checkbox align-left"> <input
+                                        type="checkbox" name="remember" checked=""> <i></i>记住密码
+                                </label>
+                            </section>
+                        </fieldset>
+                        <input type="hidden" id="csrf_token"
+                               name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <footer>
+                            <button type="submit" class="btn btn-primary">登录</button>
+                        </footer>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div id="fillDiv"></div>
+    </div>
+
+</div>
+
+
+
+
+
+<!--================================================== -->
+<script src="lib/jquery-2.1.1.min.js"></script>
+
+<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+<script src="lib/pace/pace.min.js"></script>
+
+<!-- JQUERY UI -->
+<script src="lib/jquery-ui-1.10.3.min.js"></script>
+
+<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+    <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+<!-- BOOTSTRAP JS -->
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<!-- JQUERY VALIDATE -->
+<script
+        src="lib/jquery-validate/jquery.validate.min.js"></script>
+
+<!-- JQUERY MASKED INPUT -->
+<script
+        src="lib/masked-input/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fillDiv').height($(window).height() - ($('#extr-page #header').height()) * 2.6 - Number($('#main').css('min-height').replace('px', '')));
+        $('#loginDiv .no-padding').css('top', ($(window).height() - Number($('#main').css('min-height').replace('px', ''))) / 10);
+        $(window).resize(function () {
+            $('#fillDiv').height($(window).height() - ($('#extr-page #header').height()) * 2.6 - Number($('#main').css('min-height').replace('px', '')));
+            $('#loginDiv .no-padding').css('top', ($(window).height() - Number($('#main').css('min-height').replace('px', ''))) / 10);
+        })
+        $(window).resize();
+    })
+</script>
+
+<!--页面与鼠标有动态线条的交互-->
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="lib/particles/particles.js"></script>
+<script src="lib/app.js"></script>
+
+<!-- stats.js -->
+<script src="lib/stats.js"></script>
+
+
+
+
+<!--页面与鼠标没有动态线条的交互-->
+<!--<canvas class="background"></canvas>-->
+<!--<script src="lib/particles.js"></script>-->
+<!--<script type="text/javascript">-->
+    <!--window.onload = function () {-->
+        <!--Particles.init({-->
+            <!--selector: '.background',-->
+            <!--maxParticles: 200,-->
+            <!--sizeVariations: 3,-->
+            <!--speed: 0.5,-->
+            <!--color: '#C6E2FF',-->
+            <!--minDistance: 80,-->
+            <!--connectParticles: true,-->
+            <!--responsive: null-->
+        <!--});-->
+    <!--};-->
+<!--</script>-->
+</body>
+</html>
