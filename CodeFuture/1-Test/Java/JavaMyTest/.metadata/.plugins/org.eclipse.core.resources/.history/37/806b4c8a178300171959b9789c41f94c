@@ -1,0 +1,160 @@
+package com.yiibai.mypackage;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.SimpleExpression;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StandardServiceRegistry reg = new StandardServiceRegistryBuilder().configure("NewFile.xml").build();
+//		StandardServiceRegistry reg = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		//1.通过加载XML文件，获取配置方法
+//		Configuration cfg = new Configuration().configure("NewFile.xml");
+		//2.通过加载properties文件，获取配置方法
+//		Configuration cfg = new Configuration().addFile("ModelClass.xml").addClass(com.yiibai.mypackage.Employee.class);
+		
+		SessionFactory sessionFactory = new MetadataSources(reg).buildMetadata().buildSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+		
+		Transaction t = session.beginTransaction();
+		
+		//ADD
+		Employee e1 = new Employee();
+		e1.setId(777);
+		e1.setFirstName("zhu");
+		e1.setLastName("jie");
+//				
+//		session.save(e1);
+//		session.persist(e1);
+		
+		//Delete
+		//进测试，SQL语句中的表名，必须为对象的名称
+//		String del_hql = "delete Employee where id = 721";//OK
+//		String del_hql2 = "delete tb_employee where id = 621";//Error，运行失败
+//		Query query = session.createQuery(del_hql2);
+//		query.executeUpdate();
+//		session.delete(e1);//OK
+		
+		//Get
+		Employee res = session.get(Employee.class,new Integer(111));
+		System.out.println("查询结果："+res.getLastName());
+		
+		//Find
+		//Hibernate3之后，只能通过Query/Criteria接口查询
+		//1.Query接口
+		String hql = "from Employee where id = ?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, 123);
+		List list = query.list();
+		Iterator it = list.iterator();
+		while(it.hasNext()) {
+			System.out.println("Len:"+list.size());
+			Employee emp = (Employee)it.next();
+			System.out.println("id:"+ emp.getId() + ",vvv:" + emp.getLastName());
+		}
+		//2.Criteria接口
+		Criteria criteria = session.createCriteria(Employee.class);
+		criteria.add(Expression.eq("testName", "Max"));
+		List list2 = criteria.list();
+		Iterator it2 = list2.iterator();
+		while(it2.hasNext()) {
+			System.out.println("Len2:"+list2.size());
+			Employee emp = (Employee)it2.next();
+			System.out.println(emp.getLastName());
+		}
+		
+		System.out.println("---------------------------------------------");
+		Criteria c = session.createCriteria(Employee.class);
+//		SimpleExpression se = Expression.gt("id",123);
+		SimpleExpression se = Expression.lt("id", 123);
+		c.add(se);
+		List list3 = c.list();
+		Iterator it3 = list3.iterator();
+		while(it3.hasNext()) {
+			System.out.println("Len3:"+list3.size());
+			Employee emp = (Employee)it3.next();
+			System.out.println(emp.getLastName());
+		}
+		
+		System.out.println("1---------------------------------------------");
+		Criteria c1 = session.createCriteria(Employee.class);
+		
+		Employee ee1 = new Employee();
+//		ee1.setId(123);
+		ee1.setFirstName("guo");
+		ee1.setLastName("gan");
+		
+		c1.add(Example.create(ee1));
+		List list4 = c1.list();
+		Iterator it4 = list4.iterator();
+		while(it4.hasNext()) {
+			System.out.println("Len4:"+list4.size());
+			Employee emp = (Employee)it4.next();
+			System.out.println(emp.getLastName());
+		}
+		
+		//避免直接使用Session，在需要用时进行关联
+		System.out.println("2---------------------------------------------");
+		DetachedCriteria dc = DetachedCriteria.forClass(Employee.class);
+		dc.setProjection(Projections.avg("id"));
+		Criteria c2 = dc.getExecutableCriteria(session);
+		List list5 = c2.list();
+		Iterator it5 = list5.iterator();
+		while(it5.hasNext()) {
+			System.out.println("Len5:"+list5.size());
+//			Employee emp = (Employee)it5.next();
+//			System.out.println(emp.getLastName());
+			System.out.println(it5.next());
+		}		
+		System.out.println("3---------------------------------------------");
+		DetachedCriteria dc1 = DetachedCriteria.forClass(Employee.class);
+		ProjectionList projectionList = Projections.projectionList();
+		projectionList.add(Projections.groupProperty("testName"));//group by首先会进行分组，但最终会聚合为每组一条记录
+		projectionList.add(Projections.sum("salary"));
+		dc1.setProjection(projectionList);
+		Criteria c3 = dc1.getExecutableCriteria(session);
+		List list6 = c3.list();
+		Iterator it6 = list6.iterator();
+		while(it6.hasNext()) {
+			System.out.println("Len6:"+list6.size());
+			System.out.println(it6.next());
+		}
+		
+		//使用hql语句，进行查询
+		System.out.println("4---------------------------------------------");
+		String s1 = "from Employee emp where emp.id>? and emp.salary<?";
+		Query q = session.createQuery(s1);
+		q.setInteger(0, 333);
+		q.setInteger(1, 2222);
+		List list7 = q.list();
+		Iterator it7 = list7.iterator();
+		while(it7.hasNext()) {
+			System.out.println(it7.next());
+		}
+		System.out.println("5---------------------------------------------");
+		
+		t.commit();
+		session.close();
+		System.out.println("Persist OK!!!");
+	}
+
+}

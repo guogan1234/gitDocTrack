@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Employee.java&apos; to &apos;first-hibernate-zhujie/src/com.yiibai.mypackage&apos;&#x0D;&#x0A;- Original project: &apos;first-hibernate-zhujie&apos;&#x0D;&#x0A;- Destination element: &apos;first-hibernate-zhujie/src/com.yiibai.mypackage&apos;&#x0D;&#x0A;- Original element: &apos;Employee.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;com.yiibai.mypackage" element1="/src&lt;{Employee.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1501581058671" units="1" version="1.0"/>
+</session>

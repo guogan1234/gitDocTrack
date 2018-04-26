@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+
+ <hibernate-mapping>  
+  <class name="com.yiibai.mypackage.TBOOK" table="T_BOOK">  
+    <id name="id" column="id" type="java.lang.Integer"> 
+     <!-- id若为程序所赋值，生成器generator必须赋值为“assigned”.否则程序报错 --> 
+     <generator class="assigned"></generator>  
+    </id>  
+
+    <property name="name" column="name"></property>  
+    <property name="maker" column="manufacturer"></property>
+    <property name="pageCount" column="pagecount"></property>  
+
+  </class>  
+
+ </hibernate-mapping>

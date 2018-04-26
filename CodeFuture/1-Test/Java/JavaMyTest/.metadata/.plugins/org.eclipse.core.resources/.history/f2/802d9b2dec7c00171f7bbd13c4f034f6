@@ -1,0 +1,43 @@
+package com.yiibai.mypackage;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StandardServiceRegistry reg = new StandardServiceRegistryBuilder().configure("NewFile.xml").build();
+//		StandardServiceRegistry reg = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+//		Configuration cfg = new Configuration().configure("NewFile.xml");
+		
+		SessionFactory sessionFactory = new MetadataSources(reg).buildMetadata().buildSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+		
+		Transaction t = session.beginTransaction();
+		
+		Employee e1 = new Employee();
+		e1.setId(777);
+		e1.setFirstName("zhu");
+		e1.setLastName("jie");
+		
+		//ADD
+		session.save(e1);
+//		session.persist(e1);
+		
+		//Get
+		Employee res = session.get(Employee.class,new Integer(100));
+		System.out.println(res);
+		
+		t.commit();
+		session.close();
+		System.out.println("Persist OK!!!");
+	}
+
+}

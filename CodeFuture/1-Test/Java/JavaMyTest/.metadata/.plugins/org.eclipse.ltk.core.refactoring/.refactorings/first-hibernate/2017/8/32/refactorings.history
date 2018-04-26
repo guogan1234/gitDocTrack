@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;TBook.xml&apos; to &apos;first-hibernate/src&apos;&#x0D;&#x0A;- Original project: &apos;first-hibernate&apos;&#x0D;&#x0A;- Destination element: &apos;first-hibernate/src&apos;&#x0D;&#x0A;- Original element: &apos;TBook.xml&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="/src" element1="src/com/yiibai/mypackage/TBook.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1502440667758" units="0" version="1.0"/>
+</session>
