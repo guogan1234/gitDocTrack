@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Demo Test</title>
+	<!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	
+<script>
+	var data1 = [
+    {
+        id: 0,
+        text: 'enhancement'
+    },
+    {
+        id: 1,
+        text: 'bug'
+    },
+    {
+        id: 2,
+        text: 'duplicate'
+    },
+    {
+        id: 3,
+        text: 'invalid'
+    },
+    {
+        id: 4,
+        text: 'wontfix'
+    }
+];
+
+$(function(){
+	/* http://112.124.51.202:4060/tagFailed/percent?page=1&pageSize=10&lineId=4&timeCount=6 */
+	/*$('#id_label_single').select2({data:data});*/
+	$('#id_label_single').select2({
+	ajax: {
+		url: 'http://112.124.51.202:4060/tagFailed/percent',
+		data: function (params) {
+			var query = {
+				page: 1,
+				pageSize: 10,
+				lineId:4,
+				timeCount:6
+			}
+			// Query parameters will be ?search=[term]&page=[page]
+			return query;
+		},
+		processResults: function (data,params) {
+		var value = data;
+			return {
+				results: data.results,
+			};
+		}
+	}
+	});
+	
+	/*错误写法*/
+	/*$.ajaxError(function(){
+		var log = "error";
+	});*/
+});
+
+$(document).ajaxError(function(){
+	var log = "error";
+});
+</script>
+</head>
+
+<body>
+<label for="id_label_single">
+  Click this to highlight the single select element
+  
+  <select class="js-example-basic-single js-states form-control" id="id_label_single">
+	
+  </select>
+</label>
+</body>
+</html>

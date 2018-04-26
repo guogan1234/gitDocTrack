@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<title>WebSocket/SockJS Echo Sample (Adapted from Tomcat's echo sample)</title>  
+    <style type="text/css">  
+        #connect-container {  
+            float: left;  
+            width: 400px  
+        }  
+  
+        #connect-container div {  
+            padding: 5px;  
+        }  
+  
+        #console-container {  
+            float: left;  
+            margin-left: 15px;  
+            width: 400px;  
+        }  
+  
+        #console {  
+            border: 1px solid #CCCCCC;  
+            border-right-color: #999999;  
+            border-bottom-color: #999999;  
+            height: 170px;  
+            overflow-y: scroll;  
+            padding: 5px;  
+            width: 100%;  
+        }  
+  
+        #console p {  
+            padding: 0;  
+            margin: 0;  
+        }  
+    </style>  
+  
+    <!-- <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script> -->
+	<script src="lib/sockjs.js"></script>
+	<script src="lib/stomp.js"></script>
+  
+    <script type="text/javascript">
+		function btn_click(){
+			console.log('btn_click');
+			var socket = new SockJS("http://192.168.1.222:4060/portfolio");
+
+			/**
+			 * 建立成功的回调函数
+			 */
+			socket.onopen = function() {
+				console.log('open');
+			};
+
+			/**
+			 * 服务器有消息返回的回调函数
+			 */
+			socket.onmessage = function(e) {
+				console.log('message', e.data);
+			};
+
+			/**
+			 * websocket链接关闭的回调函数
+			 */
+			socket.onclose = function() {
+				console.log('close');
+			};
+
+			var stompClient = Stomp.over(socket);
+			stompClient.connect({}, function(frame) {
+				console.log("connect...");
+				stompClient.subscribe('/queue/getResponse/0',  function(data) { //订阅消息
+					console.log("recv data...");
+					console.log(data);
+				});
+			});
+			
+			stompClient.ws.onclose = function(){
+				console.log('gg close');
+			};
+		}
+        
+    </script>  
+</head>  
+<body>  
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websockets   
+    rely on Javascript being enabled. Please enable  
+    Javascript and reload this page!</h2></noscript>  
+<div>  
+    <input type="button" value="OK" onclick="btn_click()"/>
+</div>  
+  
+<a href="echoendpoint.jsp">echoendpoint test</a>  
+<a href="websocket2.jsp">echoendpoint test</a>  
+  
+</body>  
+</html>  

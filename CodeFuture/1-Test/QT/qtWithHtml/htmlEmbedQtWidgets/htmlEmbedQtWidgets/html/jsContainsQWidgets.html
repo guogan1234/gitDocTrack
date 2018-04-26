@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Bootstrap Demo Test</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="./test.js"></script>
+</head>
+
+<body>
+<div class="dropdown">
+    <button type="button" class="btn dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">主菜单
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+        <li role="presentation" class="dropdown-header">客流分析</li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" id="stationShare" onclick="reloadURL('/passengerFlow/stationContrast/')">车站分时客流对比</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" id="stationPredict" onclick="reloadURL('/passengerFlow/stationForecast/')">车站分时客流预测</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="reloadURL('/passengerFlow/ticketContrast/')">票卡分时对比</a>
+        </li>
+		<li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="reloadURL('/passengerFlow/ticketTotal/')">票卡累计对比</a>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation" class="dropdown-header">故障分析</li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#" onclick="reloadURL('/fault/typicalFault/')">典型故障分析</a>
+        </li>
+    </ul>
+</div>
+<p>以下是QT窗口插件</p>
+<object></object>
+</body>
+</html>

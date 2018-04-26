@@ -1,0 +1,4 @@
+引用QWebView失败，编译报错。貌似QWebView只能使用MSVC编译器编译的链接库，本项目用的MinGW编译器。
+在pro工程文件，强行显示引用QWebView所属的libQt5WebKitWidgetsd.a链接库，才能编译成功和正常显示。
+
+在pro工程文件，添加QT	+= webkitwidgets，即可引用成功。与以上猜测关联不大，主要看QWebView.h在哪个链接库中。

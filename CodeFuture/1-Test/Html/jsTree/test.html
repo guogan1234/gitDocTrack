@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jsTree test</title>
+  <!-- 2 load the theme CSS file -->
+  <link rel="stylesheet" href="./themes/default/style.min.css" />
+</head>
+<body>
+  <!-- 3 setup a container element -->
+  <div id="jstree">
+    <!-- in this example the tree is populated from inline HTML -->
+    <ul>
+      <li>Root node 1
+        <ul>
+          <li id="child_node_1">Child node 1</li>
+          <li><a href="#"  class="jstree-clicked">Child node 2</a></li>
+        </ul>
+      </li>
+      <li class="jstree-open">Root node 2
+	  <ul>
+		<li data-jstree='{"opened":true,"selected":true,"disabled":true}'>Child node 3</li>
+		<li>Child node 4</li>
+	  </ul>
+	  </li>
+	  <li data-jstree='{"opened":true,"selected":true,"disabled":true}'>Root node 3
+	  <ul>
+		<li>Child node 3_1</li>
+		<li>Child node 3_2</li>
+	  </ul>
+	  </li>
+    </ul>
+  </div>
+  <button>demo button</button>
+  <div id="tree">
+  </div>
+
+  <!-- 4 include the jQuery library -->
+  <script src="./jquery-2.1.1.min.js"></script>
+  <!-- 5 include the minified jstree source -->
+  <script src="./jstree.min.js"></script>
+  <script>
+
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    $('#jstree').jstree();
+    // 7 bind to events triggered on the tree
+    $('#jstree').on("changed.jstree", function (e, data) {
+      console.log(data.selected);
+	  alert("haha1");
+    });
+    // 8 interact with the tree - either way is OK
+    $('button').on('click', function () {
+      $('#jstree').jstree(true).select_node('child_node_1');
+      $('#jstree').jstree('select_node', 'child_node_1');
+      $.jstree.reference('#jstree').select_node('child_node_1');
+	  alert("haha2");
+    });
+	
+	$('#tree').jstree({
+    'core' : {
+        'data' : [
+            'Simple root node',
+            {
+                'id' : 'node_2',
+                'text' : 'Root node with options',
+                'state' : { 'opened' : true, 'selected' : true },
+                'children' : [ { 'text' : 'Child 1' ,'state':{'selected':true}}, 'Child 2']
+            }
+        ]
+    }
+});
+	//jQuery回调函数测试
+	// a sample logging function to be added to a callbacks list
+var foo = function( value ){
+    //console.log( 'foo:' + value );
+	alert('foo:'+value);
+}
+
+var callbacks = $.Callbacks();
+
+// add the function 'foo' to the list
+callbacks.add( foo );
+
+// fire the items on the list
+callbacks.fire( 'hello' ); // outputs: 'foo: hello'
+callbacks.fire( 'world '); // outputs: 'foo: world'
+
+// add another function to the list
+var bar = function( value ){
+    //console.log( 'bar:' + value );
+	alert('bar:'+value);
+} 
+
+// add this function to the list
+callbacks.add( bar );
+
+// fire the items on the list again
+callbacks.fire( 'hello again' );
+// outputs:
+// 'foo: hello again'
+// 'bar: hello again'
+  });
+  </script>
+</body>
+</html>
