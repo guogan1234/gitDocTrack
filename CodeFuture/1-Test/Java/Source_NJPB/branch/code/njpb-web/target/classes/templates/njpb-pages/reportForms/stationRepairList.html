@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+    <link th:href="@{/njpb/css/printShou.css}" rel="stylesheet" type="text/css"/>
+    <!--<link rel="stylesheet" th:href="@{/njpb/css/lrtk.css}">-->
+    <style>
+        .col-sm-6 {
+            padding: 5px 0px;
+        !important;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>站点维修列表</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+
+                        <div class="col-sm-10">
+                            <div class="row">
+
+                                <div class="col-sm-3">
+                                    <label  class="xmbh_top">所属公司</label> <select onchange="searchStation()"
+                                        class="form-control" id="workOrderCorp"
+                                        style="font-size: 12px; height: 25px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label  class="xmbh_top">所属站点</label>
+                                    <select
+                                            class="form-control" id="stationId"
+                                            style="font-size: 12px; height: 30px;">
+                                        <option></option>
+                                    </select>
+                                </div>
+
+
+                                <div class="col-sm-3">
+                                    <label  class="xmbh_top">设备类型</label> <select onchange="searchFaultType()"
+                                        class="form-control" id="workOrderEstateType"
+                                        style="font-size: 12px; height: 25px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+
+                                <div class="col-sm-3">
+                                    <label  class="xmbh_top">故障类型</label> <select
+                                        class="form-control" id="faultTypeId"
+                                        style="font-size: 12px; height: 25px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2" sec:authorize="hasAuthority('NJPB-WEB-WORKORDER')">
+                            <button class="btn-search" onclick="doSearch()">查询</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="row">
+
+                                <div class="col-sm-3">
+                                    <label  class="xmbh_top">报修人</label> <select
+                                        class="form-control" id="reportEmployee"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label class="xmbh_top">派单人</label> <select
+                                        class="form-control" id="assignEmployee"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label  class="xmbh_top">维修人</label> <select
+                                        class="form-control" id="repairEmployee"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label class="xmbh_top">审核人</label> <select
+                                        class="form-control" id="checkEmployee"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-10">
+                            <div class="row">
+
+                                <div class="col-sm-3">
+                                    <label for="dw" class="xmbh_top">工单状态</label> <select
+                                        class="form-control" id="statusId"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="beginTime" class="xmbh_top">开始时间</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="beginTime"
+                                                       type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                    class="input-group-addon"
+                                                    onclick="document.getElementById('beginTime').focus();"> <i
+                                                    class="fa fa-calendar bigger-110"></i>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <label for="endTime" class="xmbh_top">结束时间</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="endTime"
+                                                       type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                    class="input-group-addon"
+                                                    onclick="document.getElementById('endTime').focus();"> <i
+                                                    class="fa fa-calendar bigger-110"></i>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2" sec:authorize="hasAuthority('NJPB-WEB-WORKORDER')">
+                            <!--<button class="btn-search" onclick="doSearch()">查询</button>-->
+                        </div>
+
+                    </div>
+
+                    <div class="row" >
+                        <div class="col-xs-12">
+                            <div style="margin-top: 20px;" >
+                                <table id="workOrderPrint"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+
+                                        <th>所属公司</th>
+                                        <th>站点名称</th>
+                                        <th>站点编号</th>
+                                        <th>设备类型</th>
+                                        <th>故障类型</th>
+                                        <th>工单状态</th>
+                                        <th>维修人</th>
+                                        <th>工单总数</th>
+                                        <th class="txtCenter" width="20px">详情</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  <tfoot>
+                                  <tr>
+                                  <th id="sda" style="color: red;"></th>
+                                  <th  ></th>
+                                  <th  ></th>
+                                  <th  ></th>
+                                  <th  ></th>
+                                  <th  ></th>
+                                  <th  ></th>
+                                  <th  style="color: red;"></th>
+                                  <th ></th>
+                                  </tr>
+                                  </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div aria-hidden="true" aria-labelledby="detailModalLabel"
+                         class="modal fade media-preview" id="detailForm"
+                         role="dialog" tabindex="-1">
+                        <div class="modal-dialog" style="width: 90%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span><span
+                                            class="sr-only">关闭</span>
+                                    </button>
+                                    <h4 class="modal-title" id="detailModalLabel">Title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid" id="">
+
+                                        <div style="page-break-before: always" id="tttt2">
+                                            <fieldset class="fieldset">
+                                                <legend class="legend">基础数据</legend>
+                                                <div class="col-sm-12">
+                                                    <table id="workOrderDetail" style="width:100%"
+                                                           class="table table-striped table-bordered table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>工单编号</th>
+                                                            <th>站点名称</th>
+                                                            <th>站点编号</th>
+                                                            <th>设备类型</th>
+                                                            <th>设备名称</th>
+                                                            <th>故障类型</th>
+                                                            <th>工单状态</th>
+                                                            <th>更换配件一</th>
+                                                            <th>更换配件二</th>
+                                                            <th>更换配件三</th>
+                                                            <th>报修人</th>
+                                                            <th>报修时间</th>
+                                                            <th>故障描述</th>
+                                                            <th>派单人</th>
+                                                            <th>派单时间</th>
+                                                            <th>派单备注</th>
+                                                            <th>维修人</th>
+                                                            <th>维修时间</th>
+                                                            <th>维修备注</th>
+                                                            <th>审核人</th>
+                                                            <!--<th>审核时间</th>-->
+                                                            <th>审核备注</th>
+                                                        </tr>
+                                                        </thead>
+
+                                                    </table>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="modal-footer" style="padding-bottom: 0px;">
+
+                                        <!--<button class="btn btn-success" onclick="printOut();">打印</button>-->
+                                        <button class="btn btn-success" onclick="exportDetail();">导出</button>
+
+                                        <button class="btn btn-defual" onclick="detailCancel();">取消
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end widget content -->
+            </div>
+
+
+            <!-- end widget div -->
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/reportForms/stationRepairList.js}"></script>
+    <script th:src="@{/static/lib/ace/ace-elements.min.js}"></script>
+    <script th:src="@{/static/lib/ace/ace.min.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <!--<script sec:authorize="hasAuthority('NJPB-WEB-WORKORDER-EXPORT')"-->
+            <!--th:src="@{/njpb/js/publicConfig/report_export.js}"></script>-->
+
+    <script sec:authorize="hasAuthority('NJPB-WEB-WORKORDER-EXPORT')"
+            th:src="@{/njpb/js/publicConfig/bar_code_print.js}"></script>
+
+
+
+    <script th:src="@{/static/lib/jQuery/jquery.jqprint-0.3.js}"></script>
+    <!--<script type="text/javascript" th:src="@{/static/lib/big/jquery.imgbox.pack.js}"></script>-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#beginTime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#endTime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+
+    <!--<img src="/images/m01.jpg" onclick="this.width+=50;this.height+=50" onclick="javascript:window.open(this.src);" style="cursor:pointer;"/>-->
+    <!--<img src="/images/m02.jpg" onclick="this.style.zoom='2'" onclick="javascript:window.open(this.src);" style="cursor:pointer;"/>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/activity_head_view"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_mine_repairs_bike"/>
+
+            <include layout="@layout/linear_last_serving_msg"/>
+
+            <include layout="@layout/layout_order_msg"/>
+
+            <include layout="@layout/linear_repair_msg"/>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color"/>
+
+            <com.avantport.avp.njpb.view.SelectGirdView
+                android:id="@+id/check_parts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:columnWidth="5dp"
+                android:numColumns="4">
+
+            </com.avantport.avp.njpb.view.SelectGirdView>
+
+            <include layout="@layout/linear_report_pic"/>
+
+            <include layout="@layout/linear_repair_pic"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color"/>
+
+            <include layout="@layout/linear_change_parts"/>
+
+
+            <com.avantport.avp.njpb.view.CustomListview
+                android:id="@+id/list_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+            </com.avantport.avp.njpb.view.CustomListview>
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/layout_next_button"/>
+</LinearLayout>

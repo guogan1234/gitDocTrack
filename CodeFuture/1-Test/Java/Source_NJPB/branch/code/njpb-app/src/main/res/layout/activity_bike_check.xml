@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    tools:context="com.avantport.avp.njpb.ui.base.ReadPutInWork">
+
+    <include layout="@layout/activity_head_view"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="15dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所属公司："
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/company_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="点击选择公司"
+                    android:textColorHint="@color/text_hint_color"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/view_div_bg"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所属站点："
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/company_station"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:hint="选择站点"
+                    android:singleLine="true"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/check_qrcode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/red_qrcode"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/view_div_bg"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="录入数："
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/bike_count"
+                    android:hint="0"
+                    android:textColorHint="@color/text_hint_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/view_div_bg"/>
+
+            <TextView
+                android:textColor="@color/text_error"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:gravity="center_horizontal"
+                android:text="已提交的车辆禁止再次提交！"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.avantport.avp.njpb.view.CustomListview
+                android:id="@+id/list_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+            </com.avantport.avp.njpb.view.CustomListview>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/commit"
+        style="@style/button_commit_style"
+        android:text="提交"/>
+
+</LinearLayout>

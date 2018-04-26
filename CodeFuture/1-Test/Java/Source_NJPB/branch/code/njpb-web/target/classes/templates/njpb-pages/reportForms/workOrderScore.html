@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+    <style>
+        .col-sm-6 {
+            padding: 5px 0px;
+        !important;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>工分统计</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+
+                        <div class="col-sm-10">
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="" class="xmbh_top" id="chkCorp">所属公司</label> <select
+                                        class="form-control" id="selectCorp" onchange="chkUser()"
+                                        style="font-size: 12px; height: 25px;">
+                                    <option></option>
+                                </select>
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <label for="" class="xmbh_top">姓名</label>
+                                    <select
+                                            class="form-control" id="userName"
+
+                                            style="font-size: 12px; height: 25px;">
+                                        <option></option>
+                                    </select>
+                                </div>
+
+
+                                <!--<div class="col-sm-4">-->
+                                <!--<label for="" class="xmbh_top">站点</label> <select-->
+                                <!--class="form-control" id="stationId"-->
+
+                                <!--style="font-size: 12px; height: 25px;">-->
+                                <!--<option></option>-->
+                                <!--</select>-->
+                                <!--</div>-->
+
+                                <div class="col-sm-4">
+                                    <label for="beginTime" class="xmbh_top">开始时间</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="beginTime"
+                                                       type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                    class="input-group-addon"
+                                                    onclick="document.getElementById('beginTime').focus();"> <i
+                                                    class="fa fa-calendar bigger-110"></i>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="endtime" class="xmbh_top">结束时间</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="endtime"
+                                                       type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                    class="input-group-addon"
+                                                    onclick="document.getElementById('endtime').focus();"> <i
+                                                    class="fa fa-calendar bigger-110"></i>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2" sec:authorize="hasAuthority('NJPB-WEB-REPORT-STATIONEQUIPMENTFAULT')">
+                            <button class="btn-search" onclick="doSearch()">查询</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div style="margin-top: 20px;">
+                                <table id="workOrderScore-list"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="txtCenter" width="10px"><input type="checkbox"
+                                                                                  class="ace"/></th>
+                                        <th>工单编号</th>
+                                        <th>类别</th>
+                                        <th>设备名称</th>
+                                        <th>工分</th>
+                                        <th>所属公司</th>
+                                        <th>姓名</th>
+                                        <th>操作时间</th>
+                                        <th width="10px">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div aria-hidden="true" aria-labelledby="detailModalLabel"
+                         class="modal fade media-preview" id="detailFormScore"
+                         role="dialog" tabindex="-1">
+                        <div class="modal-dialog" style="width: 90%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span><span
+                                            class="sr-only">关闭</span>
+                                    </button>
+
+                                    <h4 class="modal-title" id="detailModalLabel">Title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid" id="workOrderStatisticsPrint">
+
+                                        <fieldset class="fieldset">
+                                            <legend class="legend">基础数据</legend>
+
+                                            <!--<div class="row form-row" id="sdfsd">-->
+                                            <div class="col-sm-6" id="asdfsdfas">
+                                                <div class="code_td">工单编号</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="serialNo"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="code_td">工单类型</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="reportType"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <!--</div>-->
+                                            <!--<div class="row form-row">-->
+                                            <div class="col-sm-6">
+                                                <div class="code_td">报修人</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="reportEmployee"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="code_td">报修时间</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="reportTime"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="code_td">工单状态</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="statusName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="code_td">故障描述</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="faultDescription"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="code_td">站点</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="stationName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="code_td">报修方式</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="workOrderReportWay"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="code_td">公司</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="corpName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkBikeFrameNo">
+                                                <div class="code_td">车架号</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="bikeFrameNo"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkAssignEmployeeUserName">
+                                                <div class="code_td">调度人</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="assignEmployeeUserName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6" id="chkAssignTime">
+                                                <div class="code_td">调度时间</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="assignTime"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6" id="chkAssignRemark">
+                                                <div class="code_td">派单备注</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="assignRemark"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkRepairEmployeeUserName">
+                                                <div class="code_td">维修人</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairEmployeeUserName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <!--</div>-->
+                                            <!--<div class="row form-row">-->
+                                            <div class="col-sm-6" id="chkRepairConfirmTime">
+                                                <div class="code_td">维修确认时间</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairConfirmTime"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkRepairStartTime">
+                                                <div class="code_td">维修开始时间</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairStartTime"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkRepairEndTime">
+                                                <div class="code_td">维修结束时间</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairEndTime"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkRepairRemark">
+                                                <div class="code_td">维修备注</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairRemark"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkMaintainRemark">
+                                                <div class="code_td">保养备注</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="maintainRemark"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6" id="chkLevel">
+                                                <div class="code_td">工单等级</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="level"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6" id="chkReponseOverTime">
+                                                <div class="code_td">响应超时</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="reponseOverTime"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkRepairOverTime">
+                                                <div class="code_td">维修超时</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairOverTime" disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6" id="chkBackRemark">
+                                                <div class="code_td">驳回备注</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="backRemark"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkEstateNo">
+                                                <div class="code_td">设备编号</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="estateNo"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkEstateName">
+                                                <div class="code_td">设备名称</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="estateName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkCategory">
+                                                <div class="code_td">设备类别</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="category"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6" id="chkEstateSn">
+                                                <div class="code_td">设备条码</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="estateSn"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkSupplierName">
+                                                <div class="code_td">供应商</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="supplierName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6" id="chkEstateTypeName">
+                                                <div class="code_td">设备类型名称</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="estateTypeName"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6" id="chkResponseTimeOutDate">
+                                                <div class="code_td">工单响应超时时间</div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="responseTimeOutDate"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6" id="chkRepairTimeOutDate">
+                                                <div class="code_td">工单维修超时时间
+                                                </div>
+                                                <div class="form_nr">
+                                                    <input type="text" id="repairTimeOutDate"
+                                                           disabled="disabled"
+                                                           class="form-control form-scts"/>
+                                                </div>
+                                            </div>
+
+
+                                            <!--<div class="col-sm-6" id="chkFixed">-->
+                                                <!--<div class="code_td">是否完成</div>-->
+                                                <!--<div class="form_nr">-->
+                                                    <!--<input type="text" id="fixed"-->
+                                                           <!--disabled="disabled"-->
+                                                           <!--class="form-control form-scts"/>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--</div>-->
+                                            <div class="row form-row"></div>
+
+                                        </fieldset>
+
+
+                                        <div style="page-break-before: always" id="tttt2">
+                                        <fieldset class="fieldset" id="reportList">
+                                            <legend class="legend">报修图片</legend>
+                                            <div class="row form-row" style="padding-bottom: 10px;">
+                                                <div class="col-sm-12">
+
+                                                    <div class="form_nr" style="width: 80.5%;margin-left:12.5%"
+                                                         id="reportPicture">
+                                                        <div class="row" id="imgReportList">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+                                        <fieldset class="fieldset" id="assignList">
+                                            <legend class="legend">派单图片</legend>
+                                            <div class="row form-row" style="padding-bottom: 10px;">
+                                                <div class="col-sm-12">
+                                                    <div class="form_nr" style="width: 80.5%;margin-left:12.5%"
+                                                         id="assignPicture">
+                                                        <div class="row" id="imgAssignList">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+                                        <fieldset class="fieldset" id="repairList">
+                                            <legend class="legend">维修图片</legend>
+                                            <div class="row form-row" style="padding-bottom: 10px;">
+                                                <div class="col-sm-12">
+                                                    <!--<div class="code_td" style="width: 13.7%;"></div>-->
+                                                    <div class="form_nr" style="width: 80.5%;margin-left:12.5%"
+                                                         id="repairPicture">
+                                                        <div class="row" id="imgRepairList">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+                                        <fieldset class="fieldset" id="maintainList">
+                                            <legend class="legend">保养图片</legend>
+                                            <div class="row form-row" style="padding-bottom: 10px;">
+                                                <div class="col-sm-12">
+                                                    <!--<div class="code_td" style="width: 13.7%;"></div>-->
+                                                    <div class="form_nr" style="width: 80.5%;margin-left:12.5%" id="maintainPicture">
+                                                        <div class="row" id="imgMaintainList">
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+
+                                        <fieldset class="fieldset">
+                                            <legend class="legend">历史记录</legend>
+                                            <div class="col-sm-12">
+                                                <table id="workOrderDetail" style="width:100%"
+                                                       class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <!--<th   id="one">-->
+                                                        <!--<input type="checkbox"-->
+                                                        <!--class="ace"/></th>-->
+                                                        <th>操作人</th>
+                                                        <th>工单操作</th>
+                                                        <th>操作备注</th>
+                                                        <th>上次操作时间</th>
+                                                        <th>用时</th>
+                                                        <th>工分</th>
+                                                        <th>增加/扣除工分</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="padding-bottom: 0px;">
+
+                                        <button class="btn btn-success" onclick="printOut();">打印</button>
+                                        <button class="btn btn-defual" onclick="detailCancel();">取消
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end widget content -->
+        </div>
+        <!-- end widget div -->
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/reportForms/workOrderScoreStatistics.js}"></script>
+    <script th:src="@{/static/lib/ace/ace-elements.min.js}"></script>
+    <script th:src="@{/static/lib/ace/ace.min.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <script
+            th:src="@{/static/lib/jQuery/jquery.jqprint-0.3.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-REPORT-WORKPOINTS-EXPORT')"
+            th:src="@{/njpb/js/publicConfig/report_export.js}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#beginTime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#endtime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+
+    <!--<script-->
+    <!--th:src="@{/static/lib/jQuery/jQuery-2.1.4.min.js}"></script>-->
+</div>
+</body>
+</html>

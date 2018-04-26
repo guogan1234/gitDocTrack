@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>注册新用户</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/AdminLTE.min.css"/>
+        <link rel="stylesheet" href="css/skins/skin-blue-light.min.css"/>
+<!--        <link href="plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />-->
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+        <!--[if lt IE 9]>
+          <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.js"></script>
+          <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="register-page" ng-app="registerApp" ng-controller="RegisterController">
+        <div class="register-box">
+            <div class="register-logo">
+                <a href="index2.html"><b>用户</b>注册</a>
+            </div>
+
+            <div class="register-box-body" ng-show="registerSuccess == false">
+                <p class="login-box-msg">注册新用户</p>
+                <form name="form">
+                    <div class="form-group has-feedback">
+                        <input type="text" name="username" class="form-control" placeholder="用户名" ng-model="user.username" required ng-model-options="{ debounce: 100 }"
+                               ui-validate-async="{alreadyExists: 'userDoesNotExist($modelValue)'}"/>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        <span ng-show='form.username.$error.alreadyExists'>用户名已被占用！</span>
+                        <span ng-show='form.username.$pending'>正在验证用户名......</span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="email" name="email" class="form-control" placeholder="邮箱" ng-model="user.email" required ng-model-options="{ debounce: 100 }"
+                               ui-validate="{blacklist: 'emailNotBlackListed($value)'}"
+                               ui-validate-async="{alreadyExists: 'emailDoesNotExist($modelValue)'}"/>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <span class="text-danger" ng-show='form.email.$error.blacklist'>该邮箱位于黑名单中！</span>
+                        <span class="text-danger" ng-show='form.email.$error.alreadyExists'>该邮箱已被占用！</span>
+                        <span class="text-danger" ng-show='form.email.$pending'>正在验证邮箱地址......</span>
+                        <span class="text-danger" ng-hide='form.email.$modelValue == "" || form.email.$valid || form.email.$error.alreadyExists'>邮箱格式无效！</span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" name="password" class="form-control" placeholder="密码" ng-model="user.password" required/>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" name="confirm_password" class="form-control" placeholder="确认密码" required ng-model="confirm_password"
+                               ui-validate=" '$value==user.password'" ui-validate-watch=" 'user.password' " />
+                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        <span class="text-danger" ng-show='form.confirm_password.$error.validator && user.password != "" && confirm_password != ""'>两次输入不匹配！</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">    
+                            <div class="checkbox icheck">
+                                <!--                                <label>
+                                                                    <input type="checkbox">同意并接受<a href="#">用户协议</a>
+                                                                </label>-->
+                            </div>                        
+                        </div><!-- /.col -->
+                        <div class="col-xs-4">
+                            <button class="btn btn-primary btn-block btn-flat" ng-disabled="!form.$valid" ng-click="register()">注册</button>
+                        </div><!-- /.col -->
+                    </div>
+                </form>        
+
+                <!--                <div class="social-auth-links text-center">
+                                    <p>- OR -</p>
+                                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
+                                    <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign up using Google+</a>
+                                </div>-->
+
+                已有账号？直接<a href="/login" class="text-center">登录</a>
+            </div><!-- /.form-box -->
+            <div class="register-box-body" ng-show="registerSuccess == true">
+                <p class="login-box-msg">您已成功注册，即刻前往<a href="login" class="text-center">登录</a></p>
+            </div>
+        </div><!-- /.register-box -->
+
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://cdn.bootcss.com/angular.js/1.4.2/angular.min.js"></script>
+        <script src="plugins/angular-ui-validate/validate.min.js" type="text/javascript"></script>
+        <script src="js/app.min.js"></script>
+
+        <!-- iCheck -->
+<!--        <script src="plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        <script>
+                        $(function () {
+                            $('input').iCheck({
+                                checkboxClass: 'icheckbox_square-blue',
+                                radioClass: 'iradio_square-blue',
+                                increaseArea: '20%' // optional
+                            });
+                        });
+        </script>-->
+        <script src="js/register.js" type="text/javascript"></script>
+    </body>
+</html>

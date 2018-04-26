@@ -1,0 +1,13 @@
+com\avp\mem\njpb\web\NjpbWebApplication.class
+com\avp\mem\njpb\web\resource\SystemController.class
+com\avp\mem\njpb\web\resource\ReportFormsController.class
+com\avp\mem\njpb\web\resource\ConsoleController.class
+com\avp\mem\njpb\web\resource\BasicDataController.class
+com\avp\mem\njpb\web\resource\StockController.class
+com\avp\mem\njpb\web\resource\WorkOrderController.class
+com\avp\mem\njpb\web\resource\MapController.class
+com\avp\mem\njpb\web\resource\EstateController.class
+com\avp\mem\njpb\web\config\SecurityConfig$1.class
+com\avp\mem\njpb\web\config\SecurityConfig.class
+com\avp\mem\njpb\web\config\MvcConfig.class
+com\avp\mem\njpb\web\handler\MyAccessDeniedHandler.class

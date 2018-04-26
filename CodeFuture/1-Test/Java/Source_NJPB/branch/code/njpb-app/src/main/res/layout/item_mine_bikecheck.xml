@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="15dp"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_checknum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5000"
+            android:textColor="@color/warn_text_color"
+            android:textSize="22dp"/>
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/item_checkadress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="盘点地址"
+            android:textColor="@color/warn_text_color"
+            android:textSize="20dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:textSize="20dp"
+        android:id="@+id/item_checktime"
+        android:text="2017-08-16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+
+</LinearLayout>

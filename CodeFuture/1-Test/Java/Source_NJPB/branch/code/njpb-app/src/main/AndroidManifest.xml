@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.avantport.avp.njpb"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- iBeancon功能所需权限 -->
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 个推3.0电子围栏功能所需权限 -->
+    <permission
+        android:name="getui.permission.GetuiService.${applicationId}"
+        android:protectionLevel="normal"/>
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="getui.permission.GetuiService.${applicationId}"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:name=".ui.base.NJPBApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/bike_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="ebn0eXsfI7B42fyCeC9FsqQUWH4OroPk"/>
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="${GETUI_APP_ID}"/>
+        <!-- android:value="${GETUI_APP_ID}" -->
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="${GETUI_APP_KEY}"/>
+        <!-- android:value="${GETUI_APP_KEY}" -->
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="${GETUI_APP_SECRET}"/>
+
+        <activity
+            android:name=".ui.base.MainActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".ui.base.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.work.BreakServingActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <!-- //百度定位 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+        </service>
+        <!-- 个推 -->
+        <service
+            android:name=".getui.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
+        <service android:name=".getui.NJPBIntentService"/>
+        <service android:name=".ui.mine.DownloadService"/>
+
+        <receiver android:name="com.igexin.sdk.PushReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="com.igexin.sdk.action.refreshls"/>
+                <!-- 以下三项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name="com.igexin.sdk.GActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <!--
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.service.message"/>
+            </intent-filter>
+        </service>
+        -->
+
+        <activity
+            android:name=".ui.work.KeepStationActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.StationServingActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.BikeServingActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:launchMode="singleTask">
+        </activity>
+
+        <!-- 图片选择器 -->
+        <activity android:name="com.yongchun.library.view.ImageSelectorActivity"/>
+        <activity android:name="com.yongchun.library.view.ImagePreviewActivity"/>
+        <activity android:name="com.yongchun.library.view.ImageCropActivity"/>
+        <activity
+            android:name=".ui.work.PutInWorkActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <activity
+            android:name=".ui.work.ChangeCodeActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.ChangePartsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.BikeCheckActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineNumCountActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineTakeOutActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineHaveActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineReturnActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineCountCheckActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.CheckApplyActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineRepairsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.MineKeepActivity">
+        </activity>
+        <activity android:name=".activity.MineServiceActivity">
+        </activity>
+        <activity
+            android:name=".activity.MineSendActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.MineNewsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.CheckDetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.CheckBackRemarkActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.order.OrderBikeDetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.order.OrderStationDetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.work.SearchActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <activity android:name=".ui.work.KeepByMyselfActivity">
+        </activity>
+        <activity
+            android:name=".ui.work.KeepBikeActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <activity
+            android:name=".ui.mine.UserInfoActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.AboutUsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.ChangePswActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.ChangeInfoActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.DetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.MineStationDetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.MineBikeDetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.order.OrderRemarkActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.order.OrderSendActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <activity
+            android:name=".ui.order.OrderSignActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.order.OrderCompleteActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.order.LocationActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.base.CleanLeakActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent">
+        </activity>
+        <activity
+            android:name=".ui.work.KeepBySelfActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.MineWorkScoreActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".ui.mine.WorkScoreDetailsActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".ui.order.OrderFinishActivity">
+        </activity>
+        <activity android:name=".ui.mine.NewsDetailsActivity">
+        </activity>
+        <activity android:name=".zxing.activity.CaptureActivity">
+        </activity>
+        <activity android:name=".ui.work.BreakDownCheckActivity">
+        </activity>
+        <activity android:name=".activity.MineBreakDownActivity">
+        </activity>
+    </application>
+
+</manifest>

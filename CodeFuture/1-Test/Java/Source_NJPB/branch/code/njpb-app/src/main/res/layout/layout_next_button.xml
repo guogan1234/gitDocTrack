@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/next_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_order_details">
+
+    <LinearLayout
+        android:id="@+id/linear_double_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/check_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_back_select"
+            android:text="退回"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/check_pass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_pass_select"
+            android:text="派单"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send_order_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_pass_select"
+        android:text="再次派单"
+        android:textColor="@color/head_title_color"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
+
+    <Button
+        android:id="@+id/order_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_pass_select"
+        android:text="工单审核"
+        android:textColor="@color/head_title_color"
+        android:textSize="20sp"
+        android:visibility="gone"
+        />
+
+
+    <Button
+        android:id="@+id/order_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_pass_select"
+        android:text="工单签到"
+        android:textColor="@color/head_title_color"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/linear_double_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+     <!--   <Button
+            android:id="@+id/order_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_back_select"
+            android:text="退回"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>-->
+
+        <Button
+            android:id="@+id/order_sure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_pass_select"
+            android:text="接单"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_double_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/order_leave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_back_select"
+            android:text="遗留"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/order_finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_pass_select"
+            android:text="完成"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear_double_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+       >
+
+        <Button
+            android:id="@+id/order_checkover"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_back_select"
+            android:text="结束报修"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+
+       <!-- <Button
+            android:id="@+id/order_checkagain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_pass_select"
+            android:text="重新报修"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>-->
+    </LinearLayout>
+</RelativeLayout>

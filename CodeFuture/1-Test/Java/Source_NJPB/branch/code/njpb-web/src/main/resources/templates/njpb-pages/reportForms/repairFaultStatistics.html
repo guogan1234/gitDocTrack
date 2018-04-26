@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+    <style>
+        .col-sm-6 {
+            padding: 5px 0px;
+        !important;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>维修汇总</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+
+                        <div class="col-sm-10">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <label  class="xmbh_top">工单类型</label> <select
+                                        class="form-control" id="workOrderType"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+
+                                </select>
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <label  class="xmbh_top">报修方式</label>
+                                    <select
+                                            class="form-control" id="reportWay"
+                                            style="font-size: 12px; height: 30px;">
+                                        <option></option>
+                                        <!--<option id='sel_reportWay' value='1'> 站点</option>-->
+                                        <!--<option id='sel_reportWay2' value='2'> 车辆</option>-->
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="beginTime" class="xmbh_top">开始时间</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="beginTime"
+                                                       type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                    class="input-group-addon"
+                                                    onclick="document.getElementById('beginTime').focus();"> <i
+                                                    class="fa fa-calendar bigger-110"></i>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2" sec:authorize="hasAuthority('NJPB-WEB-REPORT-STATIONEQUIPMENTFAULT')">
+                            <button class="btn-search" onclick="doRepairSearch()">查询</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-10">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <label for="endtime" class="xmbh_top">结束时间</label>
+                                    <div class="row">
+                                        <div class="col-xs-8 col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="endtime"
+                                                       type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                    class="input-group-addon"
+                                                    onclick="document.getElementById('endtime').focus();"> <i
+                                                    class="fa fa-calendar bigger-110"></i>
+													</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2" sec:authorize="hasAuthority('NJPB-WEB-REPORT-STATIONEQUIPMENTFAULT')">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div style="margin-top: 20px;">
+                                <table id="stationEstatesFault-list"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <!--<th class="txtCenter" width="10px"><input type="checkbox"-->
+                                        <th>公司</th>                                  <!--class="ace"/></th>-->
+                                        <th>工单类别</th>
+                                        <th>工单类型</th>
+                                        <th>故障数量</th>
+                                        <!--<th class="txtCenter" width="20px">明细</th>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                    <th id="sda" style="color: red;"></th>
+                                    <th ></th>
+                                    <th  ></th>
+                                    <th  style="color: red;"></th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end widget content -->
+        </div>
+        <!-- end widget div -->
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/reportForms/repairFaultStatistics.js}"></script>
+    <script th:src="@{/static/lib/ace/ace-elements.min.js}"></script>
+    <script th:src="@{/static/lib/ace/ace.min.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+//            $("#gdlx").select2();
+            $("#beginTime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#endtime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
+
+

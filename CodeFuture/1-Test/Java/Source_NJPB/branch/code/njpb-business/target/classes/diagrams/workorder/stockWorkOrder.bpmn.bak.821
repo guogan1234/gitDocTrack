@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.activiti.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath"
+             id="m1503045208701" name="" targetNamespace="http://www.activiti.org/test"
+             typeLanguage="http://www.w3.org/2001/XMLSchema">
+    <error id="ERR_1"/>
+    <process id="stockWorkOrder" isClosed="false" isExecutable="true" processType="None">
+        <startEvent id="start" name="StartEvent"/>
+        <endEvent id="end" name="EndEvent"/>
+        <userTask activiti:exclusive="true" id="userTask_Apply_check" name="申请审核">
+            <extensionElements>
+                <activiti:taskListener delegateExpression="${customCreateEventHandler}" event="create"/>
+            </extensionElements>
+        </userTask>
+        <userTask activiti:exclusive="true" id="userTask_Myself_check" name="个人重新查看">
+            <extensionElements>
+                <activiti:taskListener delegateExpression="${customCreateEventHandler}" event="create"/>
+            </extensionElements>
+        </userTask>
+        <exclusiveGateway gatewayDirection="Unspecified" id="exclusivegateway_applyCheck" name="ApplyExclusiveGateway"/>
+        <exclusiveGateway gatewayDirection="Unspecified" id="exclusivegateway_myselfCheck"
+                          name="MyselfExclusiveGateway"/>
+
+        <sequenceFlow id="flow_apply_stockWorOrder" sourceRef="start" targetRef="userTask_Apply_check"/>
+        <sequenceFlow id="flow_check_gateway1" sourceRef="userTask_Apply_check"
+                      targetRef="exclusivegateway_applyCheck"/>
+        <sequenceFlow id="flow_apply_agree" name="申请审核同意" sourceRef="exclusivegateway_applyCheck" targetRef="end">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${stockKeeperAgree}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_report_reject" name="报修审核不同意" sourceRef="exclusivegateway_applyCheck"
+                      targetRef="userTask_Myself_check">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!stockKeeperAgree}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_selfCheck_gateway2" sourceRef="userTask_Myself_check"
+                      targetRef="exclusivegateway_myselfCheck"/>
+        <sequenceFlow id="flow_reApply" name="重新申请" sourceRef="exclusivegateway_myselfCheck"
+                      targetRef="userTask_Apply_check">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${applierAgree}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_endApply" name="取消" sourceRef="exclusivegateway_myselfCheck" targetRef="end">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!applierAgree}]]></conditionExpression>
+        </sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram
+            documentation="background=#FFFFFF;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0"
+            id="Diagram-_1" name="New Diagram">
+        <bpmndi:BPMNPlane bpmnElement="stockWorkOrder">
+            <bpmndi:BPMNShape bpmnElement="start" id="Shape-start">
+                <omgdc:Bounds height="32.0" width="32.0" x="395.0" y="0.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="end" id="Shape-end">
+                <omgdc:Bounds height="32.0" width="32.0" x="400.0" y="635.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="userTask_Apply_check" id="Shape-userTask_Apply_check">
+                <omgdc:Bounds height="55.0" width="85.0" x="370.0" y="110.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="exclusivegateway_applyCheck" id="Shape-exclusivegateway_applyCheck"
+                              isMarkerVisible="false">
+                <omgdc:Bounds height="32.0" width="32.0" x="400.0" y="235.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="userTask_Myself_check" id="Shape-userTask_Myself_check">
+                <omgdc:Bounds height="55.0" width="85.0" x="375.0" y="350.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="exclusivegateway_myselfCheck" id="Shape-exclusivegateway_myselfCheck"
+                              isMarkerVisible="false">
+                <omgdc:Bounds height="32.0" width="32.0" x="400.0" y="510.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="flow_check_gateway1" id="BPMNEdge_flow_check_gateway1"
+                             sourceElement="userTask_Apply_check" targetElement="exclusivegateway_applyCheck">
+                <omgdi:waypoint x="415.0" y="165.0"/>
+                <omgdi:waypoint x="415.0" y="180.0"/>
+                <omgdi:waypoint x="415.0" y="236.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_reApply" id="BPMNEdge_flow_reApply"
+                             sourceElement="exclusivegateway_myselfCheck" targetElement="userTask_Apply_check">
+                <omgdi:waypoint x="400.0" y="526.0"/>
+                <omgdi:waypoint x="295.0" y="335.0"/>
+                <omgdi:waypoint x="370.0" y="137.5"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_endApply" id="BPMNEdge_flow_endApply"
+                             sourceElement="exclusivegateway_myselfCheck" targetElement="end">
+                <omgdi:waypoint x="415.0" y="541.0"/>
+                <omgdi:waypoint x="415.0" y="550.0"/>
+                <omgdi:waypoint x="415.0" y="635.0312805773287"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_selfCheck_gateway2" id="BPMNEdge_flow_selfCheck_gateway2"
+                             sourceElement="userTask_Myself_check" targetElement="exclusivegateway_myselfCheck">
+                <omgdi:waypoint x="416.0" y="405.0"/>
+                <omgdi:waypoint x="416.0" y="510.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_apply_stockWorOrder" id="BPMNEdge_flow_apply_stockWorOrder"
+                             sourceElement="start" targetElement="userTask_Apply_check">
+                <omgdi:waypoint x="411.0" y="32.0"/>
+                <omgdi:waypoint x="411.0" y="110.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_apply_agree" id="BPMNEdge_flow_apply_agree"
+                             sourceElement="exclusivegateway_applyCheck" targetElement="end">
+                <omgdi:waypoint x="432.0" y="251.0"/>
+                <omgdi:waypoint x="550.0" y="270.0"/>
+                <omgdi:waypoint x="432.0" y="651.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_report_reject" id="BPMNEdge_flow_report_reject"
+                             sourceElement="exclusivegateway_applyCheck" targetElement="userTask_Myself_check">
+                <omgdi:waypoint x="416.0" y="267.0"/>
+                <omgdi:waypoint x="416.0" y="350.0"/>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

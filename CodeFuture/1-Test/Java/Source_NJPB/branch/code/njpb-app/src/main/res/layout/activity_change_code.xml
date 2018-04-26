@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.avantport.avp.njpb.ui.work.ChangeCodeActivity">
+
+    <include layout="@layout/activity_head_view"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <include layout="@layout/layout_repairs_form"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="如旧条码无法扫描，请选择设备！"
+            android:textColor="#9c9c9c"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="旧条码"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/old_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:padding="8dp"
+                android:gravity="center"
+                android:hint="点击扫入旧条码"
+                android:textColorHint="@color/view_div_bg"
+                android:background="@drawable/btn_code_select"
+                android:singleLine="true"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新条码"
+                android:textSize="22sp"/>
+
+            <TextView
+
+                android:id="@+id/new_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="8dp"
+                android:gravity="center"
+                android:layout_marginRight="20dp"
+                android:hint="点击扫入新条码"
+                android:textColorHint="@color/view_div_bg"
+                android:background="@drawable/btn_code_select"
+                android:singleLine="true"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        style="@style/button_commit_style"
+        android:text="提交"
+        />
+
+</LinearLayout>

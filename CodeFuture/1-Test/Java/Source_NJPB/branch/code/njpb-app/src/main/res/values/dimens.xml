@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fragment_head_heigh">48dp</dimen>
+    <dimen name="order_img_pad">6dp</dimen>
+    <dimen name="order_head_marg">10dp</dimen>
+    <dimen name="head_title_size">22sp</dimen>
+    <dimen name="order_btn_textsize">20sp</dimen>
+    <dimen name="main_btn_width">50dp</dimen>
+    <dimen name="main_btn_height">30dp</dimen>
+    <dimen name="main_btn_index">20dp</dimen>
+
+</resources>

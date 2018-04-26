@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${njpb_title}"></title>
+<script th:src="@{/static/lib/common-external.js}"></script>
+<link rel="stylesheet" th:href="@{/njpb/css/menu_9.css}">
+</head>
+<body>
+	<section id="widget-grid" class="" layout:fragment="content">
+		<!--<div class="row">-->
+		<div class="box-header" th:include="layout/alertMsg :: msg"
+			style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+				data-widget-editbutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+					<h2>系统首页</h2>
+				</header>
+
+				<!-- widget div-->
+				<div>
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox modal fade media-preview"
+						id="myModal"></div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						<div class="row" style="margin-bottom: 20px">
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-ESTATE-STATION')">
+								<a th:href="@{/estateManage/stations}" title="站点管理">
+									<div class="menu_one" style="background: #0769ad">站点管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT')">
+								<a th:href="@{/estateManage/estates}" title="设备管理">
+									<div class="menu_one" style="background: #6f5499">设备管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-ESTATE-BARCODE')">
+								<a th:href="@{/estateManage/barCodes}" title="条码管理">
+									<div class="menu_one" style="background: #eb8206">条码管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER')">
+								<a th:href="@{/basicDataManage/supplier/}" title="供应商管理">
+									<div class="menu_one" style="background: #4caf50">供应商管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-BASIC-ESTATETYPE')">
+								<a th:href="@{/basicDataManage/estateType/}" title="设备类型">
+									<div class="menu_one" style="background: #c3522f">设备类型</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-BASIC-ESTATETYPE')">
+								<a th:href="@{/basicDataManage/moduleType/}" title="部件类型">
+									<div class="menu_one" style="background: #563d7c">部件类型</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-USER')">
+								<a th:href="@{/user/}" title="用户管理">
+									<div class="menu_one" style="background: #195d9a">用户管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-ROLE')">
+								<a th:href="@{/role/}" title="角色管理">
+									<div class="menu_one" style="background: #f0db4f">角色管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-STOCK')">
+								<a th:href="@{/stock/inStock/}" title="出入库管理" >
+									<div class="menu_one" style="background: #1abc9c">入库管理</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-STOCK-INOUT')">
+								<a  th:href="@{/stock/stockDetails/}" title="出入库明细">
+									<div class="menu_one" style="background: #f43c12">出入库明细</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-ROLE')">
+								<a th:href="@{/workOrder/}" title="工单查看">
+									<div class="menu_one" style="background: #cf4646">工单查看</div>
+								</a>
+							</div>
+							<div class="col-sm-6 col-md-3 col-lg-3 " sec:authorize="hasAuthority('NJPB-WEB-MAP')">
+								<a th:href="@{/map/}" title="地图">
+									<div class="menu_one" style="background: #3498db">地图</div>
+								</a>
+							</div>
+
+
+
+						</div>
+
+					</div>
+					<!-- end widget content -->
+				</div>
+				<!-- end widget div -->
+			</div>
+		</article>
+	</section>
+
+	<div layout:fragment="scripts">
+		<script th:src="@{/static/lib/plugin-widget.js}"></script>
+		<script th:src="@{/static/lib/wire-util.js}"></script>
+		<script th:src="@{/static/lib/layer/layer.js}"></script>
+
+		<script
+			th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+		<script
+			th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+		<script
+			th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+		<script
+			th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+		<script
+			th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+	</div>
+</body>
+</html>

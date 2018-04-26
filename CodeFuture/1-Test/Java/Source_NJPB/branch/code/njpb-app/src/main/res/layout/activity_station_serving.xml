@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.avantport.avp.njpb.ui.work.StationServingActivity">
+
+    <include layout="@layout/activity_head_view"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <include layout="@layout/layout_repairs_form"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="派单人员:"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/send_people"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:background="@null"
+                    android:hint="点击选择派单人员"
+                    android:singleLine="true"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/view_div_bg"/>
+
+            <LinearLayout
+                android:id="@+id/layout_stationParts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="请勾选损坏部位"
+                    android:textColor="@color/warn_text_color"
+                    android:textSize="20sp"/>
+
+                <!--添加部件选项-->
+                <com.avantport.avp.njpb.view.SelectGirdView
+                    android:id="@+id/station_parts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="3">
+
+                </com.avantport.avp.njpb.view.SelectGirdView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="上传图片（最多5张）："
+                android:textColor="@color/warn_text_color"
+                android:textSize="22sp"/>
+            <!--放置图片-->
+
+            <com.avantport.avp.njpb.view.SelectGirdView
+                android:id="@+id/grid_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:columnWidth="2dp"
+                android:numColumns="3"
+                android:verticalSpacing="5dp">
+
+            </com.avantport.avp.njpb.view.SelectGirdView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="故障信息描述："
+                android:textColor="@color/warn_text_color"
+                android:textSize="22sp"/>
+            <!--描述-->
+            <EditText
+                android:id="@+id/break_describe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:hint="请在此输入描述信息"
+                android:imeOptions="actionNone"
+                android:inputType="text"
+                android:textColorHint="#c7c6c6"
+                android:textCursorDrawable="@null"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/finish"
+        style="@style/button_commit_style"
+        android:text="提交"
+        />
+
+</LinearLayout>

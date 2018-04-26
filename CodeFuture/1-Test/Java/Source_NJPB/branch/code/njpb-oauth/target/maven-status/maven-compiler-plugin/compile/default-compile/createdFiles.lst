@@ -1,0 +1,13 @@
+com\avp\mem\njpb\oauth\config\OAuth2AuthorizationConfig.class
+com\avp\mem\njpb\oauth\entity\SysRole.class
+com\avp\mem\njpb\oauth\OAuthApplication.class
+com\avp\mem\njpb\oauth\entity\SysUser.class
+com\avp\mem\njpb\oauth\repository\SysUserRepository.class
+com\avp\mem\njpb\oauth\entity\SysResource.class
+com\avp\mem\njpb\oauth\web\CorsFilter.class
+com\avp\mem\njpb\oauth\config\MvcConfig.class
+com\avp\mem\njpb\oauth\repository\eventHandler\SysUserEventHandler.class
+com\avp\mem\njpb\oauth\service\AuthUserDetailsService.class
+com\avp\mem\njpb\oauth\web\UserInfoController.class
+com\avp\mem\njpb\oauth\entity\OauthClientDetails.class
+com\avp\mem\njpb\oauth\config\SecurityConfig.class

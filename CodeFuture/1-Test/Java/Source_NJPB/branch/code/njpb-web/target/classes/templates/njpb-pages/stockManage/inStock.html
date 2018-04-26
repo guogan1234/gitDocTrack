@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>库存管理</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="form-field-select-3" class="xmbh_top" id="cheCorp">公司</label>
+                                <select class="form-control" id="selectCorp"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="form-field-select-3" class="xmbh_top">类别</label>
+
+                                <select class="form-control" id="category" onchange="selectCategory()"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option  ></option>
+                                    <!--<option   th:value="1">站点</option>-->
+                                    <!--<option   th:value="2">车辆</option>-->
+                                </select>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <label for="form-field-select-3" class="xmbh_top">配件类型</label>
+                                <select class="form-control" id="estateTypeId"
+                                        style="font-size: 12px; height: 30px;">
+                                    <option></option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-2"
+                                 sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')">
+                                <button class="btn-search" style="margin-top: 35px; height: 30px"
+                                        onclick="search()">查询
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div style="margin-top: 20px;">
+                                <table id="inStock-list"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="txtCenter" width="20px"><input type="checkbox"
+                                                                                  class="ace"/></th>
+                                        <th>类别</th>
+                                        <th>配件类型</th>
+                                        <th>数量</th>
+                                        <th>所属公司</th>
+                                        <th>操作人</th>
+                                        <th>操作时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- 库存入库 -->
+                                <div aria-hidden="true" aria-labelledby="inStock"
+                                     class="modal fade media-preview" id="inStockForm" role="dialog"
+                                     tabindex="-1">
+                                    <div class="modal-dialog" style="width: 80%;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button class="close" data-dismiss="modal" type="button">
+                                                    <span aria-hidden="true">&times;</span><span
+                                                        class="sr-only">关闭</span>
+                                                </button>
+                                                <h4 class="modal-title" id="inStock">Title</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <fieldset class="fieldset">
+                                                            <legend class="legend">入库数据</legend>
+                                                            <div class="row form-row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="code_td">配件类型</div>
+                                                                    <div class="form_nr" id="chkSelectModule">
+                                                                        <select id="selectModule"
+                                                                                style="font-size: 12px; height: 25px; width: 100%">
+                                                                            <option></option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="code_td">配件数量</div>
+                                                                    <div class="form_nr" id="chkModuleCount">
+                                                                        <input class="form-control" id="moduleCount" onblur="checkModuleCount()"
+                                                                               type="number"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-row" style="margin-bottom: 10px">
+                                                                <div class="col-sm-6">
+                                                                    <div class="code_td">配件类别</div>
+                                                                    <div class="form_nr" id="chkModuleCategory">
+                                                                        <select class="form-control" id="moduleCategory"
+                                                                                style="font-size: 12px; height: 30px;width: 100%">
+                                                                            <option></option>
+                                                                            <!--<option   th:value="1">站点</option>-->
+                                                                            <!--<option   th:value="2">车辆</option>-->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <div class="code_td">所属公司</div>
+                                                                    <div class="form_nr" id==chkStockCorp>
+                                                                        <select id="stockCorp"
+                                                                                style="font-size: 12px; height: 25px; width: 100%">
+                                                                            <option></option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="modal-footer" style="padding-bottom: 0px;">
+                                                        <button class="btn btn-primary" onclick="inStockSave();">保存</button>
+                                                        <button class="btn btn-default" onclick="inStockCancel();">取消
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- end widget content -->
+                </div>
+                <!-- end widget div -->
+            </div>
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/stockManage/inStock.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-STOCK-IN-EXPORT')"
+            th:src="@{/njpb/js/publicConfig/new_button.js}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+</div>
+</body>
+</html>

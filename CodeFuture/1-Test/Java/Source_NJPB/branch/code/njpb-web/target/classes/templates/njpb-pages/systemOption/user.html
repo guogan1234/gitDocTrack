@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet"
+          th:href="@{/static/lib/jstree-3.2.1/dist/themes/default/tree-style.min.css}"/>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+
+
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>用户列表</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <!--<div class="treeBtns" style="padding-bottom: 10px;"></div>-->
+                            <!-- <input type="text" id="txt_search" value="" class="input" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;" /> -->
+                            <div id="user-tree" style="overflow-x: scroll;overflow-y: scroll; height: 500px"
+                                 class="tree-container"></div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div style="margin-top: 20px;">
+                                <table id="user-list"
+                                       class="table table-striped table-bordered table-hover" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th class="txtCenter" width="20"><input type="checkbox" class="ace"></th>
+                                        <th>账号</th>
+                                        <th>姓名</th>
+                                        <th>邮箱</th>
+                                        <th>手机号</th>
+                                        <th>有效期</th>
+                                        <th width="10">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 新建 -->
+                    <div aria-hidden="true" aria-labelledby="mygdlxModalLabel"
+                         class="modal fade media-preview" id="userForm" role="dialog"
+                         tabindex="-1">
+                        <div class="modal-dialog" style="width: 70%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span><span
+                                            class="sr-only">关闭</span>
+                                    </button>
+                                    <h4 class="modal-title" id="mygdlxModalLabel">Title</h4>
+                                </div>
+
+                                <div class="box-header" th:include="layout/alertMsg :: msg"
+                                     style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <fieldset class="fieldset">
+                                                <legend class="legend">基础信息</legend>
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-5" id="checkUser">
+
+                                                        <label class="col-md-4 textRight"
+                                                               for="userAccount">账号</label>
+                                                        <input onblur="checkUserAccount()" placeholder="必填"
+                                                               class="form-control line-cols-2"
+                                                               id="userAccount"
+                                                               maxlength="40" name="userAccount"
+                                                               type="text"/>
+
+                                                    </div>
+
+                                                    <div class="form-group col-md-2">
+																		<span class="form-group input-icon"
+                                                                              style="display: block">
+																			<span id="right"
+                                                                                  class="ace-icon glyphicon glyphicon-ok"
+                                                                                  style="color:green"></span>
+																			<span id="error"
+                                                                                  class="ace-icon glyphicon glyphicon-remove"
+                                                                                  style="color:red"></span>
+																		</span>
+                                                    </div>
+                                                    <div class="form-group col-md-5" id="chkUserName">
+                                                        <label class="col-md-4 textRight"
+                                                               for="userName">姓名</label> <input
+                                                            class="form-control line-cols-2" id="userName"
+                                                            placeholder="必填"
+                                                            maxlength="40" name="userName"
+                                                            type="text"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-5" id="chkUserEmail">
+                                                        <label class="col-md-4 textRight"
+                                                               for="userEmail">邮箱
+                                                        </label> <input class="form-control line-cols-2"
+                                                                        id="userEmail" maxlength="40"
+                                                                        name="userEmail" type="text"/>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                    </div>
+                                                    <div class="form-group col-md-5" id="chkUserPhone">
+                                                        <label class="col-md-4 textRight"
+                                                               for="userPhone">手机号 </label> <input
+                                                            class="form-control line-cols-2" id="userPhone"
+                                                            maxlength="40" name="userPhone"
+                                                            type="text"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-5" id="chkSelectRole">
+                                                        <label class="col-md-4 textRight" for="selectRole">角色</label>
+                                                        <select class="form-control" id="selectRole" multiple
+
+                                                                style="width: 60%;">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-md-2">
+                                                    </div>
+
+                                                    <div class="form-group col-md-5" id="chkValidityTime" >
+                                                        <label for="validityTime" class="col-md-4 textRight">有效期至</label>
+
+                                                        <div class="input-group">
+                                                            <!--<input size="16" type="text" value="" readonly>-->
+                                                            <input class="form-control datepicker"
+                                                                   id="validityTime"
+                                                                   type="text"
+                                                                   data-date-format="yyyy/mm/dd"/>
+                                                            <span
+                                                                    class="input-group-addon"
+                                                                    onclick="document.getElementById('validityTime').focus();">
+                                                            <i class="fa fa-calendar bigger-110"></i>
+															</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+
+                                                    <div class="form-group col-md-5" id="checkSelectCorp">
+                                                        <label class="col-md-4 textRight" for="selectCorp">公司
+                                                        </label>
+                                                        <select class="form-control" id="selectCorp"
+                                                                style="width: 60%;">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                    </div>
+                                                    <div class="form-group col-md-5">
+                                                        <label class="col-md-4 textRight"
+                                                               for="userPhone">默认密码 </label>
+                                                        <input
+                                                                class="form-control line-cols-2" id="initialPassword" readonly
+                                                                maxlength="40" name="userPhone"
+                                                                type="text"/>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer"
+                                     sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-USER-NEW')">
+                                    <button class="btn btn-primary"
+                                            onclick="save();">保存
+                                    </button>
+                                    <button class="btn btn-default"
+                                            onclick="cancel();">取消
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/njpb/js/systemOption/user.js}"></script>
+    <script th:src="@{/static/lib/jstree-3.2.1/dist/jstree.min.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-USER-NEW')"
+            th:src="@{/njpb/js/publicConfig/new_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-USER-DELETE')"
+            th:src="@{/njpb/js/publicConfig/delete_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-SYSTEM-USER-RESET')"
+            th:src="@{/njpb/js/publicConfig/user_reset_password.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#validityTime").datepicker({
+                autoclose: true,
+                todayHighlight: true,
+
+            });
+
+//            $("#selectRole").select2("val", "");
+        });
+    </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>供应商列表</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div style="margin-top: 20px;">
+                                <table id="supplier-list"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="txtCenter" width ="20px"><input type="checkbox"
+                                                                                 class="ace" /></th>
+                                        <!--<th>编号</th>-->
+                                        <th>供应商名称</th>
+                                        <!--<th>联系人</th>-->
+                                        <!--<th>联系电话</th>-->
+                                        <th>地址</th>
+                                        <th>联系电话</th>
+                                        <!--<th>备注</th>-->
+                                        <th class="txtCenter" width ="20">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 新建-->
+                <div aria-hidden="true" aria-labelledby="myModalLabel"
+                     class="modal fade media-preview" id="addSupplierFrom"
+                     role="dialog" tabindex="-1">
+                    <div class="modal-dialog" style="width: 70%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true">&times;</span><span
+                                        class="sr-only">关闭</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Title</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="widget-body no-padding">
+                                        <div class="row">
+                                            <fieldset class="fieldset">
+                                                <legend class="legend">基础信息</legend>
+                                                <div class="col-md-12">
+
+                                                    <div class="form-group col-md-6">
+                                                        <div class="code_td">名称</div>
+                                                        <div class="form_nr"  id="chkSupplierName">
+                                                            <input onblur="supplierNameCheck()" class="form-control" id="supplierName"
+                                                                   maxlength="40" name="supplierName" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="chkPlace">
+                                                        <div class="code_td">地址</div>
+                                                        <div class="form_nr">
+                                                            <input
+                                                                    class="form-control" id="place"
+                                                                    maxlength="40" name="place" type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6" id="chkPhone">
+                                                        <div class="code_td">联系电话</div>
+                                                        <div class="form_nr">
+                                                            <input class="form-control " id="phone"
+                                                                   maxlength="40" name="phone" type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="padding-bottom: 0px;" sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER')">
+                                    <button class="btn btn-primary" onclick="save();">保存</button>
+                                    <button class="btn btn-defual" onclick="cancel();">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/njpb/js/basicDataManage/supplier.js?v=17740}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <script sec:authorize="hasAuthority('PCB_BASE_EQUIPMENT_SUPPLIER_IMPORT')"   th:src="@{/njpb/js/jcsjgl/gys_list_pldr.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER-NEW')"  th:src="@{/njpb/js/publicConfig/new_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER-DELETE')"  th:src="@{/njpb/js/publicConfig/delete_button.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#s_bh").select2();
+            $("#s_gysmc").select2();
+            $("#s_sx").select2();
+            $("#gysms").select2();
+            $("#id-date-picker-1").datepicker({
+                autoclose : true,
+                todayHighlight : true
+            });
+            $("#id-date-picker-2").datepicker({
+                autoclose : true,
+                todayHighlight : true
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_div_bg"
+        android:layout_marginBottom="1dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_head_heigh"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/button_order"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="@dimen/main_btn_width"
+                android:layout_height="@dimen/main_btn_height">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/order_pic"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/order_count"
+                    android:layout_width="@dimen/main_btn_index"
+                    android:layout_height="@dimen/main_btn_index"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/button_count"
+                    android:gravity="center"
+                    android:text="0"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@drawable/first_textcolor"
+                android:text="@string/main_index_btn_one"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_work"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/main_btn_width"
+                android:layout_height="@dimen/main_btn_height"
+                android:src="@drawable/work_pic"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@drawable/first_textcolor"
+                android:text="@string/main_index_btn_two"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="@dimen/main_btn_width"
+                android:layout_height="@dimen/main_btn_height"
+                android:src="@drawable/mine_pic"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@drawable/first_textcolor"
+                android:text="@string/main_index_btn_three"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,414 @@
+@CHARSET "UTF-8";
+
+#loginDiv {
+	float: none;
+	text-align: center;
+	margin: 7% auto;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.userInfoDropDown {
+	left: inherit;
+	right: 30px;
+}
+
+#logo {
+	margin-top: 11px !important;
+}
+
+.align-left {
+	text-align: left;
+}
+
+#extr-page #header {
+	background: rgba(11, 12, 30, 0) !important;
+	overflow: initial;
+
+}
+
+.btn-header.pull-right {
+	margin-left: 0px;
+}
+
+.smart-style-3 #ribbon {
+	background: #f5f5f5;
+}
+
+/*
+    widget external css
+*/
+.stat-container {
+	width: 260px;
+	position: absolute;
+	float: left;
+	margin-left: 25px;
+	overflow: auto;
+}
+
+.map-container {
+	margin-left: 300px;
+	margin-right: 10px;
+	position: relative;
+	border-color: #307ecc;
+	padding: 0;
+	box-shadow: none;
+	border: 1px solid #CCC;
+}
+
+.widget-box.transparent {
+	border-width: 0;
+}
+
+.fixed-height {
+	height: 300px;
+}
+
+.widget-box {
+	padding: 0;
+	box-shadow: none;
+	margin: 3px 0;
+	border: 1px solid #428bca;
+}
+
+.widget-box.transparent>.widget-header {
+	background: none;
+	border-width: 0;
+	border-bottom: 1px solid #DCE8F1;
+	color: #444;
+	padding-left: 3px;
+}
+
+.widget-header {
+	box-sizing: content-box;
+	position: relative;
+	min-height: 38px;
+	top: -7px;
+}
+
+.widget-header>.widget-title {
+	line-height: 36px;
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+h5.bigger {
+	font-size: 16px;
+}
+
+.lighter {
+	font-weight: lighter;
+}
+
+h5 {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.widget-box.transparent>.widget-body {
+	border-width: 0;
+	background-color: transparent;
+}
+
+.profile-user-info-striped {
+	border: 1px solid #DCEBF7;
+}
+
+.profile-user-info {
+	display: table;
+	width: calc(100% - 24px);
+	margin: 0 auto;
+}
+
+.profile-info-row {
+	display: table-row;
+}
+
+.profile-info-row:first-child .profile-info-name {
+	border-top: none;
+}
+
+.custom-index .profile-info-name {
+	width: 60%;
+}
+
+.profile-user-info-striped .profile-info-name {
+	color: #444;
+	background-color: #EDF3F4;
+}
+
+.stat-left-width {
+	width: 33%;
+}
+
+.stat-left-width-38 {
+	width: 38%;
+}
+
+.profile-info-name {
+	text-align: center;
+	padding: 6px 10px 6px 4px;
+	font-weight: normal;
+	display: table-cell;
+	vertical-align: middle;
+	border-bottom: 1px solid #DCEBF7;
+}
+
+.profile-info-row:first-child .profile-info-value {
+	border-top: none;
+}
+
+.custom-index .profile-info-value {
+	text-align: right;
+	width: 40%;
+}
+
+.alert-count .profile-info-value {
+	text-align: right;
+}
+
+.profile-user-info-striped .profile-info-value {
+	padding-left: 12px;
+}
+
+.profile-info-value {
+	display: table-cell;
+	padding: 6px 4px 6px 6px;
+	border-bottom: 1px solid #DCEBF7;
+}
+
+.widget-footer-custom {
+	margin-top: 0;
+	color: #666;
+	padding: 6px !important;
+	border-top-color: #e4e9ee;
+	box-shadow: none;
+	background-color: #EEE !important;
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+}
+
+.jarviswidget>div.widget-footer-custom {
+	background-color: #EEE !important;
+}
+
+.map-search input[type="search"] {
+	padding: 1px;
+	font-size: 12px;
+	border-radius: 0 !important;
+	color: #858585;
+	background-color: #fff;
+	border: 1px solid #d5d5d5;
+	font-family: inherit;
+	box-shadow: none !important;
+	transition-duration: .1s;
+}
+
+/*
+overwrite smartadmin
+*/
+.wid-header-hg {
+	height: 42px !important;
+	background: #307ecc !important;
+	border-color: #307ecc !important;
+}
+
+.wid-header-hg>span, .wid-header-hg>h2 {
+	line-height: 42px !important;
+	font-size: 16px !important;
+	color: white;
+}
+
+.widget-body.no-padding {
+	margin: 0px !important;
+}
+
+.jarviswidget-color-google {
+	background-color: #f78c40;
+}
+
+.form-group>label {
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.line-cols-1 {
+	width: 80% !important;
+}
+
+.line-cols-2 {
+	width: 60% !important;
+}
+
+.line-cols-short {
+	width: 30% !important;
+}
+
+.span-context {
+	margin-top: 8px;
+}
+
+.widget-map {
+	width: 100%;
+	height: 100%;
+	min-height: 100px;
+}
+
+.preview-map {
+	width: 100%;
+	height: 100%;
+	min-height: 300px;
+}
+
+.easypie-center-align {
+	text-align: center;
+	padding: 50px;
+}
+
+.line-list {
+	margin-top: 4px;
+	height: 24px;
+	padding: 0;
+}
+
+.temper-sign:after {
+	content: ' 度';
+}
+
+.smart-style-4 #ribbon .breadcrumb, .smart-style-4 #ribbon .breadcrumb a,
+	.smart-style-4 #ribbon .breadcrumb span {
+	color: #333 !important;
+}
+
+.report_table td {
+	text-align: center;
+	border: solid 1px #71A06A;
+}
+
+.report_table .gray {
+	background-color: #f5f5f5;
+}
+
+/*--------fieldset style ---------*/
+.textRight {
+	text-align: right;
+}
+
+.fieldset-div .fieldset {
+	margin: 10px;
+	border: 1px solid #ddd;
+}
+
+.fieldset-div .legend {
+	width: auto;
+	border: 0;
+	margin-left: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #999;
+	font-size: 18px;
+}
+
+.fieldset-div .modal-footer {
+	background-color: #eff3f8;
+}
+/*--------fieldset style end ---------*/
+.animated #main {
+	/*background-image: url('/sso/image/kwatt-login.jpg') !important;*/
+	background-repeat: round !important;
+}
+
+.login-container {
+	margin-right: 8%;
+}
+
+.a-primary {
+	color: #fff !important;
+	background-color: rgba(11, 12, 30, 0) !important;
+	border-color: #3276b1 !important;
+	background-image: none !important;
+}
+
+.a-primary:hover {
+	border-color: #3276b1 !important;
+	border: 1px solid rgba(11, 12, 30, 0) !important;
+}
+
+.fieldset-cus {
+	margin: 10px;
+	border: 1px solid #ddd;
+}
+
+.legend-cus {
+	width: auto;
+	border: 0;
+	margin-left: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #999;
+	font-size: 18px;
+}
+
+.field-cus {
+	padding: 3px 4px;
+	height: 30px;
+	top: 7px;
+}
+
+.field-cus-1 {
+	padding: 3px 4px;
+	height: 30px;
+	top: 7px;
+	width: 16%;
+}
+
+/** segment line style */
+.segment {
+	line-height: 28px;
+	margin-bottom: 16px;
+	margin-top: 18px;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #CCC;
+}
+
+.segment.blue {
+	border-bottom-color: #d5e3ef;
+}
+
+.col-sm-cus-1 {
+	width: 11%;
+	font-size: 16px !important;
+}
+
+html,body {
+	margin: 0;
+	padding: 0;
+}
+
+
+#particles-js {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	background-image: url('/sso/image/logo.jpg') !important;
+}
+.well {
+	z-index: 151;
+}
+.background {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	background-image: url('/sso/image/logo.jpg') !important;
+}

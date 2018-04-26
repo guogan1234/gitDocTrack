@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+    <link rel="stylesheet"
+          th:href="@{/static/lib/jstree-3.2.1/dist/themes/default/tree-style.min.css}"/>
+    <style type="text/css">
+        #l-map{
+            height:300px;width:81.5%;left:10%;right:10%;
+        }
+
+        .tangram-suggestion-main{z-index: 9999 !important;}
+        .modal-body{padding: 10px; !important; }
+
+        .modal-header {
+            padding: 8px 15px;!important;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>站点列表</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <!--<div class="treeBtns" style="padding-bottom: 10px;"></div>-->
+                            <!-- <input type="text" id="txt_search" value="" class="input" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;" /> -->
+                            <div id="corp-tree"
+                                 style="overflow-x: scroll;overflow-y: scroll; height: 500px"
+                                 class="tree-container"></div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div style="margin-top: 20px;">
+
+                                <table id="station-list"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="txtCenter" width="20"><input type="checkbox"
+                                                                                class="ace"/></th>
+                                        <th>站点编号</th>
+                                        <th>站点名称</th>
+                                        <th>审核人</th>
+                                        <th class="txtCenter" width="20">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+                <!-- 									新建				 -->
+                <div aria-hidden="true" aria-labelledby="myModalLabel"
+                     class="modal fade media-preview" id="addStationForm"
+                     role="dialog" tabindex="-1"   >
+                    <div class="modal-dialog" style="width: 70%; z-index: -1">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button"   onclick="clearMyMap()">
+                                    <span aria-hidden="true" onclick="clearMyMap()">&times;</span><span
+                                        class="sr-only" onclick="clearMyMap()">关闭</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Title</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="widget-body no-padding">
+                                        <div class="row">
+                                            <fieldset class="fieldset">
+                                                <legend class="legend">站点信息</legend>
+
+                                                <div class="col-md-12">
+
+                                                    <div class="form-group col-md-6" id="chkStationNo">
+                                                        <div class="code_td">站点编号</div>
+                                                        <div class="form_nr">
+                                                            <input onblur="stationNoCheck()" placeholder="必填"
+                                                                    class="form-control" id="stationNo"
+                                                                    maxlength="40" name="No" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="code_td">名称</div>
+                                                        <div class="form_nr" id="chkStationName">
+                                                            <input onblur="stationNameCheck()" placeholder="必填"
+                                                                   class="form-control" id="stationName"
+                                                                   maxlength="40" name="mc" type="text"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6" id="chklLongitude">
+                                                        <div class="code_td">经度</div>
+                                                        <div class="form_nr">
+                                                            <input
+                                                                    class="form-control" id="longitude"
+                                                                    maxlength="40" name="longitude" type="text" disabled required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="chkPrincipal">
+                                                        <div class="code_td">审核人</div>
+                                                        <select class="form-control" id="checkEmployee"
+                                                                style="width: 60%;">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6" id="chkLatitude">
+                                                        <div class="code_td">纬度</div>
+                                                        <div class="form_nr">
+                                                            <input
+                                                                    class="form-control" id="latitude"
+                                                                    maxlength="40" name="latitude" type="text" disabled required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="chkDZ">
+                                                        <div class="code_td" id="r-result">搜索地址</div>
+                                                        <div class="form_nr">
+                                                            <input
+                                                                    class="form-control" id="suggestId" placeholder="请输入搜索地址"
+                                                                    maxlength="40" name="ssdz" type="text"/>
+                                                        </div>
+                                                        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none; z-index: 99999" ></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6" id="chkCorp">
+                                                        <div class="code_td" >所属公司</div>
+                                                            <select class="form-control" id="selectCorp"
+                                                                    style="width: 60%;">
+
+                                                            </select>
+
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="chkBikeCount">
+                                                        <div class="code_td">车位数</div>
+                                                        <div class="form_nr">
+                                                            <input
+                                                                    class="form-control" id="bikeCount"
+                                                                    maxlength="40" name="bikeCount" type="number"  required/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--地图-->
+                                                <div class="col-md-12" id="l-map"/>
+
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer" style="padding-bottom: 0px;"
+                                     sec:authorize="hasAuthority('NJPB-WEB-ESTATE-STATION')">
+                                    <button class="btn btn-primary" onclick="save();">保存</button>
+                                    <button class="btn btn-defual" onclick="cancel();">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+
+
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/njpb/js/estateManage/stationsManage.js}"></script>
+    <script th:src="@{/static/lib/jstree-3.2.1/dist/jstree.min.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <!--<script sec:authorize="hasAuthority('')"   th:src="@{/njpb/js/jcsjgl/gys_list_pldr.js}"></script>-->
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-STATION-NEW')"
+            th:src="@{/njpb/js/publicConfig/new_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-STATION-DELETE')"
+            th:src="@{/njpb/js/publicConfig/delete_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-STATION-PRINT')"
+            th:src="@{/njpb/js/publicConfig/bar_code_print.js}"></script>
+
+    <!--引用百度地图API-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Og42Hm6ecqFCEXdCeulKDnO7PkcvS1r1"></script>
+
+    <script th:src="@{/static/lib/baiduMap/baiduMap.js}" ></script>
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+
+
+        <!--});-->
+    <!--</script>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_head_heigh"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/fragment_head_heigh"
+            android:layout_height="@dimen/fragment_head_heigh"
+            android:layout_marginLeft="@dimen/order_head_marg"
+            android:padding="@dimen/order_head_marg"
+            android:src="@mipmap/bicycle"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="南京公共自行车"
+            android:textColor="#fff"
+            android:textSize="22sp"/>
+
+        <ImageView
+            android:layout_width="@dimen/fragment_head_heigh"
+            android:layout_height="@dimen/fragment_head_heigh"
+            android:layout_marginRight="@dimen/order_head_marg"
+            android:padding="8dp"
+            android:src="@mipmap/order_more"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/work_break"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/work_break"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="故障报修"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+           <!-- <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+            <LinearLayout
+                android:id="@+id/work_check"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/work_check"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="自修保养"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+           <!-- <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+            <LinearLayout
+                android:id="@+id/work_pickout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/work_pick"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="申请领料"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+          <!--  <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+            <LinearLayout
+                android:id="@+id/work_putin"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/work_putin"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="物料归还"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/work_breakdown"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/breakdown"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="物料报废"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+          <!--  <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+            <LinearLayout
+                android:id="@+id/work_changeCode"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/work_qrcode"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="更换条码"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+           <!-- <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+            <LinearLayout
+                android:id="@+id/work_bicycleCount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/work_bicycle"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="车辆盘点"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+           <!-- <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+            <LinearLayout
+                android:id="@+id/work_checkapply"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/check"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="物料审核"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/breakdown_check"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/work_fragment_select"
+                android:clickable="true"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/breakdown_check"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="报废审核"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+           <!-- <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#9c9c9c"/>-->
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

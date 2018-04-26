@@ -1,0 +1,17 @@
+[Unit]
+Description=NJPB Business Application
+After=network.target
+
+[Service]
+Type=simple
+User=scada
+WorkingDirectory=/home/scada/njpb/njpb-business
+ExecStart=/usr/bin/java -Xms512M -Xmx512M -jar njpb-business-1.0-SNAPSHOT.jar
+Restart=on-failure
+RestartSec=10s
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+
+

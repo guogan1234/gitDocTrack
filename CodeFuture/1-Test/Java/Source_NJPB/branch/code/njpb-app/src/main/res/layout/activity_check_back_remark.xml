@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.avantport.avp.njpb.ui.work.CheckBackRemarkActivity">
+
+  <include layout="@layout/activity_head_view"/>
+
+    <TextView
+        android:text="退回备注："
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+   <LinearLayout
+       android:layout_weight="1"
+       android:layout_margin="20dp"
+       android:focusable="true"
+       android:padding="5dp"
+       android:focusableInTouchMode="true"
+       android:background="@drawable/order_fragment_bg_unselect"
+       android:layout_width="match_parent"
+       android:layout_height="0dp">
+
+     <EditText
+         android:id="@+id/content"
+         android:textSize="20sp"
+         android:gravity="top"
+         android:hint="  请在此输入备注信息"
+         android:textColorHint="@color/text_hint_color"
+         android:background="@null"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
+   </LinearLayout>
+
+    <Button
+        android:background="@drawable/btn_pass_select"
+        android:layout_margin="5dp"
+        android:text="确认"
+        android:enabled="false"
+        android:id="@+id/make_sure"
+        android:textSize="20sp"
+        android:textColor="@color/head_title_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

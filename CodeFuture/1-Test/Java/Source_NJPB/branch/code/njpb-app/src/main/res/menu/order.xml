@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/station_repairs" android:title="站点报修"/>
+    <item android:id="@+id/blke_repairs" android:title="车辆报修"/>
+</menu>

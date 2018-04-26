@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+    <TextView
+        android:id="@+id/Station_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="站点名"/>
+
+   <ImageView
+       android:id="@+id/station_select"
+       android:src="@drawable/station_item_select"
+       android:layout_width="30dp"
+       android:layout_height="30dp"/>
+</LinearLayout>

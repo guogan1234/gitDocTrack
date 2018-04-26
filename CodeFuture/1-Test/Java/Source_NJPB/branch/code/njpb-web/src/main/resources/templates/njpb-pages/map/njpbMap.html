@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+    <style>
+        /*#njpbMap{ width: 100% ;heigth:100%; !important;}*/
+        #njpbMap {
+            width: 100%;
+            height:auto!important;
+            min-height:800px;
+            height:auto;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>地图</h2>
+                <button class="widget-icon" style="width:60px;background-color:#404040;border: 0 ;float:right;left:-1%;" onclick="doSerach()">刷新
+                </button>
+            </header>
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+
+                <div aria-hidden="true" aria-labelledby="moduleTypeNewModalLabel2"
+                     class="modal fade media-preview" id="moduleTypeForm2"
+                     role="dialog" tabindex="-1">
+                    <div class="modal-dialog" style="width: 70%;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true">&times;</span><span
+                                        class="sr-only">关闭</span>
+                                </button>
+                                <h4 class="modal-title" id="moduleTypeNewModalLabel2">Title</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+
+                                        <fieldset class="fieldset">
+                                            <legend class="legend">轨迹详情</legend>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6" id="chkModuleTypeName">
+                                                        <div class="code_td">姓名</div>
+                                                        <div class="form_nr">
+                                                            <input readonly
+                                                                   class="form-control"
+                                                                   id="userName"
+                                                                   maxlength="40" name="wd"
+                                                                   type="text"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6" id="chkPartsType">
+                                                        <div class="code_td">手机</div>
+                                                        <div class="form_nr">
+                                                            <input readonly
+                                                                   class="form-control"
+                                                                   id="userPhone"
+                                                                   maxlength="40" name="wd"
+                                                                   type="text"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group col-md-6">
+                                                        <div class="code_td">所在公司</div>
+                                                        <div class="form_nr">
+                                                            <input readonly
+                                                                   class="form-control" id="userCorp"
+                                                                   maxlength="40" name="workpoints"
+                                                                   type="text"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <div class="code_td">上次同步时间</div>
+                                                        <div class="form_nr">
+                                                            <input readonly
+                                                                   class="form-control" id="reportTime"
+                                                                   maxlength="40" name="workpoints"
+                                                                   type="text"/>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row" style="width: 98%; margin: auto;">
+                                                    <div class="col-xs-12">
+                                                        <div style="margin-top: 20px;">
+                                                            <table id="workDetails-list" style="width: 100%"
+                                                                   class="table table-striped table-bordered table-hover">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>时间</th>
+                                                                    <th>地点</th>
+                                                                    <th>工作事件</th>
+                                                                    <th>工单编号</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <!--<div class="modal-footer" style="padding-bottom: 0px;"-->
+                                <!--sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER')">-->
+                                <!--<button class="btn btn-success" onclick="moduleBatchSave();">保存</button>-->
+                                <!--<button class="btn btn-default" onclick="moduleBatchCancel();">取消</button>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="row">-->
+                    <!--<div id="chkCorp" style="padding: 5px">-->
+                        <!--<span style="font-weight: bold">所属公司</span>-->
+                        <!--<select style="width: 20%;" id="selectCorp">-->
+                            <!--<option></option>-->
+                        <!--</select>-->
+                        <!--<span style="font-weight: bold">所属公司</span>-->
+                        <!--<select style="width: 20%;" id="selectCorp">-->
+                            <!--<option></option>-->
+                        <!--</select>-->
+                        <!--<button style="width:80px ;height: 30px" onclick="doSerach()">查询-->
+                        <!--</button>-->
+
+                        <!--<span style="font-weight: bold" id="lastTime"></span>-->
+                    <!--</div>-->
+
+                    <!--<div id="njpbMap" >-->
+                    <!--</div>-->
+
+
+                    <!--&lt;!&ndash;轨迹详情 &ndash;&gt;-->
+                <!--</div>-->
+                <div class="row">
+
+                    <div class="col-sm-10">
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <label for="" class="xmbh_top">所属公司</label> <select
+                                    class="form-control" id="selectCorp" onchange="selectUserName()"
+                                    style="font-size: 12px; height: 25px;">
+                                <option></option>
+                            </select>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="" class="xmbh_top" id="chkUserNameOnline">公司人员</label> <select
+                                    class="form-control" id="userNameOnline"
+                                    style="font-size: 12px; height: 25px;">
+                                <option></option>
+                            </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="beginTime" class="xmbh_top">查找日期</label>
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-12">
+                                        <div class="input-group">
+                                            <input class="form-control date-picker" id="beginTime"
+                                                   type="text" data-date-format="yyyy/mm/dd"/> <span
+                                                class="input-group-addon"
+                                                onclick="document.getElementById('beginTime').focus();"> <i
+                                                class="fa fa-calendar bigger-110"></i>
+													</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" sec:authorize="hasAuthority('NJPB-WEB-WORKORDER')">
+                        <button class="btn-search" onclick="doSerach()">查询</button>
+                    </div>
+
+                    <div id="njpbMap" >
+                    </div>
+
+                </div>
+
+
+                <!-- end widget div -->
+            </div>
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/jquery.blockUI.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+
+    <script th:src="@{/static/lib/ace/ace-elements.min.js}"></script>
+    <script th:src="@{/static/lib/ace/ace.min.js}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+
+    <!--引用百度地图API-->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=Og42Hm6ecqFCEXdCeulKDnO7PkcvS1r1"></script>
+    <script
+            th:src="@{/njpb/js/map/njpbMap.js}"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    //setTimout(initMap(),200);
+       // setInterval(initMap,100000);
+    });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#beginTime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

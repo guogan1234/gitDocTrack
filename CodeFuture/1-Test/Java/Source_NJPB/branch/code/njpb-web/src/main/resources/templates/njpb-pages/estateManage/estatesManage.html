@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${menu_title}"></title>
+
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>设备列表</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="tabbable">
+                            <ul
+                                    class="nav nav-tabs padding-12 tab-color-blue background-blue"
+                                    id="tabEwmgl">
+                                <li class="active"><a data-toggle="tab" href="#tabSbmk">站点</a></li>
+                                <li><a data-toggle="tab" href="#tabCd" onclick="">车辆</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <!-- content 1 begin -->
+                                <div id="tabSbmk" class="tab-pane in active" style=''>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="form-field-select-3" class="xmbh_top" id="cheCorp">公司</label>
+                                                <select class="form-control" id="selectCorp" onchange="dynamicUrls()"
+                                                        style="font-size: 12px; height: 30px;">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label for="form-field-select-3" class="xmbh_top">站点</label>
+
+                                                <select class="form-control" id="stationId" onclick="dynamicUrls()"
+                                                        style="font-size: 12px; height: 30px;">
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <label for="form-field-select-3" class="xmbh_top">类型</label>
+                                                <select class="form-control" id="estateTypeId"
+                                                        style="font-size: 12px; height: 30px;">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-sm-2"
+                                                 sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')">
+                                                <button class="btn-search" style="margin-top: 35px; height: 30px"
+                                                        onclick="search()">查询
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div style="margin-top: 20px;">
+                                                <table id="estateMange-list" style="width:100%"
+                                                       class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="txtCenter" width="20px"><input type="checkbox"
+                                                                                     class="ace"/></th>
+                                                        <th>设备编号</th>
+                                                        <th>设备条码</th>
+                                                        <!--<th>车桩设备条码</th>-->
+                                                        <th>设备类型</th>
+                                                        <th>设备名称</th>
+                                                        <th>所属站点</th>
+                                                        <th>所属公司</th>
+                                                        <!--<th>芯片号</th>-->
+                                                        <!--<th>供应商</th>-->
+                                                        <th class="txtCenter" width="20px">操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- content 2 begin -->
+                                <div id="tabCd" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+
+                                            <div style="margin-top: 20px;">
+                                                <table id="bike-list" style="width:100%"
+                                                       class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="txtCenter" width="20px"><input type="checkbox"
+                                                                                     class="ace"/></th>
+                                                        <th>设备编号</th>
+                                                        <th>设备车架号</th>
+                                                        <!--<th>设备类别</th>-->
+                                                        <!--<th>设备类型</th>-->
+
+                                                        <!--<th>所属站点</th>-->
+                                                        <!--<th>所属公司</th>-->
+
+                                                        <th>设备类型</th>
+                                                        <th>设备名称</th>
+                                                        <th>供应商</th>
+                                                        <th class="txtCenter" width="20px">操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <!-- end widget content -->
+                        </div>
+                        <!-- end widget div -->
+
+                        <!-- 新建站点设备 -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel"
+                             class="modal fade media-preview" id="addEstateFromStation"
+                             role="dialog" tabindex="-1">
+                            <div class="modal-dialog" style="width: 70%;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span><span
+                                                class="sr-only">关闭</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">Title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="widget-body no-padding">
+                                                <div class="row">
+                                                    <fieldset class="fieldset">
+                                                        <legend class="legend">添加站点设备</legend>
+                                                        <div class="row">
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">所属公司</div>
+                                                                <div class="form_nr" id = "chkStationEstateCorp" >
+                                                                    <select id="stationEstateCorp" onchange="dynamicUrls2()"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                    </select>
+                                                                    <option></option>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">所属站点</div>
+                                                                <div class="form_nr" id="chkStationEstateStationName">
+                                                                    <select id="stationEstateStationName" onclick="dynamicUrls2()"
+                                                                            style="font-size: 12px; height: 30px; width: 100%">
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-sm-6">
+                                                                <div class="code_td">设备类型</div>
+                                                                <div class="form_nr" id="chkStationEstateType">
+                                                                    <select id="stationEstateType"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                    </select>
+                                                                    <option></option>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6" >
+                                                                <div class="code_td">设备名称</div>
+                                                                <div class="form_nr" id = "chkStationEstateName" onmouseout="stationEstateNameCheck()">
+                                                                    <input type="text" id="stationEstateName" placeholder="必填" onclick="test()"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="row"></div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="padding-bottom: 0px;">
+                                            <button class="btn btn-primary" onclick="save();">保存</button>
+                                            <button class="btn btn-defual" onclick="cancel();">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 修改站点设备-->
+                        <div aria-hidden="true" aria-labelledby="editModalLabel"
+                             class="modal fade media-preview" id="editForm" role="dialog"
+                             tabindex="-1">
+                            <div class="modal-dialog" style="width: 70%;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span><span
+                                                class="sr-only">关闭</span>
+                                        </button>
+                                        <h4 class="modal-title" id="editModalLabel">Title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="widget-body no-padding">
+                                                <div class="row">
+                                                    <fieldset class="fieldset">
+                                                        <legend class="legend">基础信息</legend>
+                                                        <div class="row">
+                                                            <div class="form-group col-sm-6"  style="margin-top: 10px;">
+                                                                <div class="code_td">设备编号</div>
+                                                                <div class="form_nr" id = "chkStationEstateNo" >
+                                                                    <input type="text" id="stationEstateNo"  readonly
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6"  style="margin-top: 10px;">
+                                                                <div class="code_td">设备名称</div>
+                                                                <div class="form_nr" id = "chkStationEstateNameEdit" >
+                                                                    <input type="text" id="stationEstateNameEdit" placeholder="必填"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">所属公司</div>
+                                                                <div class="form_nr" id = "chkStationEstateCorpEdit">
+                                                                    <select id="stationEstateCorpEdit"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">所属站点</div>
+                                                                <div class="form_nr" id="chkStationEstateStationNameEdit">
+                                                                    <select id="stationEstateStationNameEdit"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group col-sm-6"  style="margin-top: 10px;">
+                                                                <div class="code_td">设备类型名称</div>
+                                                                <div class="form_nr" id = "chkStationEstateTypeNameEdit" >
+
+                                                                    <select id="stationEstateTypeNameEdit"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="padding-bottom: 0px;"
+                                             sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')">
+                                            <button class="btn btn-primary" onclick="edit_save();">保存
+                                            </button>
+                                            <button class="btn btn-defual" onclick="edit_cancel();">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- 批量新建自行车设备 -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel2"
+                             class="modal fade media-preview" id="addEstateFromBike"
+                             role="dialog" tabindex="-1">
+                            <div class="modal-dialog" style="width: 70%;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span><span
+                                                class="sr-only">关闭</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel2">Title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="widget-body no-padding">
+                                                <div class="row">
+                                                    <fieldset class="fieldset">
+                                                        <legend class="legend">添加自行车设备</legend>
+                                                        <div class="row">
+
+                                                            <div class="form-group col-sm-6">
+                                                                <div class="code_td">车架号</div>
+                                                                <div class="form_nr" id="chkBikeEstateEn">
+                                                                    <input type="number" id="bike_frame_no" placeholder="必填" onblur="checkBikeFrameNo()"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6">
+                                                                <div class="code_td">数量</div>
+                                                                <div class="form_nr" id = "chkBikeCount" >
+                                                                    <input type="number" id="bikeCount" placeholder="必填" onblur="sumCount()"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">设备类型</div>
+                                                                <div class="form_nr" id="chkModuleBikeEstateType">
+                                                                    <select id="bikeModuleEstateType"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">车架号结束值</div>
+                                                                <div class="form_nr" id="chk_bike_frame_no_end">
+                                                                    <input type="text" id="bike_frame_no_end" readonly
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">供应商</div>
+                                                                <div class="form_nr" id="chkBikeModuleEstateSupplier">
+                                                                    <select id="bikeModuleEstateSupplier"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">已到车架号值</div>
+                                                                <div class="form_nr" id="chk_bike_frame_no_oldEnd">
+                                                                    <input type="text" id="bike_frame_no_oldEnd" readonly
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="padding-bottom: 0px;">
+                                            <button class="btn btn-primary" onclick="saveBike();">保存</button>
+                                            <button class="btn btn-defual" onclick="cancelBike();">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 修改自行车设备-->
+                        <div aria-hidden="true" aria-labelledby="editModalLabel2"
+                             class="modal fade media-preview" id="editFormBike" role="dialog"
+                             tabindex="-1">
+                            <div class="modal-dialog" style="width: 70%;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span><span
+                                                class="sr-only">关闭</span>
+                                        </button>
+                                        <h4 class="modal-title" id="editModalLabel2">Title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="widget-body no-padding">
+                                                <div class="row">
+                                                    <fieldset class="fieldset">
+                                                        <legend class="legend">基础信息</legend>
+                                                        <div class="row">
+
+                                                            <div class="form-group col-sm-6">
+                                                                <div class="code_td">车架号</div>
+                                                                <div class="form_nr" id="chkbike_frame_no_edit">
+                                                                    <input type="text" id="bike_frame_no_edit" readonly
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <!--<div class="form-group col-sm-6">-->
+                                                                <!--<div class="code_td">芯片号</div>-->
+                                                                <!--<div class="form_nr" id = "chkBikeCardEdit" >-->
+                                                                    <!--<input type="text" id="bikeCardEdit" readonly-->
+                                                                           <!--class="form-control">-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">设备类型</div>
+                                                                <div class="form_nr" id = "chkBikeModuleEstateTypeEdit">
+                                                                    <select id="bikeModuleEstateTypeEdit" readonly=""
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">设备名称</div>
+                                                                <div class="form_nr" id="chkBikeModuleEstateNameEdit">
+                                                                    <input type="text" id="bikeModuleEstateNameEdit" readonly
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-sm-6" style="margin-top: 10px;">
+                                                                <div class="code_td">供应商</div>
+                                                                <div class="form_nr" id="chkBikeModuleEstateSupplierEdit">
+                                                                    <select id="bikeModuleEstateSupplierEdit"
+                                                                            style="font-size: 12px; height: 25px; width: 100%">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="padding-bottom: 0px;"
+                                             sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')">
+                                            <button class="btn btn-primary" onclick="edit_bike_save();">保存
+                                            </button>
+                                            <button class="btn btn-defual" onclick="edit_bike_cancel();">取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/estateManage/estatesManage.js?v=17929}"></script>
+    <script th:src="@{/static/lib/datepicker/bootstrap-datepicker.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <!--<script sec:authorize="hasAuthority('PCB_BASE_EQUIPMENT_BATCHS_CODE')"-->
+            <!--th:src="@{/njpb/js/jcsjgl/sbgl_list_pch.js}"></script>-->
+    <!--<script sec:authorize="hasAuthority('PCB_BASE_EQUIPMENT_LEAVE_FACTORY')"-->
+            <!--th:src="@{/njpb/js/jcsjgl/sbgl_list_sbcc.js}"></script>-->
+    <!--<script sec:authorize="hasAuthority('PCB_BASE_EQUIPMENT_BATCH_OPERATION')"-->
+            <!--th:src="@{/njpb/js/jcsjgl/sbgl_list_tryy.js}"></script>-->
+    <!--<script sec:authorize="hasAuthority('PCB_BASE_EQUIPMENT_BATCH_MOVE')"-->
+            <!--th:src="@{/njpb/js/jcsjgl/sbgl_list_plyd.js}"></script>-->
+    <!--<script sec:authorize="hasAuthority('PCB_BASE_EQUIPMENT_BATCH_QUALITY')"-->
+            <!--th:src="@{/njpb/js/jcsjgl/sbgl_list_plsz.js}"></script>-->
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')"
+            th:src="@{/njpb/js/publicConfig/new_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')"
+            th:src="@{/njpb/js/publicConfig/new_bike_button.js}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#zbtime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#addzbtime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("#updzbtime").datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+            $("stationId").select2();
+        });
+    </script>
+</div>
+</body>
+</html>

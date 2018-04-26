@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet"
+          th:href="@{/static/lib/jstree-3.2.1/dist/themes/default/tree-style.min.css}" />
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+    <style type="text/css">
+    #the {width: 1px !important}
+    </style>
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>部件类型列表</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="treeBtns" style="padding-bottom: 10px;"></div>
+                            <input type="text" id="txt_search" placeholder="搜索"
+                                   class="form-control" />
+                            <div id="moduleType-tree"
+                                 style="margin-top: 5px; overflow-x: scroll; overflow-y: scroll; height: 500px"
+                                 class="tree-container"></div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div style="margin-top: 20px;">
+                                <table id="moduleType-list"
+                                       class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="txtCenter" width="20"><input type="checkbox"
+                                                                                class="ace" /></th>
+                                        <th>名称</th>
+                                        <th>部件类别</th>
+                                        <th>工分</th>
+                                        <!--<th>所属父模块类型</th>-->
+                                        <th width="20">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 编辑模块 -->
+                    <div aria-hidden="true" aria-labelledby="moduleTypeNewModalLabel"
+                         class="modal fade media-preview" id="moduleTypeForm" role="dialog"
+                         tabindex="-1">
+                        <div class="modal-dialog" style="width: 70%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span><span
+                                            class="sr-only">关闭</span>
+                                    </button>
+                                    <h4 class="modal-title" id="moduleTypeNewModalLabel">Title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <fieldset class="fieldset">
+                                                <legend class="legend">基础信息</legend>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6" id="chkModuleTypeNameEdit">
+                                                            <div class="code_td">部件名称</div>
+                                                            <div class="form_nr">
+                                                                <input placeholder="必填" onblur="checkModuleNameEdit()"
+                                                                       class="form-control"
+                                                                       id="moduleTypeNameEdit"
+                                                                       maxlength="40" name="moduleTypeNameEdit"
+                                                                       type="text"/>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6" id="chkModulePartsType">
+                                                            <div class="code_td" >部件类别</div>
+                                                            <div class="form_nr">
+                                                                <input disabled required
+                                                                       class="form-control"
+                                                                       id="modulePartsType"
+                                                                       maxlength="40" name="modulePartsType"
+                                                                       type="text"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6" id="chkWorkPointsEdit">
+                                                            <div class="code_td">工分</div>
+                                                            <div class="form_nr">
+                                                                <input
+                                                                        class="form-control" id="workpointsEdit"
+                                                                        maxlength="40" name="workpointsEdit"
+                                                                        type="number"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6" id="chkFatherEstate">
+                                                            <div class="code_td">所属设备</div>
+                                                            <div class="form_nr">
+                                                                <input disabled required
+                                                                       class="form-control" id="fatherEstate"
+                                                                       maxlength="40" name="fatherEstate"
+                                                                       type="text"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="padding-bottom: 0px;"
+                                         sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER')">
+                                        <button class="btn btn-success" onclick="moduleSave();">保存</button>
+                                        <button class="btn btn-default" onclick="moduleCancel();">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--批量 新增模块 -->
+                    <div aria-hidden="true" aria-labelledby="moduleTypeNewModalLabel2"
+                         class="modal fade media-preview" id="moduleTypeForm2"
+                         role="dialog" tabindex="-1">
+                        <div class="modal-dialog" style="width: 70%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span><span
+                                            class="sr-only">关闭</span>
+                                    </button>
+                                    <h4 class="modal-title" id="moduleTypeNewModalLabel2">Title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <!--<input type="hidden" id="sblxId"> <input-->
+                                                <!--type="hidden" id="mklxId">-->
+                                            <fieldset class="fieldset">
+                                                <legend class="legend">基础信息</legend>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group col-md-6" id="chkModuleTypeName">
+                                                            <div class="code_td">部件名称</div>
+                                                            <div class="form_nr">
+                                                                <input placeholder="必填" onblur="checkModuleName()"
+                                                                       class="form-control"
+                                                                       id="moduleTypeName"
+                                                                       maxlength="40" name="wd"
+                                                                       type="text"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6" id="chkWorkpoints">
+                                                            <div class="code_td">工分</div>
+                                                            <div class="form_nr">
+                                                                <input
+                                                                        class="form-control" id="workpoints"
+                                                                        maxlength="40" name="workpoints"
+                                                                        type="number"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-6" id="chkPartsType">
+                                                            <div class="code_td" id="r-result">部件类别</div>
+                                                            <select class="form-control" id="partsType"
+                                                                    style="width: 60%;" >
+                                                                <option >
+
+                                                                </option>
+                                                                <!--<option id='sel_corp1' value='1'> 站点-->
+                                                                <!--</option>-->
+                                                                <!--<option id='sel_corp2' value='2'> 自行车-->
+                                                                <!--</option>-->
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="col-md-12">-->
+                                                        <!--<div class="form-group col-md-6" id="chkWorkpoints">-->
+                                                            <!--<div class="code_td">工分</div>-->
+                                                            <!--<div class="form_nr">-->
+                                                                <!--<input-->
+                                                                        <!--class="form-control" id="workpoints"-->
+                                                                        <!--maxlength="40" name="workpoints"-->
+                                                                        <!--type="number"/>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+
+                                                    <!--</div>-->
+
+                                                    <div class="row" style="width: 98%; margin: auto;">
+                                                        <div class="col-xs-12">
+                                                            <div style="margin-top: 20px;">
+                                                                <table id="bdfs-list" style="width: 100%"
+                                                                       class="table table-striped table-bordered table-hover">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th class="txtCenter" width="1px" id ="the">
+                                                                            <input type="checkbox"
+                                                                                   class="ace"/></th>
+                                                                        <th>设备名称</th>
+                                                                        <th>设备类别</th>
+                                                                        <th>创建时间</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="padding-bottom: 0px;"
+                                         sec:authorize="hasAuthority('NJPB-WEB-BASIC-SUPPLIER')">
+                                        <button class="btn btn-success" onclick="moduleBatchSave();">保存</button>
+                                        <button class="btn btn-default" onclick="moduleBatchCancel();">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+    </article>
+</section>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/basicDataManage/moduleType.js?v=17674}"></script>
+    <script th:src="@{/static/lib/jstree-3.2.1/dist/jstree.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-BASIC-MODULETYPE-NEW')"
+            th:src="@{/njpb/js/publicConfig/batch_new_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-BASIC-MODULETYPE-DELETE')"
+            th:src="@{/njpb/js/publicConfig/delete_button.js}"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fragment_head_heigh"
+    tools:showIn="@layout/fragment_order_view">
+
+    <TextView
+        android:id="@+id/btn_left"
+        android:gravity="center"
+        android:background="@drawable/order_fragment_select"
+        android:text="@string/order_btn_handle"
+        android:textSize="@dimen/order_btn_textsize"
+        android:textColor="@drawable/order_fragment_textcolor"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/btn_right"
+        android:background="@drawable/order_fragment_unselect"
+        android:gravity="center"
+        android:text="@string/order_btn_handling"
+        android:textSize="@dimen/order_btn_textsize"
+        android:textColor="@drawable/order_fragment_textcolor"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

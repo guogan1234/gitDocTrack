@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linear_button"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/check_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_back_select"
+            android:text="退回"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/check_pass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_pass_select"
+            android:text="通过"
+            android:textColor="@color/head_title_color"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_margin="5dp"
+        android:text="取消申请"
+        android:visibility="gone"
+        android:id="@+id/stop_apply"
+        android:background="@drawable/btn_back_select"
+        android:layout_width="match_parent"
+        android:textColor="@color/head_title_color"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

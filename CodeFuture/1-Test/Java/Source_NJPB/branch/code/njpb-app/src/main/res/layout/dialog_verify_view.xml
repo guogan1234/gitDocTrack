@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+                android:padding="20dp"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/dialog_delect"
+            android:layout_marginRight="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/dialog_delect_select"/>
+    </RelativeLayout>
+
+    <TextView
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="请输入仓库管理员密码："
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:padding="5dp"
+        android:id="@+id/dialog_psw"
+        android:inputType="numberPassword"
+        android:hint="请输入密码"
+        android:textSize="18sp"
+        android:textColorHint="#9c9c9c"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textCursorDrawable="@null"
+        android:background="@drawable/order_fragment_bg_unselect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/dialog_btn"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:text="确定"
+            android:textSize="18sp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/test">
+    <process id="process-workorder" name="工单流程" isExecutable="true">
+        <startEvent id="startevent" name="Start"/>
+        <userTask id="usertask_report_check" name="报修审核">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <userTask id="usertask_modify_report" name="调整报修内容">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <userTask id="usertask_repair_check" name="维修审核">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <userTask id="usertask_confirm_wo" name="工单确认">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <userTask id="usertask_reAssign" name="工单再次派发">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <userTask id="usertask_repair" name="工单维修">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <userTask id="usertask_sign_in" name="工单签到">
+            <extensionElements>
+                <activiti:taskListener event="create" delegateExpression="${customCreateEventHandler}"/>
+            </extensionElements>
+        </userTask>
+        <endEvent id="endevent" name="End"/>
+        <exclusiveGateway id="exclusivegateway_reportCheck" name="Exclusive Gateway1"/>
+        <exclusiveGateway id="exclusivegateway_reReport" name="Parallel Gateway"/>
+        <exclusiveGateway id="exclusivegateway_responseTimeout" name="Exclusive Gateway2"/>
+        <sequenceFlow id="flow_reportWo" name="报修" sourceRef="startevent" targetRef="usertask_report_check"/>
+        <sequenceFlow id="flow_report_agree" name="报修审核同意" sourceRef="exclusivegateway_reportCheck"
+                      targetRef="usertask_confirm_wo">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${groupLeaderPassReport}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow2" sourceRef="usertask_report_check" targetRef="exclusivegateway_reportCheck"/>
+        <sequenceFlow id="flow_report_reject" name="报修审核不同意" sourceRef="exclusivegateway_reportCheck"
+                      targetRef="usertask_modify_report">
+            <conditionExpression xsi:type="tFormalExpression">
+                <![CDATA[${!groupLeaderPassReport}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_endReport" name="结束报修流程" sourceRef="exclusivegateway_reReport" targetRef="endevent">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!repeatReport}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow6" sourceRef="usertask_modify_report" targetRef="exclusivegateway_reReport"/>
+        <sequenceFlow id="flow_reReport" name="重新报修" sourceRef="exclusivegateway_reReport"
+                      targetRef="usertask_report_check">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${repeatReport}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_reAssign" name="再次派发" sourceRef="usertask_reAssign" targetRef="usertask_confirm_wo"/>
+        <sequenceFlow id="flow_repair_check" sourceRef="usertask_repair_check" targetRef="endevent"/>
+        <sequenceFlow id="flow16" sourceRef="usertask_confirm_wo" targetRef="exclusivegateway_responseTimeout"/>
+        <sequenceFlow id="flow_response_timeout" name="响应超时" sourceRef="exclusivegateway_responseTimeout"
+                      targetRef="usertask_reAssign">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${responseTimeout}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_repair_complete" name="维修完成或遗留" sourceRef="usertask_repair"
+                      targetRef="usertask_repair_check"/>
+        <sequenceFlow id="flow_confirm_wo" name="工单确认" sourceRef="exclusivegateway_responseTimeout"
+                      targetRef="usertask_sign_in">
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!responseTimeout}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow_sign_in" name="签到" sourceRef="usertask_sign_in" targetRef="usertask_repair"/>
+        <!--<association id="association1" sourceRef="usertask_report_check" targetRef="textannotation1"></association>-->
+        <!--<association id="association2" sourceRef="textannotation2" targetRef="usertask_repair"></association>-->
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_process-workorder">
+
+        <bpmndi:BPMNPlane bpmnElement="process-workorder" id="BPMNPlane_process-workorder">
+            <bpmndi:BPMNShape bpmnElement="startevent" id="BPMNShape_startevent">
+                <omgdc:Bounds height="35.0" width="35.0" x="1.0" y="120.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_report_check" id="BPMNShape_usertask_report_check">
+                <omgdc:Bounds height="60.0" width="100.0" x="113.0" y="108.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_modify_report" id="BPMNShape_usertask_modify_report">
+                <omgdc:Bounds height="60.0" width="100.0" x="357.0" y="335.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_repair_check" id="BPMNShape_usertask_repair_check">
+                <omgdc:Bounds height="60.0" width="100.0" x="1050.0" y="478.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_confirm_wo" id="BPMNShape_usertask_confirm_wo">
+                <omgdc:Bounds height="60.0" width="100.0" x="640.0" y="106.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_reAssign" id="BPMNShape_usertask_reAssign">
+                <omgdc:Bounds height="60.0" width="100.0" x="710.0" y="292.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_repair" id="BPMNShape_usertask_repair">
+                <omgdc:Bounds height="60.0" width="100.0" x="1090.0" y="255.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="usertask_sign_in" id="BPMNShape_usertask_sign_in">
+                <omgdc:Bounds height="60.0" width="100.0" x="1240.0" y="108.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="endevent" id="BPMNShape_endevent">
+                <omgdc:Bounds height="35.0" width="35.0" x="649.0" y="490.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="exclusivegateway_reportCheck" id="BPMNShape_exclusivegateway_reportCheck">
+                <omgdc:Bounds height="40.0" width="40.0" x="392.0" y="115.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="exclusivegateway_reReport" id="BPMNShape_exclusivegateway_reReport">
+                <omgdc:Bounds height="40.0" width="40.0" x="142.0" y="487.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="exclusivegateway_responseTimeout"
+                              id="BPMNShape_exclusivegateway_responseTimeout">
+                <omgdc:Bounds height="40.0" width="40.0" x="980.0" y="117.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="flow_reportWo" id="BPMNEdge_flow_reportWo">
+                <omgdi:waypoint x="36.0" y="137.0"></omgdi:waypoint>
+                <omgdi:waypoint x="113.0" y="138.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="24.0" x="36.0" y="137.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_report_agree" id="BPMNEdge_flow_report_agree">
+                <omgdi:waypoint x="432.0" y="135.0"></omgdi:waypoint>
+                <omgdi:waypoint x="640.0" y="136.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="72.0" x="494.0" y="115.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+                <omgdi:waypoint x="213.0" y="138.0"></omgdi:waypoint>
+                <omgdi:waypoint x="392.0" y="135.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_report_reject" id="BPMNEdge_flow_report_reject">
+                <omgdi:waypoint x="412.0" y="155.0"></omgdi:waypoint>
+                <omgdi:waypoint x="407.0" y="335.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="84.0" x="369.0" y="241.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_reReport" id="BPMNEdge_flow_reReport">
+                <omgdi:waypoint x="182.0" y="507.0"></omgdi:waypoint>
+                <omgdi:waypoint x="649.0" y="507.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="48.0" x="110.0" y="395.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+                <omgdi:waypoint x="407.0" y="395.0"></omgdi:waypoint>
+                <omgdi:waypoint x="162.0" y="487.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_endReport" id="BPMNEdge_flow_endReport">
+                <omgdi:waypoint x="162.0" y="487.0"></omgdi:waypoint>
+                <omgdi:waypoint x="163.0" y="168.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="72.0" x="357.0" y="491.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_reAssign" id="BPMNEdge_flow_reAssign">
+                <omgdi:waypoint x="760.0" y="292.0"></omgdi:waypoint>
+                <omgdi:waypoint x="690.0" y="166.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="48.0" x="714.0" y="221.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_repair_check" id="BPMNEdge_flow_repair_check">
+                <omgdi:waypoint x="1050.0" y="508.0"></omgdi:waypoint>
+                <omgdi:waypoint x="684.0" y="507.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
+                <omgdi:waypoint x="740.0" y="136.0"></omgdi:waypoint>
+                <omgdi:waypoint x="980.0" y="137.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_response_timeout" id="BPMNEdge_flow_response_timeout">
+                <omgdi:waypoint x="1000.0" y="157.0"></omgdi:waypoint>
+                <omgdi:waypoint x="760.0" y="292.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="48.0" x="902.0" y="222.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_repair_complete" id="BPMNEdge_flow_repair_complete">
+                <omgdi:waypoint x="1140.0" y="315.0"></omgdi:waypoint>
+                <omgdi:waypoint x="1100.0" y="478.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="84.0" x="1116.0" y="395.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_confirm_wo" id="BPMNEdge_flow_confirm_wo">
+                <omgdi:waypoint x="1020.0" y="137.0"></omgdi:waypoint>
+                <omgdi:waypoint x="1240.0" y="138.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="48.0" x="1115.0" y="120.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow_sign_in" id="BPMNEdge_flow_sign_in">
+                <omgdi:waypoint x="1290.0" y="168.0"></omgdi:waypoint>
+                <omgdi:waypoint x="1140.0" y="255.0"></omgdi:waypoint>
+                <bpmndi:BPMNLabel>
+                    <omgdc:Bounds height="14.0" width="100.0" x="1251.0" y="204.0"></omgdc:Bounds>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

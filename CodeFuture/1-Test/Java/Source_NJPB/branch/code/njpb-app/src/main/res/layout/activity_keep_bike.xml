@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.avantport.avp.njpb.ui.work.KeepBikeActivity">
+
+    <include layout="@layout/activity_head_view"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="生产厂家:"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/bike_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:hint="点击选择生产厂家"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@null"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车架号:"
+                    android:textSize="20sp"/>
+
+                <EditText
+                    android:id="@+id/bike_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:hint="请输入车架号"
+                    android:inputType="number"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@null"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/bike_readcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_addmore_select"
+                    android:padding="5dp"
+                    android:text="读卡"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/view_div_bg"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="站点所属公司:"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/bike_station_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:hint="点击选择公司"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@null"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车辆所在站点:"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/bike_station"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:hint="点击输入站点"
+                    android:textColorHint="@color/text_hint_color"
+                    android:textCursorDrawable="@null"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/view_div_bg"/>
+
+            <LinearLayout
+                android:id="@+id/lastserving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/lastserving_showmore"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/right_arrows"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ff0"
+                    android:text="自修保养记录"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="@color/warn_text_color"
+                android:text="自修保养"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    android:text="更换零配件："
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"/>
+
+                <ImageView
+                    android:id="@+id/add_moreserving"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/add_moreserving"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+            </RelativeLayout>
+
+            <com.avantport.avp.njpb.view.CustomListview
+                android:id="@+id/list_serving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.avantport.avp.njpb.view.CustomListview>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="上传图片（最多5张）："
+                android:textColor="@color/warn_text_color"
+                android:textSize="20sp"/>
+
+
+            <com.avantport.avp.njpb.view.SelectGirdView
+                android:id="@+id/grid_pic"
+                style="@style/style_pic_select">
+            </com.avantport.avp.njpb.view.SelectGirdView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="故障信息描述："
+                android:textColor="@color/warn_text_color"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/break_describe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:hint="请在此输入描述信息"
+                android:textColorHint="@color/text_hint_color"
+                android:textCursorDrawable="@null"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/finish"
+        style="@style/button_commit_style"
+        android:text="完成"
+        />
+</LinearLayout>

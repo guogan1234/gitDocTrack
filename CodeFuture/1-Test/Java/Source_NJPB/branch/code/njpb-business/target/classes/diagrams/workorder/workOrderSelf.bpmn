@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/testm1513065350918" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="m1513065350918" name="" targetNamespace="http://www.activiti.org/testm1513065350918" typeLanguage="http://www.w3.org/2001/XMLSchema">
+  <process id="process-workOrderSelf" isClosed="false" isExecutable="true" name="自修保养工作流" processType="None">
+    <startEvent id="start" name="StartEvent"/>
+    <endEvent id="end" name="EndEvent"/>
+    <userTask activiti:exclusive="true" id="usertask_repairSelf_check" name="维修审核">
+      <extensionElements>
+        <activiti:taskListener delegateExpression="${customCreateEventHandler}" event="create"/>
+      </extensionElements>
+    </userTask>
+
+    <sequenceFlow id="flow_report_self" name="自修保养报修" sourceRef="start" targetRef="usertask_repairSelf_check"/>
+    <sequenceFlow id="flow_report_self_complete" name="工单完成" sourceRef="usertask_repairSelf_check" targetRef="end"/>
+  </process>
+  <bpmndi:BPMNDiagram documentation="background=#FFFFFF;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">
+    <bpmndi:BPMNPlane bpmnElement="process-workOrderSelf">
+      <bpmndi:BPMNShape bpmnElement="start" id="Shape-start">
+        <dc:Bounds height="32.0" width="32.0" x="600.0" y="65.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="32.0" width="32.0" x="5.0" y="7.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="Shape-end">
+        <dc:Bounds height="32.0" width="32.0" x="615.0" y="485.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask_repairSelf_check" id="Shape-usertask_repairSelf_check">
+        <dc:Bounds height="55.0" width="85.0" x="580.0" y="245.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow_report_self" id="BPMNEdge__2" sourceElement="start" targetElement="usertask_repairSelf_check">
+        <di:waypoint x="616.0" y="97.0"/>
+        <di:waypoint x="616.0" y="245.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow_report_self_complete" id="BPMNEdge__3" sourceElement="usertask_repairSelf_check" targetElement="end">
+        <di:waypoint x="631.0" y="300.0"/>
+        <di:waypoint x="631.0" y="485.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout-base"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${njpb_title}"></title>
+    <script th:src="@{/static/lib/common-external.js}"></script>
+    <link rel="stylesheet" th:href="@{/njpb/css/scts_tables.css}">
+</head>
+<body>
+
+<section id="widget-grid" class="" layout:fragment="content">
+
+    <!--<div class="row">-->
+    <div class="box-header" th:include="layout/alertMsg :: msg"
+         style="padding-top: 0px; padding-bottom: 0px; margin-left: 13px; margin-right: 13px;"></div>
+
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+             data-widget-editbutton="false">
+            <header>
+					<span class="widget-icon"> <i class="fa fa-table"></i>
+					</span>
+                <h2>条码管理</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox modal fade media-preview"
+                     id="myModal"></div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- 隐藏Form导出设备 -->
+                            <form action="" method="get" id="sb">
+                            </form>
+
+                            <div class="tabbable">
+
+                                <!-- tabs -->
+                                <!--<ul-->
+                                        <!--class="nav nav-tabs padding-12 tab-color-blue background-blue"-->
+                                        <!--id="tabEwmgl">-->
+                                    <!--<li class="active"><a data-toggle="tab" href="#tabBarCodeUsed">已使用</a></li>-->
+                                    <!--<li><a data-toggle="tab" href="#tabBarCodeUnused" onclick="searchUnused()">未使用</a></li>-->
+                                <!--</ul>-->
+
+                                <!-- contents -->
+                                <div class="tab-content">
+
+                                    <!-- content 1 begin -->
+                                    <div id="tabBarCodeUsed" class="tab-pane in active" style=''>
+
+                                        <!-- -------------------------------- -->
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label for="form-field-select-3" class="xmbh_top">公司</label>
+                                                        <select class="form-control" id="selectCorp"
+                                                                style="font-size: 12px; height: 30px;">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <label for="form-field-select-3" class="xmbh_top">站点</label>
+                                                        <select class="form-control" id="stationId"
+                                                                style="font-size: 12px; height: 30px;">
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <label for="form-field-select-3" class="xmbh_top">类型</label>
+                                                        <select class="form-control" id="estateTypeId"
+                                                                style="font-size: 12px; height: 30px;">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-sm-2"
+                                                         sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')">
+                                                        <button class="btn-search" style="margin-top: 35px; height: 30px"
+                                                                onclick="search()">查询
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div style="margin-top: 20px;">
+                                                    <table id="barCodeUsed-list" style="width:100%" class="table table-striped table-bordered table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <!--<th class="txtCenter"><input id="checkAll"-->
+                                                                                         <!--type="checkbox" class="ace" /></th>-->
+
+                                                            <th class="txtCenter" width="20px" ><input type="checkbox"
+                                                                                                      class="ace"/></th>
+                                                            <th>设备编号</th>
+                                                            <th>设备条码</th>
+                                                            <th>设备类型</th>
+                                                            <!--<th>部件类型</th>-->
+                                                            <th>设备名称</th>
+                                                            <th>所属站点</th>
+                                                            <th>所属公司</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row"></div>
+                                        <!-- -------------------------------- -->
+
+                                    </div>
+                                    <!-- content 1 end -->
+
+                                    <!-- content 2 begin -->
+                                    <div id="tabBarCodeUnused" class="tab-pane">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div style="margin-top: 20px;">
+                                                    <table id="barCodeUnused-list" style="width:100%" class="table table-striped table-bordered table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="txtCenter" width="20"><input id="checkAll"
+                                                                                         type="checkbox" class="ace" /></th>
+                                                            <th>条码编号</th>
+                                                            <!--<th>创建人</th>-->
+                                                            <th>创建时间</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- content 2 end -->
+
+                                    <!-- 新建条码 -->
+                                    <div aria-hidden="true" aria-labelledby="myModalLabel"
+                                         class="modal fade media-preview" id="addBarCodeForm"
+                                         role="dialog" tabindex="-1">
+                                        <div class="modal-dialog" style="width: 70%;">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button class="close" data-dismiss="modal" type="button">
+                                                        <span aria-hidden="true">&times;</span><span
+                                                            class="sr-only">关闭</span>
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">Title</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="widget-body no-padding">
+                                                            <div class="row">
+                                                                <fieldset class="fieldset">
+                                                                    <legend class="legend">新建条码</legend>
+                                                                    <div class="row">
+
+                                                                        <div class="form-group col-sm-6">
+                                                                            <div class="code_td">条码数量</div>
+                                                                            <div class="form_nr" id = "chkBarCodeNo" >
+                                                                                <input type="number" id="barCodeNo" placeholder="必填"
+                                                                                       class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row" th:high="10px"></div>
+                                                                </fieldset>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer" style="padding-bottom: 0px;">
+                                                        <button class="btn btn-primary" onclick="save();">保存</button>
+                                                        <button class="btn btn-defual" onclick="cancel();">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+
+                </div>
+                <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+        </div>
+    </article>
+</section>
+<div layout:fragment="scripts">
+    <script th:src="@{/static/lib/plugin-widget.js}"></script>
+    <script th:src="@{/static/lib/wire-util.js}"></script>
+    <script th:src="@{/static/lib/layer/layer.js}"></script>
+    <script th:src="@{/njpb/js/estateManage/barCodesManage.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/jquery.dataTables.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.colVis.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.tableTools.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatables/dataTables.bootstrap.min.js}"></script>
+    <script
+            th:src="@{/static/lib/smart_admin/js/plugin/datatable-responsive/datatables.responsive.min.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')"
+            th:src="@{/njpb/js/publicConfig/barCode_new_button.js}"></script>
+    <script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')"
+            th:src="@{/njpb/js/publicConfig/batch_export.js}"></script>
+    <!--<script sec:authorize="hasAuthority('NJPB-WEB-ESTATE-EQUIPMENT-NEW')"-->
+            <!--th:src="@{/njpb/js/publicConfig/bar_code_print.js}"></script>-->
+</div>
+</body>
+</html>

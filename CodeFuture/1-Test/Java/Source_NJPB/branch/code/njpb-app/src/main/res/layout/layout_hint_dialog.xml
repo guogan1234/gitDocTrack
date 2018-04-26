@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:layout_margin="20dp"
+              android:background="@drawable/null_bg_circle"
+              android:orientation="vertical">
+    <TextView
+        android:id="@+id/text_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:text="消息是否确定"
+        android:textColor="@color/warn_text_color"
+        android:textSize="20sp"/>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:background="#9c9c9c"
+        android:layout_height="1dp"/>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="取消"
+            android:id="@+id/cancel"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:textColor="#5935c6"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="1dp"
+            android:background="#9c9c9c"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:text="确定"
+            android:id="@+id/make_sure"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#5935c6"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

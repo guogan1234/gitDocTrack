@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/mine_head_view"/>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_mine_repairs_station"/>
+
+            <include layout="@layout/linear_last_serving_msg"/>
+
+            <include layout="@layout/layout_order_msg"/>
+
+            <include layout="@layout/linear_repair_msg"/>
+
+            <include layout="@layout/linear_order_location"/>
+
+            <com.avantport.avp.njpb.view.SelectGirdView
+                android:id="@+id/check_parts"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:columnWidth="5dp"
+                android:numColumns="3">
+
+            </com.avantport.avp.njpb.view.SelectGirdView>
+
+            <include layout="@layout/linear_report_pic"/>
+
+            <include layout="@layout/linear_repair_pic"/>
+
+            <include layout="@layout/linear_change_parts"/>
+
+            <com.avantport.avp.njpb.view.CustomListview
+                android:id="@+id/order_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+            </com.avantport.avp.njpb.view.CustomListview>
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/layout_next_button"/>
+</LinearLayout>

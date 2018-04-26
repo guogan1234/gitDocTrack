@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\BusinessApplication.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\config\ActivitiInitConfig.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\config\ExtensionOperation.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\config\ExtensionUserTaskParseHandler.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\config\handler\CustomCreateEventHandler.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\config\handler\CustomTakeEventHandler.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\config\WebLogAspect.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\controller\ActivitiController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\AssoUserProject.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\ObjCorporation.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\ObjDevicePush.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\ObjFile.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\SysMessageSendDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\SysUserPositionRecordNow.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\basic\VwMessageSendDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\ModuleTypeTreeNode.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\ObjInventoryRecordBO.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\RepairFaultStatisticsBO.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\ResponseTimeOutAndRepairTimeOut.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\StationEstateFaultStatisticsBo.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\StationEstateStockListBO.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\StationEstateStockStatisticsBO.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\StationRepairFaultStatisticsBo.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\entityBO\WorkOrderFaultTypeBO.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\AssoEstateModuleType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjBarcodeImage.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjEstate.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjEstateStatus.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjEstateSupplier.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjEstateType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjFaultType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\ObjStation.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\estate\VwObjStation.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\ObjEstateExcel.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\ObjStationExcel.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjInventoryCheckRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjInventoryCheckRecordDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjInventoryRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjInventoryRecordDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStock.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockRecordMonthCount.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockRecordPersonal.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockRecordPersonalHistory.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockWorkOrder.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockWorkOrderDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockWorkOrderHistory.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\ObjStockWorkOrderResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\RefStockWorkOrderType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\RefTockWorkOrderStatus.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\VwStockRecordMonthCount.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\VwStockRecordPersonal.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\VwStockWorkOrder.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\VwStockWorkOrderDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\stock\VwStockWorkOrderHistory.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysMessage.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysParam.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysProject.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysRole.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysRoleResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysUser.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysUserDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysUserPointRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysUserPositionRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysUserRole.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\system\SysVersionApp.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwAuthResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwEstate.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwEstateModuleType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwFaultType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwInventoryCheckRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwInventoryCheckRecordDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwInventoryRecordDetail.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwRoleResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwScoreMonth.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwStockRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwStockRecordPersonalHistory.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwStockWorkOrderResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwSysUserPositionRecordNow.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUser.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserEstate.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserEstateBarCode.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserPointRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserPositionRecord.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserRole.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserRoleResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwUserWorkOrder.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrder.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderBadComponent.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderBadComponentFaultType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderBadComponentFaultTypeSum.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderFaultType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderFaultTypeCount.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderHistory.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderModuleBadComponentCount.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\view\VwWorkOrderResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\ObjReplaceEstate.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\ObjWorkOrder.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\ObjWorkOrderBadComponent.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\ObjWorkOrderFaultType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\ObjWorkOrderOperation.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\ObjWorkOrderResource.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\RefWorkOrderStatus.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\entity\workorder\RefWorkOrderType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\EstateExcelRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ExcelStationRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ObjCorporationRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ObjEstateSupplierRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ObjEstateTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ObjFaultTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ObjFileRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\ObjImageBarCodeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\SysMessageRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\SysMessageSendDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\SysParamRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\SysUserPositionRecordNowRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\VwEstateModuleTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\VwFaultTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\VwMessageSendDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\VwSysUserPositionRecordNowRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\WorkOrderStatusRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\basic\WorkOrderTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\AssoEstateModuleTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\ObjEstateRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\ObjStationRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\VwEstateRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\VwObjStationRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\VwUserEstateBarCodeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\VwUserEstateBarCodeRepositorySpecification.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\estate\VwUserEstateRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\report\VwInventoryCheckRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjInventoryCheckRecordDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjInventoryCheckRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjInventoryRecordDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjInventoryRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockRecordMonthCountRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockRecordPersonalHistoryRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockRecordPersonalRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockWorkOrderDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockWorkOrderHistoryRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockWorkOrderRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\ObjStockWorkOrderResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwInventoryCheckRecordDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwInventoryRecordDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockRecordMonthCountRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockRecordPersonalHistoryRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockRecordPersonalRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockWorkOrderDetailRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockWorkOrderHistoryRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockWorkOrderRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\stock\VwStockWorkOrderResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\AssoUserProjectRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysProjectRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysRoleRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysRoleResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysUserRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysUserRoleRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\SysVersionAppRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\UserPositionRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\VwAuthResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\VwRoleResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\VwUserPositionRecordRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\VwUserRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\VwUserRoleRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\sys\VwUserRoleResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\ObjWorkOrderBadComponentRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\ObjWorkOrderFaultTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\ObjWorkorderOperationRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\ObjWorkOrderRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\ObjWorkOrderResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwScoreMonthRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwUserWorkOrderRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderBadComponentFaultTypeSumRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderBadComponentRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderFaultTypeRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderHistoryRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderModuleBadComponentCountRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\repository\workorder\VwWorkOrderResourceRepository.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\BarCodeController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\CorporationController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\EstateSupplierController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\EstateTypeController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\FaultTypeController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\ModuleTypeController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\StationController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\SysMessageController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\SysParamController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\SystemController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\SysUserPositionRecordNowController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\VwUserPositionRecordController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\VwWorkOrderBadComponentController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\WorkOrderStatusController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\basic\WorkOrderTypeController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\estate\EstateController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\estate\ReplaceBarCodeController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\exportExcel\EstateBarCodesExportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\exportExcel\ReportExportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\importExcel\EstateSuppliersExcelImportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\importExcel\StationExcelController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\report\DayReportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\report\ReportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\report\StockReportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\stock\CheckStockController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\stock\InStockController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\stock\OutStockController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\stock\StockController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\stock\StockWorkOrderController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\stock\StockWorkOrderWorkFlowController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\upload\FileUploadController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\user\PointController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\user\ResourceController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\user\RoleController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\user\UserController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\workorder\WorkOrderFlowController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\workorder\WorkOrderHandleController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\resource\workorder\WorkOrderResourceController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\activiti\ActivitiService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\activiti\WorkOrderWorkflowService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\createBarCode\BatchCreateBarCode.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\createBarCode\BatchCreateStationBarcode.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\createBarCode\LogoConfig.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\createBarCode\MatrixToImageWriter.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\dayReport\DayReportExportController.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\estate\EstateService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\push\PushClientService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\rest\RestClientService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\stock\CheckTimeService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\stock\StockRecordPersonalHistory.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\stock\StockWorkOrderService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\stockMonthCount\StockReportService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\service\workorder\WorkOperateService.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\BpmnConstants.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\BusinessRefData.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\BuzUtil.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\CheckTime.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\DateConverter.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\DateUtil.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\ExcelUtil.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\FileUploadUtil.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\ImportExcelUtil.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\MagicNumber.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\Md5Util.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\PropertyType.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\StringPool.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\Validator.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\Variable.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\java\com\avp\mem\njpb\util\WorkOrderSerialNoUtil.java">
+</file>
+<file name="D:\workspace\Source_NJPB\branch\code\njpb-business\src\main\resources\application.properties">
+</file>
+</checkstyle>
