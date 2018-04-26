@@ -1,0 +1,242 @@
+body {
+	font: 400 14px/1.5 Arial, "Lucida Grande", Verdana, "Microsoft YaHei", hei !important;
+}
+.mui-btn-yellow {
+	background-color: #ff943e;
+}
+.mui-btn-blue {
+	border: none;
+	background-color: #5cccb9;
+}
+.mui-bar .mui-btn-link {
+	color: #fff;
+}
+#pullrefresh .mui-table-view-cell:after {
+	background-color: transparent;
+}
+.mems-color-gray {
+	color: #999 !important;
+}
+.mems-color-blue {
+	color: #099FDE !important;
+}
+.mems-color-orange {
+	color: #ff9a14 !important;
+}
+.mems-header,
+.mui-mems-top-tab,
+.mui-title,
+.mems-header .mui-icon {
+	background-color: #ff943e;
+	color: #fff;
+}
+.mems-btn-main {
+	color: #FFF;
+	font-size: 18px;
+	background-color: #ff9a14;
+	border: solid 1px #ff9a14;
+	padding: 9px;
+}
+.mems-footer {
+	position: fixed;
+	border: solid 1px #ddd;
+	background-color: #eee;
+	/*box-shadow: 0px -5px 5px 0px rgba(0, 0, 0, 0.05);*/
+	
+	left: 0px;
+	bottom: 0px;
+	height: 51px;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.mems-footer-menu {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	font-size: 0px;
+}
+.mems-footer-menu li {
+	list-style-type: none;
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 0px;
+	padding: 10px;
+	font-size: 10px;
+	position: relative;
+	color: #888;
+}
+.mems-footer-menu li:active {
+	color: #333;
+}
+.mems-footer-menu li i.fa {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	font-weight: 100;
+	font-size: 18px;
+	left: 50%;
+	margin-left: -8px;
+	top: 8px;
+	display: block;
+}
+.mems-footer-menu li:first-child {
+	border-left: none;
+}
+.mems-footer-menu-c4 li {
+	width: 25%;
+}
+.mems-footer-menu-c5 li {
+	width: 20%;
+}
+.mems-footer-menu-c6 li {
+	width: 16.5%;
+}
+.mems-bar-away {
+	font-size: 12px;
+	z-index: 1000;
+	padding: 4px 0 4px 10px;
+	line-height: 24px;
+	min-height: 33px;
+	color: #555;
+	width: 100%;
+}
+.mems-pop-over{
+	width:  120px;
+}
+/*work order template*/
+.mems-workorder-header{
+	margin: -1px;
+	border-radius: 5px 5px 0px 0px;
+	border-color:lightgrey ;
+	background-color: #ff943e;
+	height: 35px;
+	/*padding-top: 10px;*/
+	color: white;
+}
+.mems-workorder{
+	border: 1px solid;
+	border-radius: 5px 5px 0px 0px;
+	border-color:lightgrey ;
+	margin: 10px 0px;
+}
+.mems-workorder p, 
+.mems-workorder a{
+	margin-top: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.mems-workorder p{
+	color:#000000;
+}
+.mems-workorder h5+p{
+	margin-top: 10px;
+}
+.mems-workorder p:last-child span{
+	margin-bottom: 8px;
+}
+.mems-workorder-item {
+	color:#8F8F94;
+}
+
+hr {
+	width: 90%;
+	height: 1px;
+	border: none;
+	border-top:1px solid #eeeeee;
+}
+.mui-btn-block {
+    padding: 10px 0;
+}
+
+/*.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 8px solid white;
+    float: right;
+    clear: both;
+    margin-left: -8px;
+    margin-top: -2px;
+}*/
+
+/*use different colors to distinguish workorder types*/
+.mui-media-body .maintenanceWo .wo-type{
+	height: 100%;
+	background-color: #5cccb9;
+	padding-top: 10px;
+	padding-left: 8px;
+}
+.mui-media-body .repairWo .wo-type{
+	height: 100%;
+	background-color: #FF943E;
+	padding-top: 10px;
+	padding-left: 8px;
+}
+
+/*use different colors to distinguish workorder status*/
+.mui-media-body .wo-status{
+	height: 100%;
+	padding-top: 10px;
+	padding-right: 8px;
+}
+
+.mui-media-body .status-1 {
+	background-color: #F10A0A;
+}
+.mui-media-body .status-2 {
+	background-color: #F39C12;
+}
+.mui-media-body .status-3 {
+	background-color: #7CD5EF;
+}
+.mui-media-body .status-4 {
+	background-color: #00C0EF;
+}
+.mui-media-body .status-5 {
+	background-color: #3E2CAD;
+}
+.mui-media-body .status-6 {
+	background-color: #0788F7;
+}
+.mui-media-body .status-7 {
+	background-color: #00A65A;
+}
+.mui-media-body .status-8 {
+	background-color: #DD4B39;
+}
+.mui-media-body .status-9 {
+	background-color: #399A05;
+}
+
+/*input search style*/
+.mui-input-row.mui-search{
+	height: 44px;
+	margin: 8px 10px 0px 10px;
+}
+.mui-input-row .search {
+	/*line-height: 40px;*/
+	background-color: #fff;
+}
+
+.mui-input-row.mui-search.mui-pull-left{
+	width: 80%;
+}
+.search-button {
+	display: none;
+}
+.search-button.mui-pull-right {
+	display: block;
+	margin-top: 8px;
+}
+.mui-ellipsis span.mems-detail {
+	word-break:break-all;
+	width:auto;
+	white-space:pre-wrap;
+	word-wrap : break-word ;
+	overflow: hidden ;
+}

@@ -1,0 +1,15 @@
+com\avp\mems\ui\mobile\html\model\SendMsg.class
+com\avp\mems\ui\mobile\html\controller\WXAuthController.class
+com\avp\mems\ui\mobile\html\utils\Decript.class
+com\avp\mems\ui\mobile\html\model\StatusMsg.class
+com\avp\mems\ui\mobile\html\conf\Interceptor.class
+com\avp\mems\ui\mobile\html\utils\HttpUtil.class
+com\avp\mems\ui\mobile\html\controller\IndexController.class
+com\avp\mems\ui\mobile\html\conmunicate\WebSocketBrokerConfig.class
+com\avp\mems\ui\mobile\html\conmunicate\WsController.class
+com\avp\mems\ui\mobile\html\conf\StartupRunner.class
+com\avp\mems\ui\mobile\html\conmunicate\WsController$NotifyEvent.class
+com\avp\mems\ui\mobile\html\model\ReceiveMsg.class
+com\avp\mems\ui\mobile\html\controller\StatusController.class
+com\avp\mems\ui\mobile\html\UiMobileHtmlApplication.class
+com\avp\mems\ui\mobile\html\utils\WorkWeChatUtils.class
