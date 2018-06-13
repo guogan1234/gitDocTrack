@@ -1,0 +1,16 @@
+错误信息（安装libexpat1-dev时，报错如下）：
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+You might want to run 'apt-get -f install' to correct these:
+The following packages have unmet dependencies:
+ wps-office:i386 : Depends: libc6:i386 (>= 2.12) but it is not going to be installed
+                   Depends: libstdc++6:i386 (>= 4.5) but it is not going to be installed
+                   Depends: libfreetype6:i386 (>= 2.4) but it is not going to be installed
+                   Depends: libglu1-mesa:i386 but it is not going to be installed
+                   Depends: libcups2:i386 but it is not going to be installed
+                   Recommends: ttf-mscorefonts-installer:i386
+E: Unmet dependencies. Try 'apt-get -f install' with no packages (or specify a solution).
+
+出现原因：
+上次安装wps-offices未安装成功，本次安装libexpat1-dev会出现上次未解决问题的信息。

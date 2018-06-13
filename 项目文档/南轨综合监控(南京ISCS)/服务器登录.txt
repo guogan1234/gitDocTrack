@@ -1,0 +1,13 @@
+编译服务器：
+rhel-server7.4
+gcc4.8
+IP: 	dev.avantport.com
+USER:	ganguo
+PWD:	ganguo123456
+ssh -p 24322 ganguo@dev.avantport.com
+
+测试服务器：
+IP:	192.168.1.115
+USER:	avp
+PWD:	gg
+ssh avp@192.168.1.115

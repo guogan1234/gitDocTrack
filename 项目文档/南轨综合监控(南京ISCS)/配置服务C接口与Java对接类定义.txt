@@ -1,0 +1,28 @@
+专用接口：
+TableObject{
+	List<TableHeader> headers;
+	List<ListRow>;
+}
+
+TableHeader{
+	int type;
+	String name;
+}	
+
+ListRow{
+	List rowDatas;//CellObject
+}
+
+CellObject<T>{
+	T value;
+}
+
+------
+List<List<Cell>>
+
+---------------------------------------
+通用接口：
+TableModel{
+	List<String> headers;
+	List<List<String>> colDatas;
+}

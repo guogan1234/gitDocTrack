@@ -1,0 +1,32 @@
+1.查找文件
+在/home目录下查找以.txt结尾的文件名
+find /home -name "*.txt"
+
+2.在文件中查找文本
+在文件中搜索一个单词，命令会返回一个包含“match_pattern”的文本行：
+输出包含匹配字符串的行数 -n 选项：
+grep -n "match_pattern" file_1 file_2 file_3 ...
+
+3.创建文件和文件夹
+创建一个名为dir的文件夹
+mkdir dir
+创建一个名为a.txt的文件
+touch a.txt
+
+3.文件复制和移动
+复制：
+将文件file复制到目录/usr/men/tmp下，并改名为file1
+cp file /usr/men/tmp/file1
+将目录/usr/men下的所有文件及其子目录复制到目录/usr/zh中
+cp -r /usr/men /usr/zh
+移动：
+将文件ex3改名为new1
+mv ex3 new1
+将目录/usr/men中的所有文件移到当前目录（用.表示）中
+mv /usr/men/* .
+
+4.tar包的压缩和解压
+压缩： 将目录log归档并压缩，归档压缩后的名称为log.tar.gz
+tar -zcvf log.tar.gz  log/
+解压：释放并解压log.tar.gz
+tar -zxvf log.tar.gz
