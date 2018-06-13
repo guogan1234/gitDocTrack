@@ -1,3 +1,0 @@
-F:/gitDocTrack/CodeFuture/1-Test/QT/build-CMakeProjectByQt_v0-Desktop_Qt-Default/CMakeFiles/CMakeProjectByQt_v0.dir
-F:/gitDocTrack/CodeFuture/1-Test/QT/build-CMakeProjectByQt_v0-Desktop_Qt-Default/CMakeFiles/edit_cache.dir
-F:/gitDocTrack/CodeFuture/1-Test/QT/build-CMakeProjectByQt_v0-Desktop_Qt-Default/CMakeFiles/rebuild_cache.dir
