@@ -1,0 +1,5 @@
+https://blog.csdn.net/chris4ting/article/details/1695082
+
+在dev_c++中需要包含stdio.h
+
+其他编译器可能要using namespace std 等

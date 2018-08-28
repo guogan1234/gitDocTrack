@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\mainapp.o
+./debug\mytcpserver.o
+./debug\mytcpthread.o
+./debug\recvdatahandlethread.o
+./debug\recvdatahandleworker.o
+./debug\socketmanager.o
+./debug\moc_mainapp.o
+./debug\moc_mytcpserver.o
+./debug\moc_mytcpthread.o
+./debug\moc_recvdatahandlethread.o
+./debug\moc_recvdatahandleworker.o
+./debug\moc_socketmanager.o
+);

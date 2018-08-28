@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\mainapp.o
+./release\mytcpserver.o
+./release\mytcpthread.o
+./release\recvdatahandlethread.o
+./release\recvdatahandleworker.o
+./release\socketmanager.o
+./release\moc_mainapp.o
+./release\moc_mytcpserver.o
+./release\moc_mytcpthread.o
+./release\moc_recvdatahandlethread.o
+./release\moc_recvdatahandleworker.o
+./release\moc_socketmanager.o
+);

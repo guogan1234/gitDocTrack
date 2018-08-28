@@ -1,0 +1,5 @@
+1.使用QTcpSocket继承自QAbstractSocket::connectToHost()方法，为何会触发parent不在同一个线程的问题？
+猜测：QTcpSocket调用时，创建了某个类。
+
+2.线程中私有成员QTcpSocket，在QThead还未开启exec()进入事件循环，成员QTcpSocket就可以触发信号和槽函数？
+猜测：QTcpSocket在构造时，已经开启了事件循环。
